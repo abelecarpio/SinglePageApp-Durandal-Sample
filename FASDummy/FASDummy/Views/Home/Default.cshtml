@@ -1,0 +1,26 @@
+﻿@{ Layout = null;}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>FAS Dummy</title>
+</head>
+<body>
+
+    <div>
+        <h3></h3>
+        <div id="applicationHost">
+
+        </div>
+    </div>
+
+    @*<script src="~/signalr/hubs"></script>*@
+
+    <script type="text/javascript">
+        var $siteroot = "@Url.Content("~")";
+        var $otherServer = "@ViewBag.OtherServer";
+    </script>
+</body>
+</html>

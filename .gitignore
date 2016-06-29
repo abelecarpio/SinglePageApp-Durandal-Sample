@@ -1,0 +1,27 @@
+Desktop.Ini
+#Ignore files build by Visual Studio
+*.obj
+*.pdb
+*.aps
+*.pch
+*.vspscc
+*_i.c
+*_p.c
+*.ncb
+*.tlb
+*.tlh
+*.bak
+*.cache
+*.ilk
+*.log
+*.lib
+*.sbr
+*.vssscc
+Debug/
+Release/
+obj/
+node_modules/
+.idea/
+.vs/
+TestResults/
+.vscode/
