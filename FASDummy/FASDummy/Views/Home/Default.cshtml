@@ -16,11 +16,13 @@
         </div>
     </div>
 
-    @*<script src="~/signalr/hubs"></script>*@
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/vendor")
+
+    <script src="~/signalr/hubs"></script>
 
     <script type="text/javascript">
         var $siteroot = "@Url.Content("~")";
-        var $otherServer = "@ViewBag.OtherServer";
     </script>
 </body>
 </html>
