@@ -25,3 +25,4 @@ node_modules/
 .vs/
 TestResults/
 .vscode/
+packages/
