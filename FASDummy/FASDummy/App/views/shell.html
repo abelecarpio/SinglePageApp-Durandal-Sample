@@ -1,1 +1,10 @@
-﻿
+﻿<div id="shellContainer">
+    <span>This is shell</span>
+    <div class="btn-group" data-bind="foreach: router.navigationModel">
+        <a data-bind="css: { active: isActive }, attr: { href: hash }, text: title"
+           class="btn btn-default" href="#"></a>
+    </div>
+
+    <section id="parentContent" class="main container-fluid"
+             data-bind="router: { transition: 'entrance', cacheViews: false }"></section>
+</div>

@@ -1,0 +1,11 @@
+﻿<section>
+    <h2>Transaction</h2>
+    <br/><hr/><br/>
+
+    <input type="text" data-bind="value: cardnumber"/>
+    <button data-bind="click:getinfo">Lock This</button>
+
+    <div  data-bind="foreach: logmessages">
+        <span data-bind="text:$data"></span><br/>
+    </div>
+</section>

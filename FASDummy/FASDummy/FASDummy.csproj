@@ -203,6 +203,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstracts\ResultObject.cs" />
     <Compile Include="App_Start\AuthConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -213,18 +214,22 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Hubs\HubBridge.cs" />
     <Compile Include="Hubs\TransactionHub.cs" />
+    <Compile Include="Models\HubDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\main.js" />
-    <Content Include="App\services\accountroutes.js" />
+    <Content Include="App\services\routeconfig.js" />
     <Content Include="App\services\transactionroutes.js" />
-    <Content Include="App\viewmodels\dashboard.js" />
+    <Content Include="App\viewmodels\Dashboard\default.js" />
     <Content Include="App\viewmodels\shell.js" />
-    <Content Include="App\views\dashboard.html" />
+    <Content Include="App\viewmodels\Transaction\default.js" />
+    <Content Include="App\views\Dashboard\default.html" />
     <Content Include="App\views\shell.html" />
+    <Content Include="App\views\Transaction\default.html" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -300,6 +305,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="Properties\PublishProfiles\localfiles.pubxml" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\almond-custom.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -355,10 +361,8 @@
     <Content Include="Views\Home\Default.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App\models\" />
     <Folder Include="App_Data\" />
     <Folder Include="Images\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

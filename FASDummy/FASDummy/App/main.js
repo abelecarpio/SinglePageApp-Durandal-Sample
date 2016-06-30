@@ -20,13 +20,30 @@ define("jquery", function () { return jQuery; });
 define("knockout", function () { return ko; });
 
 
-define(["durandal/app", "durandal/viewLocator", "durandal/system", "plugins/router", "durandal/viewEngine", "services/logger"], boot);
-function boot(app, viewLocator, system, router, viewEngine, logger) {
+define(["durandal/app", "durandal/viewLocator", "durandal/system", "plugins/router", "durandal/viewEngine"], boot);
+function boot(app, viewLocator, system, router, viewEngine) {
 
     // Enable debug message to show in the console 
     system.debug(true);
 
     app.title = "FAS Dummy";
+
+    ////specify which plugins to install and their configuration
+    //app.configurePlugins({
+    //    router: true,
+    //    dialog: true,
+    //    widget: {
+    //        kinds: ["expander"]
+    //    }
+    //});
+
+    //app.start().then(function () {
+    //    ////Look for partial views in a 'views' folder in the root.
+    //    viewLocator.useConvention("viewmodels", "views", "views");
+    //    //Show the app by setting the root view model for our application.
+    //    app.setRoot("viewmodels/shell", "entrance");
+    //});
+
 
     //specify which plugins to install and their configuration
     app.configurePlugins({
@@ -38,8 +55,16 @@ function boot(app, viewLocator, system, router, viewEngine, logger) {
     });
 
     app.start().then(function () {
-        ////Look for partial views in a 'views' folder in the root.
-        viewLocator.useConvention("viewmodels", "views", "views");
+
+        //Show the app by setting the root view model for our application with a transition.
+
+        //toastr.options.positionClass = "toast-bottom-right";
+        //toastr.options.backgroundpositionClass = "toast-bottom-right";
+        //viewLocator.useConvention('viewmodels', '../../');
+        //viewEngine.viewExtension = '/';
+        //Look for partial views in a 'views' folder in the root.
+        viewLocator.useConvention();
+
         //Show the app by setting the root view model for our application.
         app.setRoot("viewmodels/shell", "entrance");
     });
