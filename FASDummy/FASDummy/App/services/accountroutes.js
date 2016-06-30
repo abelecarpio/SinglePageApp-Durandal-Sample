@@ -2,14 +2,16 @@
     function (system, router, accountroutes) {
 
         function activate() {
-           
-            //TODO: Check authentication in server
-
+            router.on("router:route:not-found", function (fragment) {
+                system.log("SHELL", "No Route Found or Access Denied");
+            });
             
-
+            //TODO: Check authentication in server
 
         }
 
+
+        //PUBLIC DEFINITION
         var shell = {
             activate: activate,
             router: router,
