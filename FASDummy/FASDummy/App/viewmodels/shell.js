@@ -8,20 +8,14 @@
             });
 
             var routes = [
-            { route: ["", "dashboard/default"], moduleId: "dashboard/default", title: "Dashboard", nav: false, hash: "#dashboard/default" },
-            { route: "transaction/default", moduleId: "transaction/default", title: "Transaction", nav: true, hash: "#transaction/default" },
+            { route: ["", "Dashboard/default"], moduleId: "Dashboard/default", title: "Dashboard", nav: true, hash: "#Dashboard/default" },
+            { route: "Transaction/default", moduleId: "Transaction/default", title: "Transaction", nav: true, hash: "#Transaction/default" },
             ];
-
-            //router.makeRelative({ moduleId: "viewModels" });
-            //router.map(routes);
-            //router.buildNavigationModel();
-            //return router.activate({ pushState: true });
 
             if ($siteroot == null || $siteroot === "/")
                 return router.makeRelative({ moduleId: "viewmodels" }).map(routes).buildNavigationModel().activate({ pushState: true });
             else
                 return router.makeRelative({ moduleId: "viewmodels" }).map(routes).buildNavigationModel().activate({ pushState: true, root: "/" + $siteroot });
-
         };
 
 

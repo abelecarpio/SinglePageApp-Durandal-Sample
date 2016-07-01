@@ -38,15 +38,18 @@ namespace FASDummy.Hubs
             _activeTransactions.TryAdd(connectionId, cardNumber);
             foreach (var otherServer in OtherServers)
             {
-                otherServer.Value.SubProxy.Invoke("LockThisTransaction", connectionId, cardNumber);
+                if (otherServer.Value.SubConnection.State != ConnectionState.Connected) continue;
+                otherServer.Value.SubProxy.Invoke("LockThisTransaction", cardNumber, connectionId);
             }
         }
 
         internal void NodeReleaseTransaction(string connectionId, string cardNumber)
         {
+            if (string.IsNullOrEmpty(connectionId) || string.IsNullOrEmpty(cardNumber)) return;
             foreach (var otherServer in OtherServers)
             {
-                otherServer.Value.SubProxy.Invoke("ReleaseThisTransaction", connectionId, cardNumber);
+                if (otherServer.Value.SubConnection.State != ConnectionState.Connected) continue;
+                otherServer.Value.SubProxy.Invoke("ReleaseThisTransaction", cardNumber, connectionId);
             }
         }
 
@@ -64,7 +67,7 @@ namespace FASDummy.Hubs
                 HubDetails wastedConnection;
                 OtherServers.TryRemove(hubConnection.Key, out wastedConnection);
             }
-
+           
             foreach (var configkey in nodeservers)
             {
                 var baseurl = ConfigurationManager.AppSettings[configkey] ?? string.Empty;
@@ -74,9 +77,33 @@ namespace FASDummy.Hubs
 
                 var nodeconnect = new HubConnection(baseurl);
 
-                OtherServers.TryAdd(baseurl, new HubDetails() { SubConnection = nodeconnect, SubProxy = nodeconnect.CreateHubProxy("TransactionHub") });
-                var proxy = OtherServers.FirstOrDefault(x => string.Equals(x.Key, baseurl, StringComparison.InvariantCultureIgnoreCase));
-                proxy.Value.SubConnection.Start().Wait();
+                try
+                {
+                    OtherServers.TryAdd(baseurl,
+                        new HubDetails()
+                        {
+                            SubConnection = nodeconnect,
+                            SubProxy = nodeconnect.CreateHubProxy("TransactionHub")
+                        });
+                    var proxy =
+                        OtherServers.FirstOrDefault(
+                            x => string.Equals(x.Key, baseurl, StringComparison.InvariantCultureIgnoreCase));
+                    proxy.Value.SubConnection.Start().Wait();
+                }
+                catch (Exception) {}
+            }
+        }
+
+        internal void CheckForDisconnected()
+        {
+            foreach (var otherServer in OtherServers)
+            {
+                if (otherServer.Value.SubConnection.State == ConnectionState.Connected) continue;
+                try
+                {
+                    otherServer.Value.SubConnection.Start().Wait();
+                }
+                catch (Exception){}
             }
         }
 
@@ -113,7 +140,7 @@ namespace FASDummy.Hubs
         private static readonly object Padlock = new object();
 
         private ConcurrentDictionary<string, HubDetails> OtherServers { get; set; }
-
+        
         #endregion PROPERTIES
     }
 }

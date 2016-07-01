@@ -1,4 +1,4 @@
-﻿/// <vs />
+﻿/// <vs BeforeBuild='clean, build' Clean='clean' />
 var gulp = require("gulp"),
     durandal = require("gulp-durandal"),
     rimraf = require("rimraf");
@@ -17,10 +17,11 @@ gulp.task("compile-application-script", function () {
         main: paths.sourceFilename,
         output: paths.outputFilename,
         almond: true,
-        minify: true,
-        rjsConfigAdapter: function (config) {
+        minify: false
+        ,rjsConfigAdapter: function (config) {
             //Tell requirejs to load the "main" module
             config.insertRequire = ["main"];
+            config.deps = ['text'];
             return config;
         }
     })
@@ -35,24 +36,6 @@ gulp.task("clean:js", function (cb) {
 gulp.task("clean:map", function (cb) {
     rimraf(paths.outputMapfile, cb);
 });
-
-gulp.task("compile-application-script2", function () {
-    return durandal({
-        baseDir: paths.folderDestination,
-        main: paths.sourceFilename,
-        output: paths.outputFilename,
-        almond: true,
-        minify: true,
-        rjsConfigAdapter: function (rjsConfig) {
-            rjsConfig.deps = ["text"];
-            return rjsConfig;
-        }
-    })
-    .pipe(gulp.dest(paths.folderDestination));
-});
-
-
-
 
 gulp.task("clean", ["clean:js", "clean:map"]);
 gulp.task("build", ["compile-application-script"]);

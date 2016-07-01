@@ -27,8 +27,9 @@
             var payload = { "cardNumber": localcardnumber(), "connectionId": connectionId };
             transactionroutes.getinformation(payload)
             .done(function (result) {
-                //alert("done");
-            })
+                if (!result.IsSuccess) alert(result.ErrorMessage);
+                    //alert("done");
+                })
             .fail(function () {
                 //alert("fail");
             })

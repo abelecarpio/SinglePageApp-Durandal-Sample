@@ -10,7 +10,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   </PropertyGroup>
   <ItemGroup>
     <File Include="App/main.js">
-      <publishTime>06/30/2016 16:27:46</publishTime>
+      <publishTime>07/01/2016 16:05:25</publishTime>
     </File>
     <File Include="App/services/routeconfig.js">
       <publishTime>06/30/2016 17:26:54</publishTime>
@@ -22,10 +22,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/30/2016 16:42:41</publishTime>
     </File>
     <File Include="App/viewmodels/shell.js">
-      <publishTime>06/30/2016 16:38:19</publishTime>
+      <publishTime>07/01/2016 16:08:32</publishTime>
     </File>
     <File Include="App/viewmodels/Transaction/default.js">
-      <publishTime>06/30/2016 19:07:16</publishTime>
+      <publishTime>07/01/2016 16:55:56</publishTime>
     </File>
     <File Include="App/views/Dashboard/default.html">
       <publishTime>06/30/2016 16:51:02</publishTime>
@@ -76,7 +76,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/30/2016 13:49:54</publishTime>
     </File>
     <File Include="bin/FASDummy.dll">
-      <publishTime>06/30/2016 19:12:52</publishTime>
+      <publishTime>07/01/2016 18:39:51</publishTime>
     </File>
     <File Include="bin/fr/Microsoft.Data.Edm.resources.dll">
       <publishTime>06/30/2016 13:49:53</publishTime>
@@ -448,13 +448,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/30/2016 13:49:48</publishTime>
     </File>
     <File Include="gulpfile.js">
-      <publishTime>06/30/2016 13:49:51</publishTime>
+      <publishTime>07/01/2016 15:56:10</publishTime>
     </File>
     <File Include="package.json">
-      <publishTime>06/30/2016 13:49:51</publishTime>
+      <publishTime>07/01/2016 15:51:27</publishTime>
     </File>
     <File Include="packages.config">
-      <publishTime>06/30/2016 13:49:51</publishTime>
+      <publishTime>07/01/2016 15:21:38</publishTime>
     </File>
     <File Include="Scripts/almond-custom.js">
       <publishTime>06/30/2016 13:49:48</publishTime>
@@ -522,6 +522,15 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Scripts/jquery-1.9.1.min.map">
       <publishTime>06/30/2016 13:49:49</publishTime>
     </File>
+    <File Include="Scripts/jquery-2.1.4.js">
+      <publishTime>07/01/2016 15:20:58</publishTime>
+    </File>
+    <File Include="Scripts/jquery-2.1.4.min.js">
+      <publishTime>07/01/2016 15:20:58</publishTime>
+    </File>
+    <File Include="Scripts/jquery-2.1.4.min.map">
+      <publishTime>07/01/2016 15:20:58</publishTime>
+    </File>
     <File Include="Scripts/jquery-ui-1.8.24.js">
       <publishTime>06/30/2016 13:49:49</publishTime>
     </File>
@@ -568,25 +577,25 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>06/30/2016 13:49:49</publishTime>
     </File>
     <File Include="Scripts/r.js">
-      <publishTime>06/30/2016 13:49:49</publishTime>
+      <publishTime>07/01/2016 15:21:38</publishTime>
     </File>
     <File Include="Scripts/require.js">
-      <publishTime>06/30/2016 13:49:49</publishTime>
+      <publishTime>07/01/2016 15:21:38</publishTime>
     </File>
     <File Include="Scripts/text.js">
       <publishTime>06/30/2016 13:49:49</publishTime>
     </File>
     <File Include="Scripts/_references.js">
-      <publishTime>06/30/2016 13:49:48</publishTime>
+      <publishTime>07/01/2016 15:21:00</publishTime>
     </File>
     <File Include="Views/Home/Default.cshtml">
-      <publishTime>06/30/2016 16:47:43</publishTime>
+      <publishTime>07/01/2016 17:26:57</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>06/30/2016 13:49:49</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>06/30/2016 19:13:04</publishTime>
+      <publishTime>07/01/2016 17:31:26</publishTime>
     </File>
   </ItemGroup>
 </Project>

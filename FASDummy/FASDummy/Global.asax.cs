@@ -24,6 +24,6 @@ namespace FASDummy
             AuthConfig.RegisterAuth();
             HubBridge.Instance.SetUpConnection();
         }
-
+        
     }
 }

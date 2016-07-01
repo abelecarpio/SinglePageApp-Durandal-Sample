@@ -1,3 +1,6764 @@
-!function(){function e(e,t,n,i,r){n.debug(!0),e.title="FAS Dummy",e.configurePlugins({router:!0,dialog:!0,widget:{kinds:["expander"]}}),e.start().then(function(){t.useConvention(),e.setRoot("viewmodels/shell","entrance")})}var t,n,i;!function(e){function r(e,t){return x.call(e,t)}function o(e,t){var n,i,r,o,a,s,c,u,l,d,f=t&&t.split("/"),v=b.map,g=v&&v["*"]||{};if(e&&"."===e.charAt(0))if(t){for(f=f.slice(0,f.length-1),e=f.concat(e.split("/")),u=0;u<e.length;u+=1)if(d=e[u],"."===d)e.splice(u,1),u-=1;else if(".."===d){if(1===u&&(".."===e[2]||".."===e[0]))break;u>0&&(e.splice(u-1,2),u-=2)}e=e.join("/")}else 0===e.indexOf("./")&&(e=e.substring(2));if((f||g)&&v){for(n=e.split("/"),u=n.length;u>0;u-=1){if(i=n.slice(0,u).join("/"),f)for(l=f.length;l>0;l-=1)if(r=v[f.slice(0,l).join("/")],r&&(r=r[i])){o=r,a=u;break}if(o)break;!s&&g&&g[i]&&(s=g[i],c=u)}!o&&s&&(o=s,a=c),o&&(n.splice(0,a,o),e=n.join("/"))}return e}function a(t,n){return function(){return g.apply(e,I.call(arguments,0).concat([t,n]))}}function s(e){return function(t){return o(t,e)}}function c(e){return function(t){m[e]=t}}function u(t){if(r(y,t)){var n=y[t];delete y[t],w[t]=!0,v.apply(e,n)}if(!r(m,t)&&!r(w,t))throw new Error("No "+t);return m[t]}function l(e){var t,n=e?e.indexOf("!"):-1;return n>-1&&(t=e.substring(0,n),e=e.substring(n+1,e.length)),[t,e]}function d(e,n,i){t.onResourceLoad&&e&&t.onResourceLoad({defined:n},{id:e},i)}function f(e){return function(){return b&&b.config&&b.config[e]||{}}}var v,g,p,h,m={},y={},b={},w={},x=Object.prototype.hasOwnProperty,I=[].slice;p=function(e,t){var n,i=l(e),r=i[0];return e=i[1],r&&(r=o(r,t),n=u(r)),r?e=n&&n.normalize?n.normalize(e,s(t)):o(e,t):(e=o(e,t),i=l(e),r=i[0],e=i[1],r&&(n=u(r))),{f:r?r+"!"+e:e,n:e,pr:r,p:n}},h={require:function(e){return a(e)},exports:function(e){var t=m[e];return"undefined"!=typeof t?t:m[e]={}},module:function(e){return{id:e,uri:"",exports:m[e],config:f(e)}}},v=function(t,n,i,o){var s,l,f,v,g,b,x=[];if(o=o||t,"function"==typeof i){for(n=!n.length&&i.length?["require","exports","module"]:n,g=0;g<n.length;g+=1)if(v=p(n[g],o),l=v.f,"require"===l)x[g]=h.require(t);else if("exports"===l)x[g]=h.exports(t),b=!0;else if("module"===l)s=x[g]=h.module(t);else if(r(m,l)||r(y,l)||r(w,l))x[g]=u(l);else{if(!v.p)throw new Error(t+" missing "+l);v.p.load(v.n,a(o,!0),c(l),{}),x[g]=m[l]}f=i.apply(m[t],x),t&&(s&&s.exports!==e&&s.exports!==m[t]?m[t]=s.exports:f===e&&b||(m[t]=f))}else t&&(m[t]=i);d(t,m,x)},t=n=g=function(t,n,i,r,o){return"string"==typeof t?h[t]?h[t](n):u(p(t,n).f):(t.splice||(b=t,n.splice?(t=n,n=i,i=null):t=e),n=n||function(){},"function"==typeof i&&(i=r,r=o),r?v(e,t,n,i):setTimeout(function(){v(e,t,n,i)},4),g)},g.config=function(e){return b=e,b.deps&&g(b.deps,b.callback),g},t._defined=m,i=function(e,t,n){t.splice||(n=t,t=[]),r(m,e)||r(y,e)||(y[e]=[e,t,n])},i.amd={jQuery:!0}}(),i("durandal/system",["require","jquery"],function(e,n){function i(e){var t="[object "+e+"]";r["is"+e]=function(e){return c.call(e)==t}}var r,o=!1,a=Object.keys,s=Object.prototype.hasOwnProperty,c=Object.prototype.toString,u=!1,l=Array.isArray,d=Array.prototype.slice;if(String.prototype.trim||(String.prototype.trim=function(){return this.replace(/^\s+|\s+$/g,"")}),Function.prototype.bind&&("object"==typeof console||"function"==typeof console)&&"object"==typeof console.log)try{["log","info","warn","error","assert","dir","clear","profile","profileEnd"].forEach(function(e){console[e]=this.call(console[e],console)},Function.prototype.bind)}catch(f){u=!0}e.on&&e.on("moduleLoaded",function(e,t){r.setModuleId(e,t)}),"undefined"!=typeof t&&(t.onResourceLoad=function(e,t,n){r.setModuleId(e.defined[t.id],t.id)});var v=function(){},g=function(){try{if("undefined"!=typeof console&&"function"==typeof console.log)if(window.opera)for(var e=0;e<arguments.length;)console.log("Item "+(e+1)+": "+arguments[e]),e++;else 1==d.call(arguments).length&&"string"==typeof d.call(arguments)[0]?console.log(d.call(arguments).toString()):console.log.apply(console,d.call(arguments));else Function.prototype.bind&&!u||"undefined"==typeof console||"object"!=typeof console.log||Function.prototype.call.call(console.log,console,d.call(arguments))}catch(t){}},p=function(e,t){var n;n=e instanceof Error?e:new Error(e),n.innerError=t;try{"undefined"!=typeof console&&"function"==typeof console.error?console.error(n):Function.prototype.bind&&!u||"undefined"==typeof console||"object"!=typeof console.error||Function.prototype.call.call(console.error,console,n)}catch(i){}throw n};r={version:"2.1.0",noop:v,getModuleId:function(e){return e?"function"==typeof e&&e.prototype?e.prototype.__moduleId__:"string"==typeof e?null:e.__moduleId__:null},setModuleId:function(e,t){return e?"function"==typeof e&&e.prototype?void(e.prototype.__moduleId__=t):void("string"!=typeof e&&(e.__moduleId__=t)):void 0},resolveObject:function(e){return r.isFunction(e)?new e:e},debug:function(e){return 1==arguments.length&&(o=e,o?(this.log=g,this.error=p,this.log("Debug:Enabled")):(this.log("Debug:Disabled"),this.log=v,this.error=v)),o},log:v,error:v,assert:function(e,t){e||r.error(new Error(t||"Assert:Failed"))},defer:function(e){return n.Deferred(e)},guid:function(){var e=(new Date).getTime();return"xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g,function(t){var n=(e+16*Math.random())%16|0;return e=Math.floor(e/16),("x"==t?n:7&n|8).toString(16)})},acquire:function(){var t,n=arguments[0],i=!1;return r.isArray(n)?(t=n,i=!0):t=d.call(arguments,0),this.defer(function(n){e(t,function(){var e=arguments;setTimeout(function(){e.length>1||i?n.resolve(d.call(e,0)):n.resolve(e[0])},1)},function(e){n.reject(e)})}).promise()},extend:function(e){for(var t=d.call(arguments,1),n=0;n<t.length;n++){var i=t[n];if(i)for(var r in i)e[r]=i[r]}return e},wait:function(e){return r.defer(function(t){setTimeout(t.resolve,e)}).promise()}},r.keys=a||function(e){if(e!==Object(e))throw new TypeError("Invalid object");var t=[];for(var n in e)s.call(e,n)&&(t[t.length]=n);return t},r.isElement=function(e){return!(!e||1!==e.nodeType)},r.isArray=l||function(e){return"[object Array]"==c.call(e)},r.isObject=function(e){return e===Object(e)},r.isBoolean=function(e){return"boolean"==typeof e},r.isPromise=function(e){return e&&r.isFunction(e.then)};for(var h=["Arguments","Function","String","Number","Date","RegExp"],m=0;m<h.length;m++)i(h[m]);return r}),i("durandal/viewEngine",["durandal/system","jquery"],function(e,t){var n;return n=t.parseHTML?function(e){return t.parseHTML(e)}:function(e){return t(e).get()},{cache:{},viewExtension:".html",viewPlugin:"text",viewPluginParameters:"",isViewUrl:function(e){return-1!==e.indexOf(this.viewExtension,e.length-this.viewExtension.length)},convertViewUrlToViewId:function(e){return e.substring(0,e.length-this.viewExtension.length)},convertViewIdToRequirePath:function(e){var t=this.viewPlugin?this.viewPlugin+"!":"";return t+e+this.viewExtension+this.viewPluginParameters},parseMarkup:n,processMarkup:function(e){var t=this.parseMarkup(e);return this.ensureSingleElement(t)},ensureSingleElement:function(e){if(1==e.length)return e[0];for(var n=[],i=0;i<e.length;i++){var r=e[i];if(8!=r.nodeType){if(3==r.nodeType){var o=/\S/.test(r.nodeValue);if(!o)continue}n.push(r)}}return n.length>1?t(n).wrapAll('<div class="durandal-wrapper"></div>').parent().get(0):n[0]},tryGetViewFromCache:function(e){return this.cache[e]},putViewInCache:function(e,t){this.cache[e]=t},createView:function(t){var n=this,i=this.convertViewIdToRequirePath(t),r=this.tryGetViewFromCache(i);return r?e.defer(function(e){e.resolve(r.cloneNode(!0))}).promise():e.defer(function(r){e.acquire(i).then(function(e){var o=n.processMarkup(e);o.setAttribute("data-view",t),n.putViewInCache(i,o),r.resolve(o.cloneNode(!0))}).fail(function(e){n.createFallbackView(t,i,e).then(function(e){e.setAttribute("data-view",t),n.cache[i]=e,r.resolve(e.cloneNode(!0))})})}).promise()},createFallbackView:function(t,n,i){var r=this,o='View Not Found. Searched for "'+t+'" via path "'+n+'".';return e.defer(function(e){e.resolve(r.processMarkup('<div class="durandal-view-404">'+o+"</div>"))}).promise()}}}),i("durandal/viewLocator",["durandal/system","durandal/viewEngine"],function(e,t){function n(e,t){for(var n=0;n<e.length;n++){var i=e[n],r=i.getAttribute("data-view");if(r==t)return i}}function i(e){return(e+"").replace(/([\\\.\+\*\?\[\^\]\$\(\)\{\}\=\!\<\>\|\:])/g,"\\$1")}return{useConvention:function(e,t,n){e=e||"viewmodels",t=t||"views",n=n||t;var r=new RegExp(i(e),"gi");this.convertModuleIdToViewId=function(e){return e.replace(r,t)},this.translateViewIdToArea=function(e,t){return t&&"partial"!=t?n+"/"+t+"/"+e:n+"/"+e}},locateViewForObject:function(t,n,i){var r;if(t.getView&&(r=t.getView()))return this.locateView(r,n,i);if(t.viewUrl)return this.locateView(t.viewUrl,n,i);var o=e.getModuleId(t);return o?this.locateView(this.convertModuleIdToViewId(o),n,i):this.locateView(this.determineFallbackViewId(t),n,i)},convertModuleIdToViewId:function(e){return e},determineFallbackViewId:function(e){var t=/function (.{1,})\(/,n=t.exec(e.constructor.toString()),i=n&&n.length>1?n[1]:"";return i=i.trim(),"views/"+i},translateViewIdToArea:function(e,t){return e},locateView:function(i,r,o){if("string"==typeof i){var a;if(a=t.isViewUrl(i)?t.convertViewUrlToViewId(i):i,r&&(a=this.translateViewIdToArea(a,r)),o){var s=n(o,a);if(s)return e.defer(function(e){e.resolve(s)}).promise()}return t.createView(a)}return e.defer(function(e){e.resolve(i)}).promise()}}}),i("durandal/binder",["durandal/system","knockout"],function(e,t){function n(t){return void 0===t?{applyBindings:!0}:e.isBoolean(t)?{applyBindings:t}:(void 0===t.applyBindings&&(t.applyBindings=!0),t)}function i(i,u,l,d){if(!u||!l)return void(r.throwOnErrors?e.error(o):e.log(o,u,d));if(!u.getAttribute)return void(r.throwOnErrors?e.error(a):e.log(a,u,d));var f=u.getAttribute("data-view");try{var v;return i&&i.binding&&(v=i.binding(u)),v=n(v),r.binding(d,u,v),v.applyBindings?(e.log("Binding",f,d),t.applyBindings(l,u)):i&&t.utils.domData.set(u,c,{$data:i}),r.bindingComplete(d,u,v),i&&i.bindingComplete&&i.bindingComplete(u),t.utils.domData.set(u,s,v),v}catch(g){g.message=g.message+";\nView: "+f+";\nModuleId: "+e.getModuleId(d),r.throwOnErrors?e.error(g):e.log(g.message)}}var r,o="Insufficient Information to Bind",a="Unexpected View Type",s="durandal-binding-instruction",c="__ko_bindingContext__";return r={binding:e.noop,bindingComplete:e.noop,throwOnErrors:!1,getBindingInstruction:function(e){return t.utils.domData.get(e,s)},bindContext:function(e,t,n,r){return n&&e&&(e=e.createChildContext(n,"string"==typeof r?r:null)),i(n,t,e,n||(e?e.$data:null))},bind:function(e,t){return i(e,t,e,e)}}}),i("durandal/activator",["durandal/system","knockout"],function(e,t){function n(t){return void 0==t&&(t={}),e.isBoolean(t.closeOnDeactivate)||(t.closeOnDeactivate=u.defaults.closeOnDeactivate),t.beforeActivate||(t.beforeActivate=u.defaults.beforeActivate),t.afterDeactivate||(t.afterDeactivate=u.defaults.afterDeactivate),t.affirmations||(t.affirmations=u.defaults.affirmations),t.interpretResponse||(t.interpretResponse=u.defaults.interpretResponse),t.areSameItem||(t.areSameItem=u.defaults.areSameItem),t.findChildActivator||(t.findChildActivator=u.defaults.findChildActivator),t}function i(t,n,i){return e.isArray(i)?t[n].apply(t,i):t[n](i)}function r(t,n,i,r,o){if(t&&t.deactivate){e.log("Deactivating",t);var a;try{a=t.deactivate(n)}catch(s){return e.log("ERROR: "+s.message,s),void r.resolve(!1)}a&&a.then?a.then(function(){i.afterDeactivate(t,n,o),r.resolve(!0)},function(t){e.log(t),r.resolve(!1)}):(i.afterDeactivate(t,n,o),r.resolve(!0))}else t&&i.afterDeactivate(t,n,o),r.resolve(!0)}function o(t,n,r,o){var a;if(t&&t.activate){e.log("Activating",t);try{a=i(t,"activate",o)}catch(s){return e.log("ERROR: "+s.message,s),void r(!1)}}a&&a.then?a.then(function(){n(t),r(!0)},function(t){e.log("ERROR: "+t.message,t),r(!1)}):(n(t),r(!0))}function a(t,n,i,r){return r=e.extend({},l,r),i.lifecycleData=null,e.defer(function(o){function a(){if(t&&t.canDeactivate&&r.canDeactivate){var a;try{a=t.canDeactivate(n)}catch(s){return e.log("ERROR: "+s.message,s),void o.resolve(!1)}a.then?a.then(function(e){i.lifecycleData=e,o.resolve(i.interpretResponse(e))},function(t){e.log("ERROR: "+t.message,t),o.resolve(!1)}):(i.lifecycleData=a,o.resolve(i.interpretResponse(a)))}else o.resolve(!0)}var s=i.findChildActivator(t);s?s.canDeactivate().then(function(e){e?a():o.resolve(!1)}):a()}).promise()}function s(t,n,r,o,a){return r.lifecycleData=null,e.defer(function(s){if(r.areSameItem(n(),t,o,a))return void s.resolve(!0);if(t&&t.canActivate){var c;try{c=i(t,"canActivate",a)}catch(u){return e.log("ERROR: "+u.message,u),void s.resolve(!1)}c.then?c.then(function(e){r.lifecycleData=e,s.resolve(r.interpretResponse(e))},function(t){e.log("ERROR: "+t.message,t),s.resolve(!1)}):(r.lifecycleData=c,s.resolve(r.interpretResponse(c)))}else s.resolve(!0)}).promise()}function c(i,c){var u,l=t.observable(null);c=n(c);var d=t.computed({read:function(){return l()},write:function(e){d.viaSetter=!0,d.activateItem(e)}});return d.__activator__=!0,d.settings=c,c.activator=d,d.isActivating=t.observable(!1),d.forceActiveItem=function(e){l(e)},d.canDeactivateItem=function(e,t,n){return a(e,t,c,n)},d.deactivateItem=function(t,n){return e.defer(function(e){d.canDeactivateItem(t,n).then(function(i){i?r(t,n,c,e,l):(d.notifySubscribers(),e.resolve(!1))})}).promise()},d.canActivateItem=function(e,t){return s(e,l,c,u,t)},d.activateItem=function(t,n,i){var a=d.viaSetter;return d.viaSetter=!1,e.defer(function(s){if(d.isActivating())return void s.resolve(!1);d.isActivating(!0);var f=l();return c.areSameItem(f,t,u,n)?(d.isActivating(!1),void s.resolve(!0)):void d.canDeactivateItem(f,c.closeOnDeactivate,i).then(function(i){i?d.canActivateItem(t,n).then(function(i){i?e.defer(function(e){r(f,c.closeOnDeactivate,c,e)}).promise().then(function(){t=c.beforeActivate(t,n),o(t,l,function(e){u=n,d.isActivating(!1),s.resolve(e)},n)}):(a&&d.notifySubscribers(),d.isActivating(!1),s.resolve(!1))}):(a&&d.notifySubscribers(),d.isActivating(!1),s.resolve(!1))})}).promise()},d.canActivate=function(){var e;return i?(e=i,i=!1):e=d(),d.canActivateItem(e)},d.activate=function(){var e;return i?(e=i,i=!1):e=d(),d.activateItem(e)},d.canDeactivate=function(e){return d.canDeactivateItem(d(),e)},d.deactivate=function(e){return d.deactivateItem(d(),e)},d.includeIn=function(e){e.canActivate=function(){return d.canActivate()},e.activate=function(){return d.activate()},e.canDeactivate=function(e){return d.canDeactivate(e)},e.deactivate=function(e){return d.deactivate(e)}},c.includeIn?d.includeIn(c.includeIn):i&&d.activate(),d.forItems=function(t){c.closeOnDeactivate=!1,c.determineNextItemToActivate=function(e,t){var n=t-1;return-1==n&&e.length>1?e[1]:n>-1&&n<e.length-1?e[n]:null},c.beforeActivate=function(e){var n=d();if(e){var i=t.indexOf(e);-1==i?t.push(e):e=t()[i]}else e=c.determineNextItemToActivate(t,n?t.indexOf(n):0);return e},c.afterDeactivate=function(e,n){n&&t.remove(e)};var n=d.canDeactivate;d.canDeactivate=function(i){return i?e.defer(function(e){function n(){for(var t=0;t<o.length;t++)if(!o[t])return void e.resolve(!1);e.resolve(!0)}for(var r=t(),o=[],a=0;a<r.length;a++)d.canDeactivateItem(r[a],i).then(function(e){o.push(e),o.length==r.length&&n()})}).promise():n()};var i=d.deactivate;return d.deactivate=function(n){return n?e.defer(function(e){function i(i){setTimeout(function(){d.deactivateItem(i,n).then(function(){o++,t.remove(i),o==a&&e.resolve()})},1)}for(var r=t(),o=0,a=r.length,s=0;a>s;s++)i(r[s])}).promise():i()},d},d}var u,l={canDeactivate:!0},d={closeOnDeactivate:!0,affirmations:["yes","ok","true"],interpretResponse:function(n){return e.isObject(n)&&(n=n.can||!1),e.isString(n)?-1!==t.utils.arrayIndexOf(this.affirmations,n.toLowerCase()):n},areSameItem:function(e,t,n,i){return e==t},beforeActivate:function(e){return e},afterDeactivate:function(e,t,n){t&&n&&n(null)},findChildActivator:function(e){return null}};return u={defaults:d,create:c,isActivator:function(e){return e&&e.__activator__}}}),i("durandal/composition",["durandal/system","durandal/viewLocator","durandal/binder","durandal/viewEngine","durandal/activator","jquery","knockout"],function(e,t,n,i,r,o,a){function s(t,n,i){try{if(t.onError)try{t.onError(n,i)}catch(r){e.error(r)}else e.error(n)}finally{u(t,i,!0)}}function c(e){for(var t=[],n={childElements:t,activeView:null},i=a.virtualElements.firstChild(e);i;)1==i.nodeType&&(t.push(i),i.getAttribute(I)&&(n.activeView=i)),i=a.virtualElements.nextSibling(i);return n.activeView||(n.activeView=t[0]),n}function u(e,t,n){if(A--,0===A){var i=S;S=[],n||setTimeout(function(){for(var n=i.length;n--;)try{i[n]()}catch(r){s(e,r,t)}},1)}l(e)}function l(e){delete e.activeView,delete e.viewElements}function d(t,n,i,r){if(i)n();else if(t.activate&&t.model&&t.model.activate){var o;try{o=e.isArray(t.activationData)?t.model.activate.apply(t.model,t.activationData):t.model.activate(t.activationData),o&&o.then?o.then(n,function(e){s(t,e,r),n()}):o||void 0===o?n():u(t,r)}catch(a){s(t,a,r)}}else n()}function f(t,n){var t=this;if(t.activeView&&t.activeView.removeAttribute(I),t.child)try{t.model&&t.model.attached&&(t.composingNewView||t.alwaysTriggerAttach)&&t.model.attached(t.child,t.parent,t),t.attached&&t.attached(t.child,t.parent,t),t.child.setAttribute(I,!0),t.composingNewView&&t.model&&t.model.detached&&a.utils.domNodeDisposal.addDisposeCallback(t.child,function(){try{t.model.detached(t.child,t.parent,t)}catch(e){s(t,e,n)}})}catch(i){s(t,i,n)}t.triggerAttach=e.noop}function v(t){if(e.isString(t.transition)){if(t.activeView){if(t.activeView==t.child)return!1;if(!t.child)return!0;if(t.skipTransitionOnSameViewId){var n=t.activeView.getAttribute("data-view"),i=t.child.getAttribute("data-view");return n!=i}}return!0}return!1}function g(e){for(var t=0,n=e.length,i=[];n>t;t++){var r=e[t].cloneNode(!0);i.push(r)}return i}function p(t){var n=g(t.parts),i=w.getParts(n),r=w.getParts(t.child);for(var a in i){var s=r[a];s||(s=o('[data-part="'+a+'"]',t.child).get(0))?s.parentNode.replaceChild(i[a],s):e.log("Could not find part to override: "+a)}}function h(t){var n,i,r=a.virtualElements.childNodes(t.parent);if(!e.isArray(r)){var o=[];for(n=0,i=r.length;i>n;n++)o[n]=r[n];r=o}for(n=1,i=r.length;i>n;n++)a.removeNode(r[n])}function m(e){a.utils.domData.set(e,C,e.style.display),e.style.display="none"}function y(e){var t=a.utils.domData.get(e,C);e.style.display="none"===t?"block":t}function b(e){var t=e.getAttribute("data-bind");if(!t)return!1;for(var n=0,i=O.length;i>n;n++)if(t.indexOf(O[n])>-1)return!0;return!1}var w,x={},I="data-active-view",S=[],A=0,T="durandal-composition-data",_="data-part",k=["model","view","transition","area","strategy","activationData","onError"],C="durandal-visibility-data",O=["compose:"],V={complete:function(e){S.push(e)}};return w={composeBindings:O,convertTransitionToModuleId:function(e){return"transitions/"+e},defaultTransitionName:null,current:V,addBindingHandler:function(e,t,n){var i,r,o="composition-handler-"+e;t=t||a.bindingHandlers[e],n=n||function(){},r=a.bindingHandlers[e]={init:function(e,i,r,s,c){if(A>0){var u={trigger:a.observable(null)};w.current.complete(function(){t.init&&t.init(e,i,r,s,c),t.update&&(a.utils.domData.set(e,o,t),u.trigger("trigger"))}),a.utils.domData.set(e,o,u)}else a.utils.domData.set(e,o,t),t.init&&t.init(e,i,r,s,c);return n(e,i,r,s,c)},update:function(e,t,n,i,r){var s=a.utils.domData.get(e,o);return s.update?s.update(e,t,n,i,r):void(s.trigger&&s.trigger())}};for(i in t)"init"!==i&&"update"!==i&&(r[i]=t[i])},getParts:function(e,t){if(t=t||{},!e)return t;void 0===e.length&&(e=[e]);for(var n=0,i=e.length;i>n;n++){var r,o=e[n];o.getAttribute&&(r=o.getAttribute(_),r&&(t[r]=o),o.hasChildNodes()&&!b(o)&&w.getParts(o.childNodes,t))}return t},cloneNodes:g,finalize:function(t,i){if(void 0===t.transition&&(t.transition=this.defaultTransitionName),t.child||t.activeView)if(v(t)){var r=this.convertTransitionToModuleId(t.transition);e.acquire(r).then(function(e){t.transition=e,e(t).then(function(){if(t.cacheViews){if(t.activeView){var e=n.getBindingInstruction(t.activeView);e&&void 0!=e.cacheViews&&!e.cacheViews?a.removeNode(t.activeView):m(t.activeView)}}else t.child?h(t):a.virtualElements.emptyNode(t.parent);t.child&&y(t.child),t.triggerAttach(t,i),u(t,i)})}).fail(function(e){s(t,"Failed to load transition ("+r+"). Details: "+e.message,i)})}else{if(t.child!=t.activeView){if(t.cacheViews&&t.activeView){var o=n.getBindingInstruction(t.activeView);!o||void 0!=o.cacheViews&&!o.cacheViews?a.removeNode(t.activeView):m(t.activeView)}t.child?(t.cacheViews||h(t),y(t.child)):t.cacheViews||a.virtualElements.emptyNode(t.parent)}t.triggerAttach(t,i),u(t,i)}else t.cacheViews||a.virtualElements.emptyNode(t.parent),t.triggerAttach(t,i),u(t,i)},bindAndShow:function(e,t,r,o){r.child=e,r.parent.__composition_context=r,r.cacheViews?r.composingNewView=-1==a.utils.arrayIndexOf(r.viewElements,e):r.composingNewView=!0,d(r,function(){if(r.parent.__composition_context==r){if(delete r.parent.__composition_context,r.binding&&r.binding(r.child,r.parent,r),r.preserveContext&&r.bindingContext)r.composingNewView&&(r.parts&&p(r),m(e),a.virtualElements.prepend(r.parent,e),n.bindContext(r.bindingContext,e,r.model,r.as));else if(e){var o=r.model||x,s=a.dataFor(e);if(s!=o){if(!r.composingNewView)return a.removeNode(e),void i.createView(e.getAttribute("data-view")).then(function(e){w.bindAndShow(e,t,r,!0)});r.parts&&p(r),m(e),a.virtualElements.prepend(r.parent,e),n.bind(o,e)}}w.finalize(r,t)}else u(r,t)},o,t)},defaultStrategy:function(e){return t.locateViewForObject(e.model,e.area,e.viewElements)},getSettings:function(t,n){var o,s=t(),c=a.utils.unwrapObservable(s)||{},u=r.isActivator(s);if(e.isString(c))return c=i.isViewUrl(c)?{view:c}:{model:c,activate:!u};if(o=e.getModuleId(c))return c={model:c,activate:!u};!u&&c.model&&(u=r.isActivator(c.model));for(var l in c)-1!=a.utils.arrayIndexOf(k,l)?c[l]=a.utils.unwrapObservable(c[l]):c[l]=c[l];return u?c.activate=!1:void 0===c.activate&&(c.activate=!0),c},executeStrategy:function(e,t){e.strategy(e).then(function(n){w.bindAndShow(n,t,e)})},inject:function(n,i){return n.model?n.view?void t.locateView(n.view,n.area,n.viewElements).then(function(e){w.bindAndShow(e,i,n)}):(n.strategy||(n.strategy=this.defaultStrategy),void(e.isString(n.strategy)?e.acquire(n.strategy).then(function(e){n.strategy=e,w.executeStrategy(n,i)}).fail(function(e){s(n,"Failed to load view strategy ("+n.strategy+"). Details: "+e.message,i)}):this.executeStrategy(n,i))):void this.bindAndShow(null,i,n)},compose:function(n,i,r,o){A++,o||(i=w.getSettings(function(){return i},n)),i.compositionComplete&&S.push(function(){i.compositionComplete(i.child,i.parent,i)}),S.push(function(){i.composingNewView&&i.model&&i.model.compositionComplete&&i.model.compositionComplete(i.child,i.parent,i)});var a=c(n);i.activeView=a.activeView,i.parent=n,i.triggerAttach=f,i.bindingContext=r,i.cacheViews&&!i.viewElements&&(i.viewElements=a.childElements),i.model?e.isString(i.model)?e.acquire(i.model).then(function(t){i.model=e.resolveObject(t),w.inject(i,n)}).fail(function(e){s(i,"Failed to load composed module ("+i.model+"). Details: "+e.message,n)}):w.inject(i,n):i.view?(i.area=i.area||"partial",i.preserveContext=!0,t.locateView(i.view,i.area,i.viewElements).then(function(e){w.bindAndShow(e,n,i)})):this.bindAndShow(null,n,i)}},a.bindingHandlers.compose={init:function(){return{controlsDescendantBindings:!0}},update:function(e,t,n,r,o){var s=w.getSettings(t,e);if(s.mode){var c=a.utils.domData.get(e,T);if(!c){var u=a.virtualElements.childNodes(e);c={},"inline"===s.mode?c.view=i.ensureSingleElement(u):"templated"===s.mode&&(c.parts=g(u)),a.virtualElements.emptyNode(e),a.utils.domData.set(e,T,c)}"inline"===s.mode?s.view=c.view.cloneNode(!0):"templated"===s.mode&&(s.parts=c.parts),s.preserveContext=!0}w.compose(e,s,o,!0)}},a.virtualElements.allowedBindings.compose=!0,w}),i("durandal/events",["durandal/system"],function(e){var t=/\s+/,n=function(){},i=function(e,t){this.owner=e,this.events=t};return i.prototype.then=function(e,t){return this.callback=e||this.callback,this.context=t||this.context,this.callback?(this.owner.on(this.events,this.callback,this.context),this):this},i.prototype.on=i.prototype.then,i.prototype.off=function(){return this.owner.off(this.events,this.callback,this.context),this},n.prototype.on=function(e,n,r){var o,a,s;if(n){for(o=this.callbacks||(this.callbacks={}),e=e.split(t);a=e.shift();)s=o[a]||(o[a]=[]),s.push(n,r);return this}return new i(this,e)},n.prototype.off=function(n,i,r){var o,a,s,c;if(!(a=this.callbacks))return this;if(!(n||i||r))return delete this.callbacks,this;for(n=n?n.split(t):e.keys(a);o=n.shift();)if((s=a[o])&&(i||r))for(c=s.length-2;c>=0;c-=2)i&&s[c]!==i||r&&s[c+1]!==r||s.splice(c,2);else delete a[o];return this},n.prototype.trigger=function(e){var n,i,r,o,a,s,c,u;if(!(i=this.callbacks))return this;for(u=[],e=e.split(t),o=1,a=arguments.length;a>o;o++)u[o-1]=arguments[o];for(;n=e.shift();){if((c=i.all)&&(c=c.slice()),(r=i[n])&&(r=r.slice()),r)for(o=0,a=r.length;a>o;o+=2)r[o].apply(r[o+1]||this,u);if(c)for(s=[n].concat(u),o=0,a=c.length;a>o;o+=2)c[o].apply(c[o+1]||this,s)}return this},n.prototype.proxy=function(e){var t=this;return function(n){t.trigger(e,n)}},n.includeIn=function(e){e.on=n.prototype.on,e.off=n.prototype.off,e.trigger=n.prototype.trigger,e.proxy=n.prototype.proxy},n}),i("durandal/app",["durandal/system","durandal/viewEngine","durandal/composition","durandal/events","jquery"],function(e,t,n,i,r){function o(){return e.defer(function(t){return 0==s.length?void t.resolve():void e.acquire(s).then(function(n){for(var i=0;i<n.length;i++){var r=n[i];if(r.install){var o=c[i];e.isObject(o)||(o={}),r.install(o),e.log("Plugin:Installed "+s[i])}else e.log("Plugin:Loaded "+s[i])}t.resolve()}).fail(function(t){e.error("Failed to load plugin(s). Details: "+t.message)})}).promise()}var a,s=[],c=[];return a={title:"Application",configurePlugins:function(t,n){var i=e.keys(t);n=n||"plugins/",-1===n.indexOf("/",n.length-1)&&(n+="/");for(var r=0;r<i.length;r++){var o=i[r];s.push(n+o),c.push(t[o])}},start:function(){return e.log("Application:Starting"),this.title&&(document.title=this.title),e.defer(function(t){r(function(){o().then(function(){t.resolve(),e.log("Application:Started")})})}).promise()},setRoot:function(i,r,o){function a(){if(c.model)if(c.model.canActivate)try{var t=c.model.canActivate();t&&t.then?t.then(function(e){e&&n.compose(s,c)}).fail(function(t){e.error(t)}):t&&n.compose(s,c)}catch(i){e.error(i)}else n.compose(s,c);else n.compose(s,c)}var s,c={activate:!0,transition:r};s=!o||e.isString(o)?document.getElementById(o||"applicationHost"):o,e.isString(i)&&t.isViewUrl(i)?c.view=i:c.model=i,e.isString(c.model)?e.acquire(c.model).then(function(t){c.model=e.resolveObject(t),a()}).fail(function(t){e.error("Failed to load root module ("+c.model+"). Details: "+t.message)}):a()}},i.includeIn(a),a}),i("plugins/history",["durandal/system","jquery"],function(e,t){function n(e,t,n){if(n){var i=e.href.replace(/(javascript:|#).*$/,"");s.history.replaceState?s.history.replaceState({},document.title,i+"#"+t):e.replace(i+"#"+t)}else e.hash="#"+t}var i=/^[#\/]|\s+$/g,r=/^\/+|\/+$/g,o=/msie [\w.]+/,a=/\/$/,s={interval:50,active:!1};return"undefined"!=typeof window&&(s.location=window.location,s.history=window.history),s.getHash=function(e){var t=(e||s).location.href.match(/#(.*)$/);return t?t[1]:""},s.getFragment=function(e,t){if(null==e)if(s._hasPushState||!s._wantsHashChange||t){e=s.location.pathname+s.location.search;var n=s.root.replace(a,"");e.indexOf(n)||(e=e.substr(n.length))}else e=s.getHash();return e.replace(i,"")},s.activate=function(n){s.active&&e.error("History has already been activated."),s.active=!0,s.options=e.extend({},{root:"/"},s.options,n),s.root=s.options.root,s._wantsHashChange=s.options.hashChange!==!1,s._wantsPushState=!!s.options.pushState,s._hasPushState=!!(s.options.pushState&&s.history&&s.history.pushState);var a=s.getFragment(),c=document.documentMode,u=o.exec(navigator.userAgent.toLowerCase())&&(!c||7>=c);s.root=("/"+s.root+"/").replace(r,"/"),u&&s._wantsHashChange&&(s.iframe=t('<iframe src="javascript:0" tabindex="-1" />').hide().appendTo("body")[0].contentWindow,s.navigate(a,!1)),s._hasPushState?t(window).on("popstate",s.checkUrl):s._wantsHashChange&&"onhashchange"in window&&!u?t(window).on("hashchange",s.checkUrl):s._wantsHashChange&&(s._checkUrlInterval=setInterval(s.checkUrl,s.interval)),s.fragment=a;var l=s.location,d=l.pathname.replace(/[^\/]$/,"$&/")===s.root;if(s._wantsHashChange&&s._wantsPushState){if(!s._hasPushState&&!d)return s.fragment=s.getFragment(null,!0),s.location.replace(s.root+s.location.search+"#"+s.fragment),!0;s._hasPushState&&d&&l.hash&&(this.fragment=s.getHash().replace(i,""),this.history.replaceState({},document.title,s.root+s.fragment+l.search))}return s.options.silent?void 0:s.loadUrl(n.startRoute)},s.deactivate=function(){t(window).off("popstate",s.checkUrl).off("hashchange",s.checkUrl),clearInterval(s._checkUrlInterval),s.active=!1},s.checkUrl=function(){var e=s.getFragment();return e===s.fragment&&s.iframe&&(e=s.getFragment(s.getHash(s.iframe))),e===s.fragment?!1:(s.iframe&&s.navigate(e,!1),void s.loadUrl())},s.loadUrl=function(e){var t=s.fragment=s.getFragment(e);return s.options.routeHandler?s.options.routeHandler(t):!1},s.navigate=function(t,i){if(!s.active)return!1;if(void 0===i?i={trigger:!0}:e.isBoolean(i)&&(i={trigger:i}),t=s.getFragment(t||""),s.fragment!==t){s.fragment=t;var r=s.root+t;if(""===t&&"/"!==r&&(r=r.slice(0,-1)),s._hasPushState)s.history[i.replace?"replaceState":"pushState"]({},document.title,r);else{if(!s._wantsHashChange)return s.location.assign(r);n(s.location,t,i.replace),s.iframe&&t!==s.getFragment(s.getHash(s.iframe))&&(i.replace||s.iframe.document.open().close(),n(s.iframe.location,t,i.replace))}return i.trigger?s.loadUrl(t):void 0}},s.navigateBack=function(){s.history.back()},s}),i("plugins/router",["durandal/system","durandal/app","durandal/activator","durandal/events","durandal/composition","plugins/history","knockout","jquery"],function(e,t,n,i,r,o,a,s){function c(e){return e=e.replace(y,"\\$&").replace(p,"(?:$1)?").replace(h,function(e,t){return t?e:"([^/]+)"}).replace(m,"(.*?)"),new RegExp("^"+e+"$",w?void 0:"i")}function u(e){var t=e.indexOf(":"),n=t>0?t-1:e.length;return e.substring(0,n)}function l(e,t){return-1!==e.indexOf(t,e.length-t.length)}function d(e,t){if(!e||!t)return!1;if(e.length!=t.length)return!1;for(var n=0,i=e.length;i>n;n++)if(e[n]!=t[n])return!1;return!0}function f(e){return e.queryString?e.fragment+"?"+e.queryString:e.fragment}var v,g,p=/\((.*?)\)/g,h=/(\(\?)?:\w+/g,m=/\*\w+/g,y=/[\-{}\[\]+?.,\\\^$|#\s]/g,b=/\/$/,w=!1,x="/",I="/",S=function(){function r(e,t){return e.router&&e.router.parent==t}function s(e){E&&E.config.isActive&&E.config.isActive(e)}function p(t,n,i){e.log("Navigation Complete",t,n);var o=e.getModuleId(j);o&&B.trigger("router:navigation:from:"+o),j=t,s(!1),E=n,s(!0);var a=e.getModuleId(j);switch(a&&B.trigger("router:navigation:to:"+a),r(t,B)||B.updateDocumentTitle(t,n),i){case"rootRouter":x=f(E);break;case"rootRouterWithChild":I=f(E);break;case"lastChildRouter":x=I}g.explicitNavigation=!1,g.navigatingBack=!1,B.trigger("router:navigation:complete",t,n,B)}function m(t,n){e.log("Navigation Cancelled"),B.activeInstruction(E),B.navigate(x,!1),M(!1),g.explicitNavigation=!1,g.navigatingBack=!1,B.trigger("router:navigation:cancelled",t,n,B)}function y(t){e.log("Navigation Redirecting"),M(!1),g.explicitNavigation=!1,g.navigatingBack=!1,B.navigate(t,{trigger:!0,replace:!0})}function w(t,n,i){g.navigatingBack=!g.explicitNavigation&&j!=i.fragment,B.trigger("router:route:activating",n,i,B);var o={canDeactivate:!B.parent};t.activateItem(n,i.params,o).then(function(e){if(e){var o=j,a=r(n,B),s="";if(B.parent?a||(s="lastChildRouter"):s=a?"rootRouterWithChild":"rootRouter",p(n,i,s),a){n.router.trigger("router:route:before-child-routes",n,i,B);
-var c=i.fragment;i.queryString&&(c+="?"+i.queryString),n.router.loadUrl(c)}o==n&&(B.attached(),B.compositionComplete())}else t.settings.lifecycleData&&t.settings.lifecycleData.redirect?y(t.settings.lifecycleData.redirect):m(n,i);v&&(v.resolve(),v=null)}).fail(function(t){e.error(t)})}function A(t,n,i){var r=B.guardRoute(n,i);r||""===r?r.then?r.then(function(r){r?e.isString(r)?y(r):w(t,n,i):m(n,i)}):e.isString(r)?y(r):w(t,n,i):m(n,i)}function T(e,t,n){B.guardRoute?A(e,t,n):w(e,t,n)}function _(e){return E&&E.config.moduleId==e.config.moduleId&&j&&(j.canReuseForRoute&&j.canReuseForRoute.apply(j,e.params)||!j.canReuseForRoute&&j.router&&j.router.loadUrl)}function k(){if(!M()){var t=N.shift();if(N=[],t)if(M(!0),B.activeInstruction(t),B.trigger("router:navigation:processing",t,B),_(t)){var i=n.create();i.forceActiveItem(j),i.settings.areSameItem=P.settings.areSameItem,i.settings.findChildActivator=P.settings.findChildActivator,T(i,j,t)}else t.config.moduleId?e.acquire(t.config.moduleId).then(function(n){var i=e.resolveObject(n);t.config.viewUrl&&(i.viewUrl=t.config.viewUrl),T(P,i,t)}).fail(function(n){e.error("Failed to load routed module ("+t.config.moduleId+"). Details: "+n.message,n)}):T(P,{viewUrl:t.config.viewUrl,canReuseForRoute:function(){return!0}},t)}}function C(e){N.unshift(e),k()}function O(e,t,n){for(var i=e.exec(t).slice(1),r=0;r<i.length;r++){var o=i[r];i[r]=o?decodeURIComponent(o):null}var a=B.parseQueryString(n);return a&&i.push(a),{params:i,queryParams:a}}function V(t){B.trigger("router:route:before-config",t,B),e.isRegExp(t.route)?t.routePattern=t.route:(t.title=t.title||B.convertRouteToTitle(t.route),t.viewUrl||(t.moduleId=t.moduleId||B.convertRouteToModuleId(t.route)),t.hash=t.hash||B.convertRouteToHash(t.route),t.hasChildRoutes&&(t.route=t.route+"*childRoutes"),t.routePattern=c(t.route)),t.isActive=t.isActive||a.observable(!1),B.trigger("router:route:after-config",t,B),B.routes.push(t),B.route(t.routePattern,function(e,n){var i=O(t.routePattern,e,n);C({fragment:e,queryString:n,config:t,params:i.params,queryParams:i.queryParams})})}function D(t){if(e.isArray(t.route))for(var n=t.isActive||a.observable(!1),i=0,r=t.route.length;r>i;i++){var o=e.extend({},t);o.route=t.route[i],o.isActive=n,i>0&&delete o.nav,V(o)}else V(t);return B}function R(e){var n=a.unwrap(t.title);n?document.title=e+" | "+n:document.title=e}var j,E,N=[],M=a.observable(!1),P=n.create(),B={handlers:[],routes:[],navigationModel:a.observableArray([]),activeItem:P,isNavigating:a.computed(function(){var e=P(),t=M(),n=e&&e.router&&e.router!=B&&e.router.isNavigating()?!0:!1;return t||n}),activeInstruction:a.observable(null),__router__:!0};i.includeIn(B),P.settings.areSameItem=function(e,t,n,i){return e==t?d(n,i):!1},P.settings.findChildActivator=function(e){return e&&e.router&&e.router.parent==B?e.router.activeItem:null},B.parseQueryString=function(t){var n,i;if(!t)return null;if(i=t.split("&"),0==i.length)return null;n={};for(var r=0;r<i.length;r++){var o=i[r];if(""!==o){var a=o.split(/=(.+)?/),s=a[0],c=a[1]&&decodeURIComponent(a[1].replace(/\+/g," ")),u=n[s];u?e.isArray(u)?u.push(c):n[s]=[u,c]:n[s]=c}}return n},B.route=function(e,t){B.handlers.push({routePattern:e,callback:t})},B.loadUrl=function(t){var n=B.handlers,i=null,r=t,a=t.indexOf("?");if(-1!=a&&(r=t.substring(0,a),i=t.substr(a+1)),B.relativeToParentRouter){var s=this.parent.activeInstruction();r=-1==a?s.params.join("/"):s.params.slice(0,-1).join("/"),r&&"/"==r.charAt(0)&&(r=r.substr(1)),r||(r=""),r=r.replace("//","/").replace("//","/")}r=r.replace(b,"");for(var c=0;c<n.length;c++){var u=n[c];if(u.routePattern.test(r))return u.callback(r,i),!0}return e.log("Route Not Found",t,E),B.trigger("router:route:not-found",t,B),B.parent&&(x=I),o.navigate(x,{trigger:!1,replace:!0}),g.explicitNavigation=!1,g.navigatingBack=!1,!1};var H;return a.isObservable(t.title)&&t.title.subscribe(function(){var e=B.activeInstruction(),t=null!=e?a.unwrap(e.config.title):"";R(t)}),B.updateDocumentTitle=function(e,n){var i=a.unwrap(t.title),r=n.config.title;H&&H.dispose(),r?a.isObservable(r)?(H=r.subscribe(R),R(r())):R(r):i&&(document.title=i)},B.navigate=function(t,n){return t&&-1!=t.indexOf("://")?(window.location.href=t,!0):((void 0===n||e.isBoolean(n)&&n||e.isObject(n)&&n.trigger)&&(g.explicitNavigation=!0),(e.isBoolean(n)&&!n||n&&void 0!=n.trigger&&!n.trigger)&&(x=t),o.navigate(t,n))},B.navigateBack=function(){o.navigateBack()},B.attached=function(){B.trigger("router:navigation:attached",j,E,B)},B.compositionComplete=function(){M(!1),B.trigger("router:navigation:composition-complete",j,E,B),k()},B.convertRouteToHash=function(e){if(e=e.replace(/\*.*$/,""),B.relativeToParentRouter){var t=B.parent.activeInstruction(),n=e?t.config.hash+"/"+e:t.config.hash;return o._hasPushState&&(n="/"+n),n=n.replace("//","/").replace("//","/")}return o._hasPushState?e:"#"+e},B.convertRouteToModuleId=function(e){return u(e)},B.convertRouteToTitle=function(e){var t=u(e);return t.substring(0,1).toUpperCase()+t.substring(1)},B.map=function(t,n){if(e.isArray(t)){for(var i=0;i<t.length;i++)B.map(t[i]);return B}return e.isString(t)||e.isRegExp(t)?(n?e.isString(n)&&(n={moduleId:n}):n={},n.route=t):n=t,D(n)},B.buildNavigationModel=function(t){for(var n=[],i=B.routes,r=t||100,o=0;o<i.length;o++){var a=i[o];a.nav&&(e.isNumber(a.nav)||(a.nav=++r),n.push(a))}return n.sort(function(e,t){return e.nav-t.nav}),B.navigationModel(n),B},B.mapUnknownRoutes=function(t,n){var i="*catchall",r=c(i);return B.route(r,function(a,s){var c=O(r,a,s),u={fragment:a,queryString:s,config:{route:i,routePattern:r},params:c.params,queryParams:c.queryParams};if(t)if(e.isString(t))u.config.moduleId=t,n&&o.navigate(n,{trigger:!1,replace:!0});else if(e.isFunction(t)){var l=t(u);if(l&&l.then)return void l.then(function(){B.trigger("router:route:before-config",u.config,B),B.trigger("router:route:after-config",u.config,B),C(u)})}else u.config=t,u.config.route=i,u.config.routePattern=r;else u.config.moduleId=a;B.trigger("router:route:before-config",u.config,B),B.trigger("router:route:after-config",u.config,B),C(u)}),B},B.reset=function(){return E=j=void 0,B.handlers=[],B.routes=[],B.off(),delete B.options,B},B.makeRelative=function(t){return e.isString(t)&&(t={moduleId:t,route:t}),t.moduleId&&!l(t.moduleId,"/")&&(t.moduleId+="/"),t.route&&!l(t.route,"/")&&(t.route+="/"),t.fromParent&&(B.relativeToParentRouter=!0),B.on("router:route:before-config").then(function(e){t.moduleId&&(e.moduleId=t.moduleId+e.moduleId),t.route&&(""===e.route?e.route=t.route.substring(0,t.route.length-1):e.route=t.route+e.route)}),t.dynamicHash&&(B.on("router:route:after-config").then(function(e){e.routePattern=c(e.route?t.dynamicHash+"/"+e.route:t.dynamicHash),e.dynamicHash=e.dynamicHash||a.observable(e.hash)}),B.on("router:route:before-child-routes").then(function(e,t,n){for(var i=e.router,r=0;r<i.routes.length;r++){var o=i.routes[r],a=t.params.slice(0);o.hash=i.convertRouteToHash(o.route).replace(h,function(e){return a.length>0?a.shift():e}),o.dynamicHash(o.hash)}})),B},B.createChildRouter=function(){var e=S();return e.parent=B,e},B};return g=S(),g.explicitNavigation=!1,g.navigatingBack=!1,g.makeRoutesCaseSensitive=function(){w=!0},g.targetIsThisWindow=function(e){var t=s(e.target).attr("target");return!t||t===window.name||"_self"===t||"top"===t&&window===window.top?!0:!1},g.activate=function(t){return e.defer(function(n){if(v=n,g.options=e.extend({routeHandler:g.loadUrl},g.options,t),o.activate(g.options),o._hasPushState)for(var i=g.routes,r=i.length;r--;){var a=i[r];a.hash=a.hash.replace("#","/")}var c=g.options.root&&new RegExp("^"+g.options.root+"/");s(document).delegate("a","click",function(e){if(o._hasPushState){if(!e.altKey&&!e.ctrlKey&&!e.metaKey&&!e.shiftKey&&g.targetIsThisWindow(e)){var t=s(this).attr("href");null==t||"#"===t.charAt(0)||/^[a-z]+:/i.test(t)||(g.explicitNavigation=!0,e.preventDefault(),c&&(t=t.replace(c,"")),o.navigate(t))}}else g.explicitNavigation=!0}),o.options.silent&&v&&(v.resolve(),v=null)}).promise()},g.deactivate=function(){o.deactivate()},g.install=function(){a.bindingHandlers.router={init:function(){return{controlsDescendantBindings:!0}},update:function(e,t,n,i,o){var s=a.utils.unwrapObservable(t())||{};if(s.__router__)s={model:s.activeItem(),attached:s.attached,compositionComplete:s.compositionComplete,activate:!1};else{var c=a.utils.unwrapObservable(s.router||i.router)||g;s.model=c.activeItem(),s.attached=c.attached,s.compositionComplete=c.compositionComplete,s.activate=!1}r.compose(e,s,o)}},a.virtualElements.allowedBindings.router=!0},g}),n.config({baseUrl:"/App",paths:{text:"../Scripts/text",durandal:"../Scripts/durandal",plugins:"../Scripts/durandal/plugins",transitions:"../Scripts/durandal/transitions",viewmodels:"../App/viewmodels",views:"../App/views",models:"../App/models"}}),i("jquery",function(){return jQuery}),i("knockout",function(){return ko}),i("main",["durandal/app","durandal/viewLocator","durandal/system","plugins/router","durandal/viewEngine"],e),i("services/routeconfig",[],function(){function e(e){return($siteroot.match("^/")?$siteroot:$siteroot+"/")+e}var t={transactionroute:e("TransactionReversal/GetPrimeDetails")};return t}),i("services/transactionroutes",["services/routeconfig"],function(e){var t={};return t.getinformation=function(t){return $.ajax({url:e.transactionroute,contentType:"application/json",type:"POST",data:JSON.stringify(t)})},t}),i("viewmodels/Dashboard/default",["plugins/router","durandal/system"],function(e,t){function n(){t.log("Dashboard has been activated.")}var i="Dashboard To",r={convertRouteToHash:e.convertRouteToHash,activate:n,title:i};return r}),i("viewmodels/Transaction/default",["plugins/router","durandal/system","services/transactionroutes"],function(e,t,n){function i(){t.log("Transaction has been activated.")}function r(){u.server.disconnectMe(c)}function o(){var e={cardNumber:s(),connectionId:c};n.getinformation(e).done(function(e){}).fail(function(){}).complete(function(){})}var a=ko.observableArray(),s=ko.observable(""),c="";$.connection.TransactionHub.logging=!0;var u=$.connection.TransactionHub;u.client.addActivity=function(e){a.push(e)},$.connection.hub.start().done(function(){c=$.connection.hub.id});var l="Transaction To",d={convertRouteToHash:e.convertRouteToHash,activate:i,deactivate:r,title:l,cardnumber:s,getinfo:o,logmessages:a};return d}),i("viewmodels/shell",["durandal/system","plugins/router"],function(e,t){function n(){t.on("router:route:not-found",function(t){e.log("No routes found")});var n=[{route:["","dashboard/default"],moduleId:"dashboard/default",title:"Dashboard",nav:!1,hash:"#dashboard/default"},{route:"transaction/default",moduleId:"transaction/default",title:"Transaction",nav:!0,hash:"#transaction/default"}];return null==$siteroot||"/"===$siteroot?t.makeRelative({moduleId:"viewmodels"}).map(n).buildNavigationModel().activate({pushState:!0}):t.makeRelative({moduleId:"viewmodels"}).map(n).buildNavigationModel().activate({pushState:!0,root:"/"+$siteroot})}var i={activate:n,router:t};return i}),i("plugins/dialog",["durandal/system","durandal/app","durandal/composition","durandal/activator","durandal/viewEngine","jquery","knockout"],function(e,t,n,i,r,o,a){function s(t){return e.defer(function(n){e.isString(t)?e.acquire(t).then(function(t){n.resolve(e.resolveObject(t))}).fail(function(n){e.error("Failed to load dialog module ("+t+"). Details: "+n.message)}):n.resolve(t)}).promise()}var c,u={},l=a.observable(0),d=function(e,t,n,i,r){this.message=e,this.title=t||d.defaultTitle,this.options=n||d.defaultOptions,this.autoclose=i||!1,this.settings=o.extend({},d.defaultSettings,r)};return d.prototype.selectOption=function(e){c.close(this,e)},d.prototype.getView=function(){return r.processMarkup(d.defaultViewMarkup)},d.setViewUrl=function(e){delete d.prototype.getView,d.prototype.viewUrl=e},d.defaultTitle=t.title||"Application",d.defaultOptions=["Ok"],d.defaultSettings={buttonClass:"btn btn-default",primaryButtonClass:"btn-primary autofocus",secondaryButtonClass:"","class":"modal-content messageBox",style:null},d.setDefaults=function(e){o.extend(d.defaultSettings,e)},d.prototype.getButtonClass=function(e){var t="";return this.settings&&(this.settings.buttonClass&&(t=this.settings.buttonClass),0===e()&&this.settings.primaryButtonClass&&(t.length>0&&(t+=" "),t+=this.settings.primaryButtonClass),e()>0&&this.settings.secondaryButtonClass&&(t.length>0&&(t+=" "),t+=this.settings.secondaryButtonClass)),t},d.prototype.getClass=function(){return this.settings?this.settings["class"]:"messageBox"},d.prototype.getStyle=function(){return this.settings?this.settings.style:null},d.prototype.getButtonText=function(t){var n=o.type(t);return"string"===n?t:"object"===n?"string"===o.type(t.text)?t.text:(e.error("The object for a MessageBox button does not have a text property that is a string."),null):(e.error("Object for a MessageBox button is not a string or object but "+n+"."),null)},d.prototype.getButtonValue=function(t){var n=o.type(t);return"string"===n?t:"object"===n?"undefined"===o.type(t.text)?(e.error("The object for a MessageBox button does not have a value property defined."),null):t.value:(e.error("Object for a MessageBox button is not a string or object but "+n+"."),null)},d.defaultViewMarkup=['<div data-view="plugins/messageBox" data-bind="css: getClass(), style: getStyle()">','<div class="modal-header">','<h3 data-bind="html: title"></h3>',"</div>",'<div class="modal-body">','<p class="message" data-bind="html: message"></p>',"</div>",'<div class="modal-footer">',"<!-- ko foreach: options -->",'<button data-bind="click: function () { $parent.selectOption($parent.getButtonValue($data)); }, text: $parent.getButtonText($data), css: $parent.getButtonClass($index)"></button>',"<!-- /ko -->",'<div style="clear:both;"></div>',"</div>","</div>"].join("\n"),c={MessageBox:d,currentZIndex:1050,getNextZIndex:function(){return++this.currentZIndex},isOpen:a.computed(function(){return l()>0}),getContext:function(e){return u[e||"default"]},addContext:function(e,t){t.name=e,u[e]=t;var n="show"+e.substr(0,1).toUpperCase()+e.substr(1);this[n]=function(t,n){return this.show(t,n,e)}},createCompositionSettings:function(e,t){var n={model:e,activate:!1,transition:!1};return t.binding&&(n.binding=t.binding),t.attached&&(n.attached=t.attached),t.compositionComplete&&(n.compositionComplete=t.compositionComplete),n},getDialog:function(e){return e?e.__dialog__:void 0},close:function(e){var t=this.getDialog(e);if(t){var n=Array.prototype.slice.call(arguments,1);t.close.apply(t,n)}},show:function(t,r,o){var a=this,c=u[o||"default"];return e.defer(function(e){s(t).then(function(t){var o=i.create();o.activateItem(t,r).then(function(i){if(i){var r=t.__dialog__={owner:t,context:c,activator:o,close:function(){var n=arguments;o.deactivateItem(t,!0).then(function(i){i&&(l(l()-1),c.removeHost(r),delete t.__dialog__,0===n.length?e.resolve():1===n.length?e.resolve(n[0]):e.resolve.apply(e,n))})}};r.settings=a.createCompositionSettings(t,c),c.addHost(r),l(l()+1),n.compose(r.host,r.settings)}else e.resolve(!1)})})}).promise()},showMessage:function(t,n,i,r,o){return e.isString(this.MessageBox)?c.show(this.MessageBox,[t,n||d.defaultTitle,i||d.defaultOptions,r||!1,o||{}]):c.show(new this.MessageBox(t,n,i,r,o))},install:function(e){t.showDialog=function(e,t,n){return c.show(e,t,n)},t.closeDialog=function(){return c.close.apply(c,arguments)},t.showMessage=function(e,t,n,i,r){return c.showMessage(e,t,n,i,r)},e.messageBox&&(c.MessageBox=e.messageBox),e.messageBoxView&&(c.MessageBox.prototype.getView=function(){return r.processMarkup(e.messageBoxView)}),e.messageBoxViewUrl&&c.MessageBox.setViewUrl(e.messageBoxViewUrl)}},c.addContext("default",{blockoutOpacity:.2,removeDelay:200,addHost:function(e){var t=o("body"),n=o('<div class="modalBlockout"></div>').css({"z-index":c.getNextZIndex(),opacity:this.blockoutOpacity}).appendTo(t),i=o('<div class="modalHost"></div>').css({"z-index":c.getNextZIndex()}).appendTo(t);if(e.host=i.get(0),e.blockout=n.get(0),!c.isOpen()){e.oldBodyMarginRight=t.css("margin-right"),e.oldInlineMarginRight=t.get(0).style.marginRight;var r=o("html"),a=t.outerWidth(!0),s=r.scrollTop();o("html").css("overflow-y","hidden");var u=o("body").outerWidth(!0);t.css("margin-right",u-a+parseInt(e.oldBodyMarginRight,10)+"px"),r.scrollTop(s)}},removeHost:function(e){if(o(e.host).css("opacity",0),o(e.blockout).css("opacity",0),setTimeout(function(){a.removeNode(e.host),a.removeNode(e.blockout)},this.removeDelay),!c.isOpen()){var t=o("html"),n=t.scrollTop();t.css("overflow-y","").scrollTop(n),e.oldInlineMarginRight?o("body").css("margin-right",e.oldBodyMarginRight):o("body").css("margin-right","")}},attached:function(e){o(e).css("visibility","hidden")},compositionComplete:function(e,t,n){var i=c.getDialog(n.model),r=o(e),a=r.find("img").filter(function(){var e=o(this);return!(this.style.width&&this.style.height||e.attr("width")&&e.attr("height"))});r.data("predefinedWidth",r.get(0).style.width);var s=function(e,t){setTimeout(function(){var n=o(e);t.context.reposition(e),o(t.host).css("opacity",1),n.css("visibility","visible"),n.find(".autofocus").first().focus()},1)};s(e,i),a.load(function(){s(e,i)}),(r.hasClass("autoclose")||n.model.autoclose)&&o(i.blockout).click(function(){i.close()})},reposition:function(e){var t=o(e),n=o(window);t.data("predefinedWidth")||t.css({width:""});var i=t.outerWidth(!1),r=t.outerHeight(!1),a=n.height()-10,s=n.width()-10,c=Math.min(r,a),u=Math.min(i,s);t.css({"margin-top":(-c/2).toString()+"px","margin-left":(-u/2).toString()+"px"}),r>a?t.css("overflow-y","auto").outerHeight(a):t.css({"overflow-y":"",height:""}),i>s?t.css("overflow-x","auto").outerWidth(s):(t.css("overflow-x",""),t.data("predefinedWidth")?t.css("width",t.data("predefinedWidth")):t.outerWidth(u))}}),c}),i("plugins/http",["jquery","knockout"],function(e,t){return{callbackParam:"callback",toJSON:function(e){return t.toJSON(e)},get:function(n,i,r){return e.ajax(n,{data:i,headers:t.toJS(r)})},jsonp:function(n,i,r,o){return-1==n.indexOf("=?")&&(r=r||this.callbackParam,n+=-1==n.indexOf("?")?"?":"&",n+=r+"=?"),e.ajax({url:n,dataType:"jsonp",data:i,headers:t.toJS(o)})},put:function(n,i,r){return e.ajax({url:n,data:this.toJSON(i),type:"PUT",contentType:"application/json",dataType:"json",headers:t.toJS(r)})},post:function(n,i,r){return e.ajax({url:n,data:this.toJSON(i),type:"POST",contentType:"application/json",dataType:"json",headers:t.toJS(r)})},remove:function(n,i,r){return e.ajax({url:n,data:i,type:"DELETE",headers:t.toJS(r)})}}}),i("plugins/observable",["durandal/system","durandal/binder","knockout"],function(e,t,n){function i(e){var t=e[0];return"_"===t||"$"===t||S&&e===S}function r(t){return!(!t||void 0===t.nodeType||!e.isNumber(t.nodeType))}function o(e){if(!e||r(e)||e.ko===n||e.jquery)return!1;var t=g.call(e);return-1==p.indexOf(t)&&!(e===!0||e===!1)}function a(e){var t={};return Object.defineProperty(e,"__observable__",{enumerable:!1,configurable:!1,writable:!1,value:t}),t}function s(e,t,n){var i=e.__observable__,r=!0;if(!i||!i.__full__){i=i||a(e),i.__full__=!0,b.forEach(function(n){t[n]=function(){return w[n].apply(e,arguments)}}),h.forEach(function(n){e[n]=function(){r=!1;var e=x[n].apply(t,arguments);return r=!0,e}}),m.forEach(function(n){e[n]=function(){r&&t.valueWillMutate();var i=w[n].apply(e,arguments);return r&&t.valueHasMutated(),i}}),y.forEach(function(i){e[i]=function(){for(var o=0,a=arguments.length;a>o;o++)c(arguments[o],n);r&&t.valueWillMutate();var s=w[i].apply(e,arguments);return r&&t.valueHasMutated(),s}}),e.splice=function(){for(var i=2,o=arguments.length;o>i;i++)c(arguments[i],n);r&&t.valueWillMutate();var a=w.splice.apply(e,arguments);return r&&t.valueHasMutated(),a};for(var o=0,s=e.length;s>o;o++)c(e[o],n)}}function c(t,i){var r,c;if(S&&t&&t[S]&&(i=i?i.slice(0):[],i.push(t[S])),o(t)&&(r=t.__observable__,!r||!r.__full__)){if(r=r||a(t),r.__full__=!0,e.isArray(t)){var u=n.observableArray(t);s(t,u,i)}else for(var f in t)if(!v(f)&&!r[f]){var g=Object.getPropertyDescriptor(t,f);g&&(g.get||g.set)?d(t,f,{get:g.get,set:g.set}):(c=t[f],e.isFunction(c)||l(t,f,c,i))}I&&e.log("Converted",t)}}function u(e,t,n){n?t?t.destroyAll||s(t,e):(t=[],s(t,e)):c(t),e(t)}function l(t,i,r,o){var l,d,f=t.__observable__||a(t);if(void 0===r&&(r=t[i]),e.isArray(r))l=n.observableArray(r),s(r,l,o),d=!0;else if("function"==typeof r){if(!n.isObservable(r))return null;l=r}else!A&&e.isPromise(r)?(l=n.observable(),r.then(function(t){if(e.isArray(t)){var i=n.observableArray(t);s(t,i,o),t=i}l(t)})):(l=n.observable(r),c(r,o));return o&&o.length>0&&o.forEach(function(n){e.isArray(r)?l.subscribe(function(e){n(t,i,null,e)},null,"arrayChange"):l.subscribe(function(e){n(t,i,e,null)})}),Object.defineProperty(t,i,{configurable:!0,enumerable:!0,get:l,set:n.isWriteableObservable(l)?function(t){t&&e.isPromise(t)&&!A?t.then(function(t){u(l,t,e.isArray(t))}):u(l,t,d)}:void 0}),f[i]=l,l}function d(t,i,r){var o,a={owner:t,deferEvaluation:!0};return"function"==typeof r?a.read=r:("value"in r&&e.error('For defineProperty, you must not specify a "value" for the property. You must provide a "get" function.'),"function"!=typeof r.get&&"function"!=typeof r.read&&e.error('For defineProperty, the third parameter must be either an evaluator function, or an options object containing a function called "get".'),a.read=r.get||r.read,a.write=r.set||r.write),o=n.computed(a),t[i]=o,l(t,i,o)}var f,v,g=Object.prototype.toString,p=["[object Function]","[object String]","[object Boolean]","[object Number]","[object Date]","[object RegExp]"],h=["remove","removeAll","destroy","destroyAll","replace"],m=["pop","reverse","sort","shift","slice"],y=["push","unshift"],b=["filter","map","reduce","reduceRight","forEach","every","some"],w=Array.prototype,x=n.observableArray.fn,I=!1,S=void 0,A=!1;if(!("getPropertyDescriptor"in Object)){var T=Object.getOwnPropertyDescriptor,_=Object.getPrototypeOf;Object.getPropertyDescriptor=function(e,t){for(var n,i=e;i&&!(n=T(i,t));)i=_(i);return n}}return f=function(e,t){var i,r,o;return e?(i=e.__observable__,i&&(r=i[t])?r:(o=e[t],n.isObservable(o)?o:l(e,t,o))):null},f.defineProperty=d,f.convertProperty=l,f.convertObject=c,f.install=function(e){var n=t.binding;t.binding=function(e,t,i){i.applyBindings&&!i.skipConversion&&c(e),n(e,t)},I=e.logConversion,e.changeDetection&&(S=e.changeDetection),A=e.skipPromises,v=e.shouldIgnorePropertyName||i},f}),i("plugins/serializer",["durandal/system"],function(e){return{typeAttribute:"type",space:void 0,replacer:function(e,t){if(e){var n=e[0];if("_"===n||"$"===n)return}return t},serialize:function(t,n){return n=void 0===n?{}:n,(e.isString(n)||e.isNumber(n))&&(n={space:n}),JSON.stringify(t,n.replacer||this.replacer,n.space||this.space)},getTypeId:function(e){return e?e[this.typeAttribute]:void 0},typeMap:{},registerType:function(){var t=arguments[0];if(1==arguments.length){var n=t[this.typeAttribute]||e.getModuleId(t);this.typeMap[n]=t}else this.typeMap[t]=arguments[1]},reviver:function(e,t,n,i){var r=n(t);if(r){var o=i(r);if(o)return o.fromJSON?o.fromJSON(t):new o(t)}return t},deserialize:function(e,t){var n=this;t=t||{};var i=t.getTypeId||function(e){return n.getTypeId(e)},r=t.getConstructor||function(e){return n.typeMap[e]},o=t.reviver||function(e,t){return n.reviver(e,t,i,r)};return JSON.parse(e,o)},clone:function(e,t){return this.deserialize(this.serialize(e,t),t)}}}),i("plugins/widget",["durandal/system","durandal/composition","jquery","knockout"],function(e,t,n,i){function r(e,n){var r=i.utils.domData.get(e,c);r||(r={parts:t.cloneNodes(i.virtualElements.childNodes(e))},i.virtualElements.emptyNode(e),i.utils.domData.set(e,c,r)),n.parts=r.parts}var o={},a={},s=["model","view","kind"],c="durandal-widget-data",u={getSettings:function(t){var n=i.utils.unwrapObservable(t())||{};if(e.isString(n))return{kind:n};for(var r in n)-1!=i.utils.arrayIndexOf(s,r)?n[r]=i.utils.unwrapObservable(n[r]):n[r]=n[r];return n},registerKind:function(e){i.bindingHandlers[e]={init:function(){return{controlsDescendantBindings:!0}},update:function(t,n,i,o,a){var s=u.getSettings(n);s.kind=e,r(t,s),u.create(t,s,a,!0)}},i.virtualElements.allowedBindings[e]=!0,t.composeBindings.push(e+":")},mapKind:function(e,t,n){t&&(a[e]=t),n&&(o[e]=n)},mapKindToModuleId:function(e){return o[e]||u.convertKindToModulePath(e)},convertKindToModulePath:function(e){return"widgets/"+e+"/viewmodel"},mapKindToViewId:function(e){return a[e]||u.convertKindToViewPath(e)},convertKindToViewPath:function(e){return"widgets/"+e+"/view"},createCompositionSettings:function(e,t){return t.model||(t.model=this.mapKindToModuleId(t.kind)),t.view||(t.view=this.mapKindToViewId(t.kind)),t.preserveContext=!0,t.activate=!0,t.activationData=t,t.mode="templated",t},create:function(e,n,i,r){r||(n=u.getSettings(function(){return n},e));var o=u.createCompositionSettings(e,n);t.compose(e,o,i)},install:function(e){if(e.bindingName=e.bindingName||"widget",e.kinds)for(var n=e.kinds,o=0;o<n.length;o++)u.registerKind(n[o]);i.bindingHandlers[e.bindingName]={init:function(){return{controlsDescendantBindings:!0}},update:function(e,t,n,i,o){var a=u.getSettings(t);r(e,a),u.create(e,a,o,!0)}},t.composeBindings.push(e.bindingName+":"),i.virtualElements.allowedBindings[e.bindingName]=!0}};return u}),i("transitions/entrance",["durandal/system","durandal/composition","jquery"],function(e,t,n){function i(e,t){e.classList.remove(t?"entrance-in-fade":"entrance-in"),e.classList.remove("entrance-out")}var r=100,o={left:"0px",opacity:1},a={left:"",top:"",right:"",bottom:"",position:"",opacity:""},s=navigator.userAgent.match(/Trident/)||navigator.userAgent.match(/MSIE/),c=!1,u="Webkit Moz O ms Khtml".split(" "),l=document.createElement("div");if(void 0!==l.style.animationName&&(c=!0),!c)for(var d=0;d<u.length;d++)if(void 0!==l.style[u[d]+"AnimationName"]){c=!0;break}c?s?e.log("Using CSS3/jQuery mixed animations."):e.log("Using CSS3 animations."):e.log("Using jQuery animations.");var f=function(t){return e.defer(function(e){function u(){e.resolve()}function l(){t.keepScrollPosition||n(document).scrollTop(0)}function d(){l(),t.triggerAttach(),c?(i(t.child,g),t.child.classList.add(g?"entrance-in-fade":"entrance-in"),setTimeout(function(){i(t.child,g),t.activeView&&i(t.activeView,g),v.css(a),u()},f)):v.animate(o,{duration:f,easing:"swing",always:function(){v.css(a),u()}})}if(t.child){var f=t.duration||500,v=n(t.child),g=!!t.fadeOnly,p={display:"block",opacity:0,position:"absolute",left:g||c?"0px":"20px",right:0,top:0,bottom:0};v.css(p),t.activeView?c&&!s?(i(t.activeView,g),t.activeView.classList.add("entrance-out"),setTimeout(d,r)):n(t.activeView).fadeOut({duration:r,always:d}):d()}else n(t.activeView).fadeOut(r,u)}).promise()};return f}),i("text",["module"],function(e){"use strict";var t,i,r,o,a=["Msxml2.XMLHTTP","Microsoft.XMLHTTP","Msxml2.XMLHTTP.4.0"],s=/^\s*<\?xml(\s)+version=[\'\"](\d)*.(\d)*[\'\"](\s)*\?>/im,c=/<body[^>]*>\s*([\s\S]+)\s*<\/body>/im,u="undefined"!=typeof location&&location.href,l=u&&location.protocol&&location.protocol.replace(/\:/,""),d=u&&location.hostname,f=u&&(location.port||void 0),v={},g=e.config&&e.config()||{};return t={version:"2.0.7",strip:function(e){if(e){e=e.replace(s,"");var t=e.match(c);t&&(e=t[1])}else e="";return e},jsEscape:function(e){return e.replace(/(['\\])/g,"\\$1").replace(/[\f]/g,"\\f").replace(/[\b]/g,"\\b").replace(/[\n]/g,"\\n").replace(/[\t]/g,"\\t").replace(/[\r]/g,"\\r").replace(/[\u2028]/g,"\\u2028").replace(/[\u2029]/g,"\\u2029")},createXhr:g.createXhr||function(){var e,t,n;if("undefined"!=typeof XMLHttpRequest)return new XMLHttpRequest;if("undefined"!=typeof ActiveXObject)for(t=0;3>t;t+=1){n=a[t];try{e=new ActiveXObject(n)}catch(i){}if(e){a=[n];break}}return e},parseName:function(e){var t,n,i,r=!1,o=e.indexOf("."),a=0===e.indexOf("./")||0===e.indexOf("../");return-1!==o&&(!a||o>1)?(t=e.substring(0,o),n=e.substring(o+1,e.length)):t=e,i=n||t,o=i.indexOf("!"),-1!==o&&(r="strip"===i.substring(o+1),i=i.substring(0,o),n?n=i:t=i),{moduleName:t,ext:n,strip:r}},xdRegExp:/^((\w+)\:)?\/\/([^\/\\]+)/,useXhr:function(e,n,i,r){var o,a,s,c=t.xdRegExp.exec(e);return c?(o=c[2],a=c[3],a=a.split(":"),s=a[1],a=a[0],!(o&&o!==n||a&&a.toLowerCase()!==i.toLowerCase()||(s||a)&&s!==r)):!0},finishLoad:function(e,n,i,r){i=n?t.strip(i):i,g.isBuild&&(v[e]=i),r(i)},load:function(e,n,i,r){if(r.isBuild&&!r.inlineText)return void i();g.isBuild=r.isBuild;var o=t.parseName(e),a=o.moduleName+(o.ext?"."+o.ext:""),s=n.toUrl(a),c=g.useXhr||t.useXhr;!u||c(s,l,d,f)?t.get(s,function(n){t.finishLoad(e,o.strip,n,i)},function(e){i.error&&i.error(e)}):n([a],function(e){t.finishLoad(o.moduleName+"."+o.ext,o.strip,e,i)})},write:function(e,n,i,r){if(v.hasOwnProperty(n)){var o=t.jsEscape(v[n]);i.asModule(e+"!"+n,"define(function () { return '"+o+"';});\n")}},writeFile:function(e,n,i,r,o){var a=t.parseName(n),s=a.ext?"."+a.ext:"",c=a.moduleName+s,u=i.toUrl(a.moduleName+s)+".js";t.load(c,i,function(n){var i=function(e){return r(u,e)};i.asModule=function(e,t){return r.asModule(e,u,t)},t.write(e,c,i,o)},o)}},"node"===g.env||!g.env&&"undefined"!=typeof process&&process.versions&&process.versions.node?(i=n.nodeRequire("fs"),t.get=function(e,t,n){try{var r=i.readFileSync(e,"utf8");0===r.indexOf("\ufeff")&&(r=r.substring(1)),t(r)}catch(o){n(o)}}):"xhr"===g.env||!g.env&&t.createXhr()?t.get=function(e,n,i,r){var o,a=t.createXhr();if(a.open("GET",e,!0),r)for(o in r)r.hasOwnProperty(o)&&a.setRequestHeader(o.toLowerCase(),r[o]);g.onXhr&&g.onXhr(a,e),a.onreadystatechange=function(t){var r,o;4===a.readyState&&(r=a.status,r>399&&600>r?(o=new Error(e+" HTTP status: "+r),o.xhr=a,i(o)):n(a.responseText),g.onXhrComplete&&g.onXhrComplete(a,e))},a.send(null)}:"rhino"===g.env||!g.env&&"undefined"!=typeof Packages&&"undefined"!=typeof java?t.get=function(e,t){var n,i,r="utf-8",o=new java.io.File(e),a=java.lang.System.getProperty("line.separator"),s=new java.io.BufferedReader(new java.io.InputStreamReader(new java.io.FileInputStream(o),r)),c="";try{for(n=new java.lang.StringBuffer,i=s.readLine(),i&&i.length()&&65279===i.charAt(0)&&(i=i.substring(1)),null!==i&&n.append(i);null!==(i=s.readLine());)n.append(a),n.append(i);c=String(n.toString())}finally{s.close()}t(c)}:("xpconnect"===g.env||!g.env&&"undefined"!=typeof Components&&Components.classes&&Components.interfaces)&&(r=Components.classes,o=Components.interfaces,Components.utils["import"]("resource://gre/modules/FileUtils.jsm"),t.get=function(e,t){var n,i,a={},s=new FileUtils.File(e);try{n=r["@mozilla.org/network/file-input-stream;1"].createInstance(o.nsIFileInputStream),n.init(s,1,0,!1),i=r["@mozilla.org/intl/converter-input-stream;1"].createInstance(o.nsIConverterInputStream),i.init(n,"utf-8",n.available(),o.nsIConverterInputStream.DEFAULT_REPLACEMENT_CHARACTER),i.readString(n.available(),a),i.close(),n.close(),t(a.value)}catch(c){throw new Error((s&&s.path||"")+": "+c)}}),t}),i("text!views/Dashboard/default.html",[],function(){return"<section>\r\n    <h2>Dashboard</h2>\r\n\r\n</section>"}),i("text!views/Transaction/default.html",[],function(){return'<section>\r\n    <h2>Transaction</h2>\r\n    <br/><hr/><br/>\r\n\r\n    <input type="text" data-bind="value: cardnumber"/>\r\n    <button data-bind="click:getinfo">Lock This</button>\r\n\r\n    <div  data-bind="foreach: logmessages">\r\n        <span data-bind="text:$data"></span><br/>\r\n    </div>\r\n</section>'}),i("text!views/shell.html",[],function(){return'<div id="shellContainer">\r\n    <span>This is shell</span>\r\n    <div class="btn-group" data-bind="foreach: router.navigationModel">\r\n        <a data-bind="css: { active: isActive }, attr: { href: hash }, text: title"\r\n           class="btn btn-default" href="#"></a>\r\n    </div>\r\n\r\n    <section id="parentContent" class="main container-fluid"\r\n             data-bind="router: { transition: \'entrance\', cacheViews: false }"></section>\r\n</div>'}),n(["main"])}();
-//# sourceMappingURL=main.build.js.map//# sourceMappingURL=main-built.js.map
+(function() {
+/**
+ * almond 0.2.6 Copyright (c) 2011-2012, The Dojo Foundation All Rights Reserved.
+ * Available via the MIT or new BSD license.
+ * see: http://github.com/jrburke/almond for details
+ */
+//Going sloppy to avoid 'use strict' string cost, but strict practices should
+//be followed.
+/*jslint sloppy: true */
+/*global setTimeout: false */
+
+var requirejs, require, define;
+(function (undef) {
+    var main, req, makeMap, handlers,
+        defined = {},
+        waiting = {},
+        config = {},
+        defining = {},
+        hasOwn = Object.prototype.hasOwnProperty,
+        aps = [].slice;
+
+    function hasProp(obj, prop) {
+        return hasOwn.call(obj, prop);
+    }
+
+    /**
+     * Given a relative module name, like ./something, normalize it to
+     * a real name that can be mapped to a path.
+     * @param {String} name the relative name
+     * @param {String} baseName a real name that the name arg is relative
+     * to.
+     * @returns {String} normalized name
+     */
+    function normalize(name, baseName) {
+        var nameParts, nameSegment, mapValue, foundMap,
+            foundI, foundStarMap, starI, i, j, part,
+            baseParts = baseName && baseName.split("/"),
+            map = config.map,
+            starMap = (map && map['*']) || {};
+
+        //Adjust any relative paths.
+        if (name && name.charAt(0) === ".") {
+            //If have a base name, try to normalize against it,
+            //otherwise, assume it is a top-level require that will
+            //be relative to baseUrl in the end.
+            if (baseName) {
+                //Convert baseName to array, and lop off the last part,
+                //so that . matches that "directory" and not name of the baseName's
+                //module. For instance, baseName of "one/two/three", maps to
+                //"one/two/three.js", but we want the directory, "one/two" for
+                //this normalization.
+                baseParts = baseParts.slice(0, baseParts.length - 1);
+
+                name = baseParts.concat(name.split("/"));
+
+                //start trimDots
+                for (i = 0; i < name.length; i += 1) {
+                    part = name[i];
+                    if (part === ".") {
+                        name.splice(i, 1);
+                        i -= 1;
+                    } else if (part === "..") {
+                        if (i === 1 && (name[2] === '..' || name[0] === '..')) {
+                            //End of the line. Keep at least one non-dot
+                            //path segment at the front so it can be mapped
+                            //correctly to disk. Otherwise, there is likely
+                            //no path mapping for a path starting with '..'.
+                            //This can still fail, but catches the most reasonable
+                            //uses of ..
+                            break;
+                        } else if (i > 0) {
+                            name.splice(i - 1, 2);
+                            i -= 2;
+                        }
+                    }
+                }
+                //end trimDots
+
+                name = name.join("/");
+            } else if (name.indexOf('./') === 0) {
+                // No baseName, so this is ID is resolved relative
+                // to baseUrl, pull off the leading dot.
+                name = name.substring(2);
+            }
+        }
+
+        //Apply map config if available.
+        if ((baseParts || starMap) && map) {
+            nameParts = name.split('/');
+
+            for (i = nameParts.length; i > 0; i -= 1) {
+                nameSegment = nameParts.slice(0, i).join("/");
+
+                if (baseParts) {
+                    //Find the longest baseName segment match in the config.
+                    //So, do joins on the biggest to smallest lengths of baseParts.
+                    for (j = baseParts.length; j > 0; j -= 1) {
+                        mapValue = map[baseParts.slice(0, j).join('/')];
+
+                        //baseName segment has  config, find if it has one for
+                        //this name.
+                        if (mapValue) {
+                            mapValue = mapValue[nameSegment];
+                            if (mapValue) {
+                                //Match, update name to the new value.
+                                foundMap = mapValue;
+                                foundI = i;
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                if (foundMap) {
+                    break;
+                }
+
+                //Check for a star map match, but just hold on to it,
+                //if there is a shorter segment match later in a matching
+                //config, then favor over this star map.
+                if (!foundStarMap && starMap && starMap[nameSegment]) {
+                    foundStarMap = starMap[nameSegment];
+                    starI = i;
+                }
+            }
+
+            if (!foundMap && foundStarMap) {
+                foundMap = foundStarMap;
+                foundI = starI;
+            }
+
+            if (foundMap) {
+                nameParts.splice(0, foundI, foundMap);
+                name = nameParts.join('/');
+            }
+        }
+
+        return name;
+    }
+
+    function makeRequire(relName, forceSync) {
+        return function () {
+            //A version of a require function that passes a moduleName
+            //value for items that may need to
+            //look up paths relative to the moduleName
+            return req.apply(undef, aps.call(arguments, 0).concat([relName, forceSync]));
+        };
+    }
+
+    function makeNormalize(relName) {
+        return function (name) {
+            return normalize(name, relName);
+        };
+    }
+
+    function makeLoad(depName) {
+        return function (value) {
+            defined[depName] = value;
+        };
+    }
+
+    function callDep(name) {
+        if (hasProp(waiting, name)) {
+            var args = waiting[name];
+            delete waiting[name];
+            defining[name] = true;
+            main.apply(undef, args);
+        }
+
+        if (!hasProp(defined, name) && !hasProp(defining, name)) {
+            throw new Error('No ' + name);
+        }
+        return defined[name];
+    }
+
+    //Turns a plugin!resource to [plugin, resource]
+    //with the plugin being undefined if the name
+    //did not have a plugin prefix.
+    function splitPrefix(name) {
+        var prefix,
+            index = name ? name.indexOf('!') : -1;
+        if (index > -1) {
+            prefix = name.substring(0, index);
+            name = name.substring(index + 1, name.length);
+        }
+        return [prefix, name];
+    }
+
+    function onResourceLoad(name, defined, deps){
+        if(requirejs.onResourceLoad && name){
+            requirejs.onResourceLoad({defined:defined}, {id:name}, deps);
+        }
+    }
+
+    /**
+     * Makes a name map, normalizing the name, and using a plugin
+     * for normalization if necessary. Grabs a ref to plugin
+     * too, as an optimization.
+     */
+    makeMap = function (name, relName) {
+        var plugin,
+            parts = splitPrefix(name),
+            prefix = parts[0];
+
+        name = parts[1];
+
+        if (prefix) {
+            prefix = normalize(prefix, relName);
+            plugin = callDep(prefix);
+        }
+
+        //Normalize according
+        if (prefix) {
+            if (plugin && plugin.normalize) {
+                name = plugin.normalize(name, makeNormalize(relName));
+            } else {
+                name = normalize(name, relName);
+            }
+        } else {
+            name = normalize(name, relName);
+            parts = splitPrefix(name);
+            prefix = parts[0];
+            name = parts[1];
+            if (prefix) {
+                plugin = callDep(prefix);
+            }
+        }
+
+        //Using ridiculous property names for space reasons
+        return {
+            f: prefix ? prefix + '!' + name : name, //fullName
+            n: name,
+            pr: prefix,
+            p: plugin
+        };
+    };
+
+    function makeConfig(name) {
+        return function () {
+            return (config && config.config && config.config[name]) || {};
+        };
+    }
+
+    handlers = {
+        require: function (name) {
+            return makeRequire(name);
+        },
+        exports: function (name) {
+            var e = defined[name];
+            if (typeof e !== 'undefined') {
+                return e;
+            } else {
+                return (defined[name] = {});
+            }
+        },
+        module: function (name) {
+            return {
+                id: name,
+                uri: '',
+                exports: defined[name],
+                config: makeConfig(name)
+            };
+        }
+    };
+
+    main = function (name, deps, callback, relName) {
+        var cjsModule, depName, ret, map, i,
+            args = [],
+            usingExports;
+
+        //Use name if no relName
+        relName = relName || name;
+
+        //Call the callback to define the module, if necessary.
+        if (typeof callback === 'function') {
+
+            //Pull out the defined dependencies and pass the ordered
+            //values to the callback.
+            //Default to [require, exports, module] if no deps
+            deps = !deps.length && callback.length ? ['require', 'exports', 'module'] : deps;
+            for (i = 0; i < deps.length; i += 1) {
+                map = makeMap(deps[i], relName);
+                depName = map.f;
+
+                //Fast path CommonJS standard dependencies.
+                if (depName === "require") {
+                    args[i] = handlers.require(name);
+                } else if (depName === "exports") {
+                    //CommonJS module spec 1.1
+                    args[i] = handlers.exports(name);
+                    usingExports = true;
+                } else if (depName === "module") {
+                    //CommonJS module spec 1.1
+                    cjsModule = args[i] = handlers.module(name);
+                } else if (hasProp(defined, depName) ||
+                    hasProp(waiting, depName) ||
+                    hasProp(defining, depName)) {
+                    args[i] = callDep(depName);
+                } else if (map.p) {
+                    map.p.load(map.n, makeRequire(relName, true), makeLoad(depName), {});
+                    args[i] = defined[depName];
+                } else {
+                    throw new Error(name + ' missing ' + depName);
+                }
+            }
+
+            ret = callback.apply(defined[name], args);
+
+            if (name) {
+                //If setting exports via "module" is in play,
+                //favor that over return value and exports. After that,
+                //favor a non-undefined return value over exports use.
+                if (cjsModule && cjsModule.exports !== undef &&
+                    cjsModule.exports !== defined[name]) {
+                    defined[name] = cjsModule.exports;
+                } else if (ret !== undef || !usingExports) {
+                    //Use the return value from the function.
+                    defined[name] = ret;
+                }
+            }
+        } else if (name) {
+            //May just be an object definition for the module. Only
+            //worry about defining if have a module name.
+            defined[name] = callback;
+        }
+
+        onResourceLoad(name, defined, args);
+    };
+
+    requirejs = require = req = function (deps, callback, relName, forceSync, alt) {
+        if (typeof deps === "string") {
+            if (handlers[deps]) {
+                //callback in this case is really relName
+                return handlers[deps](callback);
+            }
+            //Just return the module wanted. In this scenario, the
+            //deps arg is the module name, and second arg (if passed)
+            //is just the relName.
+            //Normalize module name, if it contains . or ..
+            return callDep(makeMap(deps, callback).f);
+        } else if (!deps.splice) {
+            //deps is a config object, not an array.
+            config = deps;
+            if (callback.splice) {
+                //callback is an array, which means it is a dependency list.
+                //Adjust args if there are dependencies
+                deps = callback;
+                callback = relName;
+                relName = null;
+            } else {
+                deps = undef;
+            }
+        }
+
+        //Support require(['a'])
+        callback = callback || function () {};
+
+        //If relName is a function, it is an errback handler,
+        //so remove it.
+        if (typeof relName === 'function') {
+            relName = forceSync;
+            forceSync = alt;
+        }
+
+        //Simulate async callback;
+        if (forceSync) {
+            main(undef, deps, callback, relName);
+        } else {
+            //Using a non-zero value because of concern for what old browsers
+            //do, and latest browsers "upgrade" to 4 if lower value is used:
+            //http://www.whatwg.org/specs/web-apps/current-work/multipage/timers.html#dom-windowtimers-settimeout:
+            //If want a value immediately, use require('id') instead -- something
+            //that works in almond on the global level, but not guaranteed and
+            //unlikely to work in other AMD implementations.
+            setTimeout(function () {
+                main(undef, deps, callback, relName);
+            }, 4);
+        }
+
+        return req;
+    };
+
+    /**
+     * Just drops the config on the floor, but returns req in case
+     * the config return value is used.
+     */
+    req.config = function (cfg) {
+        config = cfg;
+        if (config.deps) {
+            req(config.deps, config.callback);
+        }
+        return req;
+    };
+
+    /**
+     * Expose module registry for debugging and tooling
+     */
+    requirejs._defined = defined;
+
+    define = function (name, deps, callback) {
+
+        //This module may not have dependencies
+        if (!deps.splice) {
+            //deps is not an array, so probably means
+            //an object literal or factory function for
+            //the value. Adjust args.
+            callback = deps;
+            deps = [];
+        }
+
+        if (!hasProp(defined, name) && !hasProp(waiting, name)) {
+            waiting[name] = [name, deps, callback];
+        }
+    };
+
+    define.amd = {
+        jQuery: true
+    };
+}());
+/**
+ * @license RequireJS text 2.0.7 Copyright (c) 2010-2012, The Dojo Foundation All Rights Reserved.
+ * Available via the MIT or new BSD license.
+ * see: http://github.com/requirejs/text for details
+ */
+/*jslint regexp: true */
+/*global require, XMLHttpRequest, ActiveXObject,
+  define, window, process, Packages,
+  java, location, Components, FileUtils */
+
+define('text',['module'], function (module) {
+    'use strict';
+
+    var text, fs, Cc, Ci,
+        progIds = ['Msxml2.XMLHTTP', 'Microsoft.XMLHTTP', 'Msxml2.XMLHTTP.4.0'],
+        xmlRegExp = /^\s*<\?xml(\s)+version=[\'\"](\d)*.(\d)*[\'\"](\s)*\?>/im,
+        bodyRegExp = /<body[^>]*>\s*([\s\S]+)\s*<\/body>/im,
+        hasLocation = typeof location !== 'undefined' && location.href,
+        defaultProtocol = hasLocation && location.protocol && location.protocol.replace(/\:/, ''),
+        defaultHostName = hasLocation && location.hostname,
+        defaultPort = hasLocation && (location.port || undefined),
+        buildMap = {},
+        masterConfig = (module.config && module.config()) || {};
+
+    text = {
+        version: '2.0.7',
+
+        strip: function (content) {
+            //Strips <?xml ...?> declarations so that external SVG and XML
+            //documents can be added to a document without worry. Also, if the string
+            //is an HTML document, only the part inside the body tag is returned.
+            if (content) {
+                content = content.replace(xmlRegExp, "");
+                var matches = content.match(bodyRegExp);
+                if (matches) {
+                    content = matches[1];
+                }
+            } else {
+                content = "";
+            }
+            return content;
+        },
+
+        jsEscape: function (content) {
+            return content.replace(/(['\\])/g, '\\$1')
+                .replace(/[\f]/g, "\\f")
+                .replace(/[\b]/g, "\\b")
+                .replace(/[\n]/g, "\\n")
+                .replace(/[\t]/g, "\\t")
+                .replace(/[\r]/g, "\\r")
+                .replace(/[\u2028]/g, "\\u2028")
+                .replace(/[\u2029]/g, "\\u2029");
+        },
+
+        createXhr: masterConfig.createXhr || function () {
+            //Would love to dump the ActiveX crap in here. Need IE 6 to die first.
+            var xhr, i, progId;
+            if (typeof XMLHttpRequest !== "undefined") {
+                return new XMLHttpRequest();
+            } else if (typeof ActiveXObject !== "undefined") {
+                for (i = 0; i < 3; i += 1) {
+                    progId = progIds[i];
+                    try {
+                        xhr = new ActiveXObject(progId);
+                    } catch (e) {}
+
+                    if (xhr) {
+                        progIds = [progId];  // so faster next time
+                        break;
+                    }
+                }
+            }
+
+            return xhr;
+        },
+
+        /**
+         * Parses a resource name into its component parts. Resource names
+         * look like: module/name.ext!strip, where the !strip part is
+         * optional.
+         * @param {String} name the resource name
+         * @returns {Object} with properties "moduleName", "ext" and "strip"
+         * where strip is a boolean.
+         */
+        parseName: function (name) {
+            var modName, ext, temp,
+                strip = false,
+                index = name.indexOf("."),
+                isRelative = name.indexOf('./') === 0 ||
+                             name.indexOf('../') === 0;
+
+            if (index !== -1 && (!isRelative || index > 1)) {
+                modName = name.substring(0, index);
+                ext = name.substring(index + 1, name.length);
+            } else {
+                modName = name;
+            }
+
+            temp = ext || modName;
+            index = temp.indexOf("!");
+            if (index !== -1) {
+                //Pull off the strip arg.
+                strip = temp.substring(index + 1) === "strip";
+                temp = temp.substring(0, index);
+                if (ext) {
+                    ext = temp;
+                } else {
+                    modName = temp;
+                }
+            }
+
+            return {
+                moduleName: modName,
+                ext: ext,
+                strip: strip
+            };
+        },
+
+        xdRegExp: /^((\w+)\:)?\/\/([^\/\\]+)/,
+
+        /**
+         * Is an URL on another domain. Only works for browser use, returns
+         * false in non-browser environments. Only used to know if an
+         * optimized .js version of a text resource should be loaded
+         * instead.
+         * @param {String} url
+         * @returns Boolean
+         */
+        useXhr: function (url, protocol, hostname, port) {
+            var uProtocol, uHostName, uPort,
+                match = text.xdRegExp.exec(url);
+            if (!match) {
+                return true;
+            }
+            uProtocol = match[2];
+            uHostName = match[3];
+
+            uHostName = uHostName.split(':');
+            uPort = uHostName[1];
+            uHostName = uHostName[0];
+
+            return (!uProtocol || uProtocol === protocol) &&
+                   (!uHostName || uHostName.toLowerCase() === hostname.toLowerCase()) &&
+                   ((!uPort && !uHostName) || uPort === port);
+        },
+
+        finishLoad: function (name, strip, content, onLoad) {
+            content = strip ? text.strip(content) : content;
+            if (masterConfig.isBuild) {
+                buildMap[name] = content;
+            }
+            onLoad(content);
+        },
+
+        load: function (name, req, onLoad, config) {
+            //Name has format: some.module.filext!strip
+            //The strip part is optional.
+            //if strip is present, then that means only get the string contents
+            //inside a body tag in an HTML string. For XML/SVG content it means
+            //removing the <?xml ...?> declarations so the content can be inserted
+            //into the current doc without problems.
+
+            // Do not bother with the work if a build and text will
+            // not be inlined.
+            if (config.isBuild && !config.inlineText) {
+                onLoad();
+                return;
+            }
+
+            masterConfig.isBuild = config.isBuild;
+
+            var parsed = text.parseName(name),
+                nonStripName = parsed.moduleName +
+                    (parsed.ext ? '.' + parsed.ext : ''),
+                url = req.toUrl(nonStripName),
+                useXhr = (masterConfig.useXhr) ||
+                         text.useXhr;
+
+            //Load the text. Use XHR if possible and in a browser.
+            if (!hasLocation || useXhr(url, defaultProtocol, defaultHostName, defaultPort)) {
+                text.get(url, function (content) {
+                    text.finishLoad(name, parsed.strip, content, onLoad);
+                }, function (err) {
+                    if (onLoad.error) {
+                        onLoad.error(err);
+                    }
+                });
+            } else {
+                //Need to fetch the resource across domains. Assume
+                //the resource has been optimized into a JS module. Fetch
+                //by the module name + extension, but do not include the
+                //!strip part to avoid file system issues.
+                req([nonStripName], function (content) {
+                    text.finishLoad(parsed.moduleName + '.' + parsed.ext,
+                                    parsed.strip, content, onLoad);
+                });
+            }
+        },
+
+        write: function (pluginName, moduleName, write, config) {
+            if (buildMap.hasOwnProperty(moduleName)) {
+                var content = text.jsEscape(buildMap[moduleName]);
+                write.asModule(pluginName + "!" + moduleName,
+                               "define(function () { return '" +
+                                   content +
+                               "';});\n");
+            }
+        },
+
+        writeFile: function (pluginName, moduleName, req, write, config) {
+            var parsed = text.parseName(moduleName),
+                extPart = parsed.ext ? '.' + parsed.ext : '',
+                nonStripName = parsed.moduleName + extPart,
+                //Use a '.js' file name so that it indicates it is a
+                //script that can be loaded across domains.
+                fileName = req.toUrl(parsed.moduleName + extPart) + '.js';
+
+            //Leverage own load() method to load plugin value, but only
+            //write out values that do not have the strip argument,
+            //to avoid any potential issues with ! in file names.
+            text.load(nonStripName, req, function (value) {
+                //Use own write() method to construct full module value.
+                //But need to create shell that translates writeFile's
+                //write() to the right interface.
+                var textWrite = function (contents) {
+                    return write(fileName, contents);
+                };
+                textWrite.asModule = function (moduleName, contents) {
+                    return write.asModule(moduleName, fileName, contents);
+                };
+
+                text.write(pluginName, nonStripName, textWrite, config);
+            }, config);
+        }
+    };
+
+    if (masterConfig.env === 'node' || (!masterConfig.env &&
+            typeof process !== "undefined" &&
+            process.versions &&
+            !!process.versions.node)) {
+        //Using special require.nodeRequire, something added by r.js.
+        fs = require.nodeRequire('fs');
+
+        text.get = function (url, callback, errback) {
+            try {
+                var file = fs.readFileSync(url, 'utf8');
+                //Remove BOM (Byte Mark Order) from utf8 files if it is there.
+                if (file.indexOf('\uFEFF') === 0) {
+                    file = file.substring(1);
+                }
+                callback(file);
+            } catch (e) {
+                errback(e);
+            }
+        };
+    } else if (masterConfig.env === 'xhr' || (!masterConfig.env &&
+            text.createXhr())) {
+        text.get = function (url, callback, errback, headers) {
+            var xhr = text.createXhr(), header;
+            xhr.open('GET', url, true);
+
+            //Allow plugins direct access to xhr headers
+            if (headers) {
+                for (header in headers) {
+                    if (headers.hasOwnProperty(header)) {
+                        xhr.setRequestHeader(header.toLowerCase(), headers[header]);
+                    }
+                }
+            }
+
+            //Allow overrides specified in config
+            if (masterConfig.onXhr) {
+                masterConfig.onXhr(xhr, url);
+            }
+
+            xhr.onreadystatechange = function (evt) {
+                var status, err;
+                //Do not explicitly handle errors, those should be
+                //visible via console output in the browser.
+                if (xhr.readyState === 4) {
+                    status = xhr.status;
+                    if (status > 399 && status < 600) {
+                        //An http 4xx or 5xx error. Signal an error.
+                        err = new Error(url + ' HTTP status: ' + status);
+                        err.xhr = xhr;
+                        errback(err);
+                    } else {
+                        callback(xhr.responseText);
+                    }
+
+                    if (masterConfig.onXhrComplete) {
+                        masterConfig.onXhrComplete(xhr, url);
+                    }
+                }
+            };
+            xhr.send(null);
+        };
+    } else if (masterConfig.env === 'rhino' || (!masterConfig.env &&
+            typeof Packages !== 'undefined' && typeof java !== 'undefined')) {
+        //Why Java, why is this so awkward?
+        text.get = function (url, callback) {
+            var stringBuffer, line,
+                encoding = "utf-8",
+                file = new java.io.File(url),
+                lineSeparator = java.lang.System.getProperty("line.separator"),
+                input = new java.io.BufferedReader(new java.io.InputStreamReader(new java.io.FileInputStream(file), encoding)),
+                content = '';
+            try {
+                stringBuffer = new java.lang.StringBuffer();
+                line = input.readLine();
+
+                // Byte Order Mark (BOM) - The Unicode Standard, version 3.0, page 324
+                // http://www.unicode.org/faq/utf_bom.html
+
+                // Note that when we use utf-8, the BOM should appear as "EF BB BF", but it doesn't due to this bug in the JDK:
+                // http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=4508058
+                if (line && line.length() && line.charAt(0) === 0xfeff) {
+                    // Eat the BOM, since we've already found the encoding on this file,
+                    // and we plan to concatenating this buffer with others; the BOM should
+                    // only appear at the top of a file.
+                    line = line.substring(1);
+                }
+
+                if (line !== null) {
+                    stringBuffer.append(line);
+                }
+
+                while ((line = input.readLine()) !== null) {
+                    stringBuffer.append(lineSeparator);
+                    stringBuffer.append(line);
+                }
+                //Make sure we return a JavaScript string and not a Java string.
+                content = String(stringBuffer.toString()); //String
+            } finally {
+                input.close();
+            }
+            callback(content);
+        };
+    } else if (masterConfig.env === 'xpconnect' || (!masterConfig.env &&
+            typeof Components !== 'undefined' && Components.classes &&
+            Components.interfaces)) {
+        //Avert your gaze!
+        Cc = Components.classes,
+        Ci = Components.interfaces;
+        Components.utils['import']('resource://gre/modules/FileUtils.jsm');
+
+        text.get = function (url, callback) {
+            var inStream, convertStream,
+                readData = {},
+                fileObj = new FileUtils.File(url);
+
+            //XPCOM, you so crazy
+            try {
+                inStream = Cc['@mozilla.org/network/file-input-stream;1']
+                           .createInstance(Ci.nsIFileInputStream);
+                inStream.init(fileObj, 1, 0, false);
+
+                convertStream = Cc['@mozilla.org/intl/converter-input-stream;1']
+                                .createInstance(Ci.nsIConverterInputStream);
+                convertStream.init(inStream, "utf-8", inStream.available(),
+                Ci.nsIConverterInputStream.DEFAULT_REPLACEMENT_CHARACTER);
+
+                convertStream.readString(inStream.available(), readData);
+                convertStream.close();
+                inStream.close();
+                callback(readData.value);
+            } catch (e) {
+                throw new Error((fileObj && fileObj.path || '') + ': ' + e);
+            }
+        };
+    }
+    return text;
+});
+/**
+ * Durandal 2.1.0 Copyright (c) 2012 Blue Spire Consulting, Inc. All Rights Reserved.
+ * Available via the MIT license.
+ * see: http://durandaljs.com or https://github.com/BlueSpire/Durandal for details.
+ */
+/**
+ * The system module encapsulates the most basic features used by other modules.
+ * @module system
+ * @requires require
+ * @requires jquery
+ */
+define('durandal/system',['require', 'jquery'], function(require, $) {
+    var isDebugging = false,
+        nativeKeys = Object.keys,
+        hasOwnProperty = Object.prototype.hasOwnProperty,
+        toString = Object.prototype.toString,
+        system,
+        treatAsIE8 = false,
+        nativeIsArray = Array.isArray,
+        slice = Array.prototype.slice;
+
+    //polyfill from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
+    if (!String.prototype.trim) {
+        String.prototype.trim = function () {
+            return this.replace(/^\s+|\s+$/g, '');
+        };
+    }
+
+    //see http://patik.com/blog/complete-cross-browser-console-log/
+    // Tell IE9 to use its built-in console
+    if (Function.prototype.bind && (typeof console === 'object' || typeof console === 'function') && typeof console.log == 'object') {
+        try {
+            ['log', 'info', 'warn', 'error', 'assert', 'dir', 'clear', 'profile', 'profileEnd']
+                .forEach(function(method) {
+                    console[method] = this.call(console[method], console);
+                }, Function.prototype.bind);
+        } catch (ex) {
+            treatAsIE8 = true;
+        }
+    }
+
+    // callback for dojo's loader 
+    // note: if you wish to use Durandal with dojo's AMD loader,
+    // currently you must fork the dojo source with the following
+    // dojo/dojo.js, line 1187, the last line of the finishExec() function: 
+    //  (add) signal("moduleLoaded", [module.result, module.mid]);
+    // an enhancement request has been submitted to dojo to make this
+    // a permanent change. To view the status of this request, visit:
+    // http://bugs.dojotoolkit.org/ticket/16727
+
+    if (require.on) {
+        require.on("moduleLoaded", function(module, mid) {
+            system.setModuleId(module, mid);
+        });
+    }
+
+    // callback for require.js loader
+    if (typeof requirejs !== 'undefined') {
+        requirejs.onResourceLoad = function(context, map, depArray) {
+            system.setModuleId(context.defined[map.id], map.id);
+        };
+    }
+
+    var noop = function() { };
+
+    var log = function() {
+        try {
+            // Modern browsers
+            if (typeof console != 'undefined' && typeof console.log == 'function') {
+                // Opera 11
+                if (window.opera) {
+                    var i = 0;
+                    while (i < arguments.length) {
+                        console.log('Item ' + (i + 1) + ': ' + arguments[i]);
+                        i++;
+                    }
+                }
+                // All other modern browsers
+                else if ((slice.call(arguments)).length == 1 && typeof slice.call(arguments)[0] == 'string') {
+                    console.log((slice.call(arguments)).toString());
+                } else {
+                    console.log.apply(console, slice.call(arguments));
+                }
+            }
+            // IE8
+            else if ((!Function.prototype.bind || treatAsIE8) && typeof console != 'undefined' && typeof console.log == 'object') {
+                Function.prototype.call.call(console.log, console, slice.call(arguments));
+            }
+
+            // IE7 and lower, and other old browsers
+        } catch (ignore) { }
+    };
+
+    var logError = function(error, err) {
+        var exception;
+        
+        if(error instanceof Error){
+            exception = error;
+        } else {
+            exception = new Error(error);
+        }
+        
+        exception.innerError = err;
+        
+        //Report the error as an error, not as a log
+        try {
+            // Modern browsers (it's only a single item, no need for argument splitting as in log() above)
+            if (typeof console != 'undefined' && typeof console.error == 'function') {
+                console.error(exception);
+            }
+            // IE8
+            else if ((!Function.prototype.bind || treatAsIE8) && typeof console != 'undefined' && typeof console.error == 'object') {
+                Function.prototype.call.call(console.error, console, exception);
+            }
+            // IE7 and lower, and other old browsers
+        } catch (ignore) { }
+
+        throw exception;
+    };
+
+    /**
+     * @class SystemModule
+     * @static
+     */
+    system = {
+        /**
+         * Durandal's version.
+         * @property {string} version
+         */
+        version: "2.1.0",
+        /**
+         * A noop function.
+         * @method noop
+         */
+        noop: noop,
+        /**
+         * Gets the module id for the specified object.
+         * @method getModuleId
+         * @param {object} obj The object whose module id you wish to determine.
+         * @return {string} The module id.
+         */
+        getModuleId: function(obj) {
+            if (!obj) {
+                return null;
+            }
+
+            if (typeof obj == 'function' && obj.prototype) {
+                return obj.prototype.__moduleId__;
+            }
+
+            if (typeof obj == 'string') {
+                return null;
+            }
+
+            return obj.__moduleId__;
+        },
+        /**
+         * Sets the module id for the specified object.
+         * @method setModuleId
+         * @param {object} obj The object whose module id you wish to set.
+         * @param {string} id The id to set for the specified object.
+         */
+        setModuleId: function(obj, id) {
+            if (!obj) {
+                return;
+            }
+
+            if (typeof obj == 'function' && obj.prototype) {
+                obj.prototype.__moduleId__ = id;
+                return;
+            }
+
+            if (typeof obj == 'string') {
+                return;
+            }
+
+            obj.__moduleId__ = id;
+        },
+        /**
+         * Resolves the default object instance for a module. If the module is an object, the module is returned. If the module is a function, that function is called with `new` and it's result is returned.
+         * @method resolveObject
+         * @param {object} module The module to use to get/create the default object for.
+         * @return {object} The default object for the module.
+         */
+        resolveObject: function(module) {
+            if (system.isFunction(module)) {
+                return new module();
+            } else {
+                return module;
+            }
+        },
+        /**
+         * Gets/Sets whether or not Durandal is in debug mode.
+         * @method debug
+         * @param {boolean} [enable] Turns on/off debugging.
+         * @return {boolean} Whether or not Durandal is current debugging.
+         */
+        debug: function(enable) {
+            if (arguments.length == 1) {
+                isDebugging = enable;
+                if (isDebugging) {
+                    this.log = log;
+                    this.error = logError;
+                    this.log('Debug:Enabled');
+                } else {
+                    this.log('Debug:Disabled');
+                    this.log = noop;
+                    this.error = noop;
+                }
+            }
+
+            return isDebugging;
+        },
+        /**
+         * Logs data to the console. Pass any number of parameters to be logged. Log output is not processed if the framework is not running in debug mode.
+         * @method log
+         * @param {object} info* The objects to log.
+         */
+        log: noop,
+        /**
+         * Logs an error.
+         * @method error
+         * @param {string|Error} obj The error to report.
+         */
+        error: noop,
+        /**
+         * Asserts a condition by throwing an error if the condition fails.
+         * @method assert
+         * @param {boolean} condition The condition to check.
+         * @param {string} message The message to report in the error if the condition check fails.
+         */
+        assert: function (condition, message) {
+            if (!condition) {
+                system.error(new Error(message || 'Assert:Failed'));
+            }
+        },
+        /**
+         * Creates a deferred object which can be used to create a promise. Optionally pass a function action to perform which will be passed an object used in resolving the promise.
+         * @method defer
+         * @param {function} [action] The action to defer. You will be passed the deferred object as a paramter.
+         * @return {Deferred} The deferred object.
+         */
+        defer: function(action) {
+            return $.Deferred(action);
+        },
+        /**
+         * Creates a simple V4 UUID. This should not be used as a PK in your database. It can be used to generate internal, unique ids. For a more robust solution see [node-uuid](https://github.com/broofa/node-uuid).
+         * @method guid
+         * @return {string} The guid.
+         */
+        guid: function() {
+            var d = new Date().getTime();
+            return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+                var r = (d + Math.random() * 16) % 16 | 0;
+                d = Math.floor(d/16);
+                return (c == 'x' ? r : (r & 0x7 | 0x8)).toString(16);
+            });
+        },
+        /**
+         * Uses require.js to obtain a module. This function returns a promise which resolves with the module instance. You can pass more than one module id to this function or an array of ids. If more than one or an array is passed, then the promise will resolve with an array of module instances.
+         * @method acquire
+         * @param {string|string[]} moduleId The id(s) of the modules to load.
+         * @return {Promise} A promise for the loaded module(s).
+         */
+        acquire: function() {
+            var modules,
+                first = arguments[0],
+                arrayRequest = false;
+
+            if(system.isArray(first)){
+                modules = first;
+                arrayRequest = true;
+            }else{
+                modules = slice.call(arguments, 0);
+            }
+
+            return this.defer(function(dfd) {
+                require(modules, function() {
+                    var args = arguments;
+                    setTimeout(function() {
+                        if(args.length > 1 || arrayRequest){
+                            dfd.resolve(slice.call(args, 0));
+                        }else{
+                            dfd.resolve(args[0]);
+                        }
+                    }, 1);
+                }, function(err){
+                    dfd.reject(err);
+                });
+            }).promise();
+        },
+        /**
+         * Extends the first object with the properties of the following objects.
+         * @method extend
+         * @param {object} obj The target object to extend.
+         * @param {object} extension* Uses to extend the target object.
+         */
+        extend: function(obj) {
+            var rest = slice.call(arguments, 1);
+
+            for (var i = 0; i < rest.length; i++) {
+                var source = rest[i];
+
+                if (source) {
+                    for (var prop in source) {
+                        obj[prop] = source[prop];
+                    }
+                }
+            }
+
+            return obj;
+        },
+        /**
+         * Uses a setTimeout to wait the specified milliseconds.
+         * @method wait
+         * @param {number} milliseconds The number of milliseconds to wait.
+         * @return {Promise}
+         */
+        wait: function(milliseconds) {
+            return system.defer(function(dfd) {
+                setTimeout(dfd.resolve, milliseconds);
+            }).promise();
+        }
+    };
+
+    /**
+     * Gets all the owned keys of the specified object.
+     * @method keys
+     * @param {object} object The object whose owned keys should be returned.
+     * @return {string[]} The keys.
+     */
+    system.keys = nativeKeys || function(obj) {
+        if (obj !== Object(obj)) {
+            throw new TypeError('Invalid object');
+        }
+
+        var keys = [];
+
+        for (var key in obj) {
+            if (hasOwnProperty.call(obj, key)) {
+                keys[keys.length] = key;
+            }
+        }
+
+        return keys;
+    };
+
+    /**
+     * Determines if the specified object is an html element.
+     * @method isElement
+     * @param {object} object The object to check.
+     * @return {boolean} True if matches the type, false otherwise.
+     */
+    system.isElement = function(obj) {
+        return !!(obj && obj.nodeType === 1);
+    };
+
+    /**
+     * Determines if the specified object is an array.
+     * @method isArray
+     * @param {object} object The object to check.
+     * @return {boolean} True if matches the type, false otherwise.
+     */
+    system.isArray = nativeIsArray || function(obj) {
+        return toString.call(obj) == '[object Array]';
+    };
+
+    /**
+     * Determines if the specified object is...an object. ie. Not an array, string, etc.
+     * @method isObject
+     * @param {object} object The object to check.
+     * @return {boolean} True if matches the type, false otherwise.
+     */
+    system.isObject = function(obj) {
+        return obj === Object(obj);
+    };
+
+    /**
+     * Determines if the specified object is a boolean.
+     * @method isBoolean
+     * @param {object} object The object to check.
+     * @return {boolean} True if matches the type, false otherwise.
+     */
+    system.isBoolean = function(obj) {
+        return typeof(obj) === "boolean";
+    };
+
+    /**
+     * Determines if the specified object is a promise.
+     * @method isPromise
+     * @param {object} object The object to check.
+     * @return {boolean} True if matches the type, false otherwise.
+     */
+    system.isPromise = function(obj) {
+        return obj && system.isFunction(obj.then);
+    };
+
+    /**
+     * Determines if the specified object is a function arguments object.
+     * @method isArguments
+     * @param {object} object The object to check.
+     * @return {boolean} True if matches the type, false otherwise.
+     */
+
+    /**
+     * Determines if the specified object is a function.
+     * @method isFunction
+     * @param {object} object The object to check.
+     * @return {boolean} True if matches the type, false otherwise.
+     */
+
+    /**
+     * Determines if the specified object is a string.
+     * @method isString
+     * @param {object} object The object to check.
+     * @return {boolean} True if matches the type, false otherwise.
+     */
+
+    /**
+     * Determines if the specified object is a number.
+     * @method isNumber
+     * @param {object} object The object to check.
+     * @return {boolean} True if matches the type, false otherwise.
+     */
+
+    /**
+     * Determines if the specified object is a date.
+     * @method isDate
+     * @param {object} object The object to check.
+     * @return {boolean} True if matches the type, false otherwise.
+     */
+
+    /**
+     * Determines if the specified object is a boolean.
+     * @method isBoolean
+     * @param {object} object The object to check.
+     * @return {boolean} True if matches the type, false otherwise.
+     */
+
+    //isArguments, isFunction, isString, isNumber, isDate, isRegExp.
+    var isChecks = ['Arguments', 'Function', 'String', 'Number', 'Date', 'RegExp'];
+
+    function makeIsFunction(name) {
+        var value = '[object ' + name + ']';
+        system['is' + name] = function(obj) {
+            return toString.call(obj) == value;
+        };
+    }
+
+    for (var i = 0; i < isChecks.length; i++) {
+        makeIsFunction(isChecks[i]);
+    }
+
+    return system;
+});
+
+/**
+ * Durandal 2.1.0 Copyright (c) 2012 Blue Spire Consulting, Inc. All Rights Reserved.
+ * Available via the MIT license.
+ * see: http://durandaljs.com or https://github.com/BlueSpire/Durandal for details.
+ */
+/**
+ * The viewEngine module provides information to the viewLocator module which is used to locate the view's source file. The viewEngine also transforms a view id into a view instance.
+ * @module viewEngine
+ * @requires system
+ * @requires jquery
+ */
+define('durandal/viewEngine',['durandal/system', 'jquery'], function (system, $) {
+    var parseMarkup;
+
+    if ($.parseHTML) {
+        parseMarkup = function (html) {
+            return $.parseHTML(html);
+        };
+    } else {
+        parseMarkup = function (html) {
+            return $(html).get();
+        };
+    }
+
+    /**
+     * @class ViewEngineModule
+     * @static
+     */
+    return {
+        cache:{},
+        /**
+         * The file extension that view source files are expected to have.
+         * @property {string} viewExtension
+         * @default .html
+         */
+        viewExtension: '.html',
+        /**
+         * The name of the RequireJS loader plugin used by the viewLocator to obtain the view source. (Use requirejs to map the plugin's full path).
+         * @property {string} viewPlugin
+         * @default text
+         */
+        viewPlugin: 'text',
+        /**
+         * Parameters passed to the RequireJS loader plugin used by the viewLocator to obtain the view source.
+         * @property {string} viewPluginParameters
+         * @default The empty string by default.
+         */
+        viewPluginParameters: '',
+        /**
+         * Determines if the url is a url for a view, according to the view engine.
+         * @method isViewUrl
+         * @param {string} url The potential view url.
+         * @return {boolean} True if the url is a view url, false otherwise.
+         */
+        isViewUrl: function (url) {
+            return url.indexOf(this.viewExtension, url.length - this.viewExtension.length) !== -1;
+        },
+        /**
+         * Converts a view url into a view id.
+         * @method convertViewUrlToViewId
+         * @param {string} url The url to convert.
+         * @return {string} The view id.
+         */
+        convertViewUrlToViewId: function (url) {
+            return url.substring(0, url.length - this.viewExtension.length);
+        },
+        /**
+         * Converts a view id into a full RequireJS path.
+         * @method convertViewIdToRequirePath
+         * @param {string} viewId The view id to convert.
+         * @return {string} The require path.
+         */
+        convertViewIdToRequirePath: function (viewId) {
+            var plugin = this.viewPlugin ? this.viewPlugin + '!' : '';
+            return plugin + viewId + this.viewExtension + this.viewPluginParameters;
+        },
+        /**
+         * Parses the view engine recognized markup and returns DOM elements.
+         * @method parseMarkup
+         * @param {string} markup The markup to parse.
+         * @return {DOMElement[]} The elements.
+         */
+        parseMarkup: parseMarkup,
+        /**
+         * Calls `parseMarkup` and then pipes the results through `ensureSingleElement`.
+         * @method processMarkup
+         * @param {string} markup The markup to process.
+         * @return {DOMElement} The view.
+         */
+        processMarkup: function (markup) {
+            var allElements = this.parseMarkup(markup);
+            return this.ensureSingleElement(allElements);
+        },
+        /**
+         * Converts an array of elements into a single element. White space and comments are removed. If a single element does not remain, then the elements are wrapped.
+         * @method ensureSingleElement
+         * @param {DOMElement[]} allElements The elements.
+         * @return {DOMElement} A single element.
+         */
+        ensureSingleElement:function(allElements){
+            if (allElements.length == 1) {
+                return allElements[0];
+            }
+
+            var withoutCommentsOrEmptyText = [];
+
+            for (var i = 0; i < allElements.length; i++) {
+                var current = allElements[i];
+                if (current.nodeType != 8) {
+                    if (current.nodeType == 3) {
+                        var result = /\S/.test(current.nodeValue);
+                        if (!result) {
+                            continue;
+                        }
+                    }
+
+                    withoutCommentsOrEmptyText.push(current);
+                }
+            }
+
+            if (withoutCommentsOrEmptyText.length > 1) {
+                return $(withoutCommentsOrEmptyText).wrapAll('<div class="durandal-wrapper"></div>').parent().get(0);
+            }
+
+            return withoutCommentsOrEmptyText[0];
+        },
+        /**
+         * Gets the view associated with the id from the cache of parsed views.
+         * @method tryGetViewFromCache
+         * @param {string} id The view id to lookup in the cache.
+         * @return {DOMElement|null} The cached view or null if it's not in the cache.
+         */
+        tryGetViewFromCache:function(id) {
+            return this.cache[id];
+        },
+        /**
+         * Puts the view associated with the id into the cache of parsed views.
+         * @method putViewInCache
+         * @param {string} id The view id whose view should be cached.
+         * @param {DOMElement} view The view to cache.
+         */
+        putViewInCache: function (id, view) {
+            this.cache[id] = view;
+        },
+        /**
+         * Creates the view associated with the view id.
+         * @method createView
+         * @param {string} viewId The view id whose view should be created.
+         * @return {Promise} A promise of the view.
+         */
+        createView: function(viewId) {
+            var that = this;
+            var requirePath = this.convertViewIdToRequirePath(viewId);
+            var existing = this.tryGetViewFromCache(requirePath);
+
+            if (existing) {
+                return system.defer(function(dfd) {
+                    dfd.resolve(existing.cloneNode(true));
+                }).promise();
+            }
+
+            return system.defer(function(dfd) {
+                system.acquire(requirePath).then(function(markup) {
+                    var element = that.processMarkup(markup);
+                    element.setAttribute('data-view', viewId);
+                    that.putViewInCache(requirePath, element);
+                    dfd.resolve(element.cloneNode(true));
+                }).fail(function(err) {
+                    that.createFallbackView(viewId, requirePath, err).then(function(element) {
+                        element.setAttribute('data-view', viewId);
+                        that.cache[requirePath] = element;
+                        dfd.resolve(element.cloneNode(true));
+                    });
+                });
+            }).promise();
+        },
+        /**
+         * Called when a view cannot be found to provide the opportunity to locate or generate a fallback view. Mainly used to ease development.
+         * @method createFallbackView
+         * @param {string} viewId The view id whose view should be created.
+         * @param {string} requirePath The require path that was attempted.
+         * @param {Error} requirePath The error that was returned from the attempt to locate the default view.
+         * @return {Promise} A promise for the fallback view.
+         */
+        createFallbackView: function (viewId, requirePath, err) {
+            var that = this,
+                message = 'View Not Found. Searched for "' + viewId + '" via path "' + requirePath + '".';
+
+            return system.defer(function(dfd) {
+                dfd.resolve(that.processMarkup('<div class="durandal-view-404">' + message + '</div>'));
+            }).promise();
+        }
+    };
+});
+
+/**
+ * Durandal 2.1.0 Copyright (c) 2012 Blue Spire Consulting, Inc. All Rights Reserved.
+ * Available via the MIT license.
+ * see: http://durandaljs.com or https://github.com/BlueSpire/Durandal for details.
+ */
+/**
+ * The viewLocator module collaborates with the viewEngine module to provide views (literally dom sub-trees) to other parts of the framework as needed. The primary consumer of the viewLocator is the composition module.
+ * @module viewLocator
+ * @requires system
+ * @requires viewEngine
+ */
+define('durandal/viewLocator',['durandal/system', 'durandal/viewEngine'], function (system, viewEngine) {
+    function findInElements(nodes, url) {
+        for (var i = 0; i < nodes.length; i++) {
+            var current = nodes[i];
+            var existingUrl = current.getAttribute('data-view');
+            if (existingUrl == url) {
+                return current;
+            }
+        }
+    }
+    
+    function escape(str) {
+        return (str + '').replace(/([\\\.\+\*\?\[\^\]\$\(\)\{\}\=\!\<\>\|\:])/g, "\\$1");
+    }
+
+    /**
+     * @class ViewLocatorModule
+     * @static
+     */
+    return {
+        /**
+         * Allows you to set up a convention for mapping module folders to view folders. It is a convenience method that customizes `convertModuleIdToViewId` and `translateViewIdToArea` under the covers.
+         * @method useConvention
+         * @param {string} [modulesPath] A string to match in the path and replace with the viewsPath. If not specified, the match is 'viewmodels'.
+         * @param {string} [viewsPath] The replacement for the modulesPath. If not specified, the replacement is 'views'.
+         * @param {string} [areasPath] Partial views are mapped to the "views" folder if not specified. Use this parameter to change their location.
+         */
+        useConvention: function(modulesPath, viewsPath, areasPath) {
+            modulesPath = modulesPath || 'viewmodels';
+            viewsPath = viewsPath || 'views';
+            areasPath = areasPath || viewsPath;
+
+            var reg = new RegExp(escape(modulesPath), 'gi');
+
+            this.convertModuleIdToViewId = function (moduleId) {
+                return moduleId.replace(reg, viewsPath);
+            };
+
+            this.translateViewIdToArea = function (viewId, area) {
+                if (!area || area == 'partial') {
+                    return areasPath + '/' + viewId;
+                }
+                
+                return areasPath + '/' + area + '/' + viewId;
+            };
+        },
+        /**
+         * Maps an object instance to a view instance.
+         * @method locateViewForObject
+         * @param {object} obj The object to locate the view for.
+         * @param {string} [area] The area to translate the view to.
+         * @param {DOMElement[]} [elementsToSearch] An existing set of elements to search first.
+         * @return {Promise} A promise of the view.
+         */
+        locateViewForObject: function(obj, area, elementsToSearch) {
+            var view;
+
+            if (obj.getView) {
+                view = obj.getView();
+                if (view) {
+                    return this.locateView(view, area, elementsToSearch);
+                }
+            }
+
+            if (obj.viewUrl) {
+                return this.locateView(obj.viewUrl, area, elementsToSearch);
+            }
+
+            var id = system.getModuleId(obj);
+            if (id) {
+                return this.locateView(this.convertModuleIdToViewId(id), area, elementsToSearch);
+            }
+
+            return this.locateView(this.determineFallbackViewId(obj), area, elementsToSearch);
+        },
+        /**
+         * Converts a module id into a view id. By default the ids are the same.
+         * @method convertModuleIdToViewId
+         * @param {string} moduleId The module id.
+         * @return {string} The view id.
+         */
+        convertModuleIdToViewId: function(moduleId) {
+            return moduleId;
+        },
+        /**
+         * If no view id can be determined, this function is called to genreate one. By default it attempts to determine the object's type and use that.
+         * @method determineFallbackViewId
+         * @param {object} obj The object to determine the fallback id for.
+         * @return {string} The view id.
+         */
+        determineFallbackViewId: function (obj) {
+            var funcNameRegex = /function (.{1,})\(/;
+            var results = (funcNameRegex).exec((obj).constructor.toString());
+            var typeName = (results && results.length > 1) ? results[1] : "";
+            typeName = typeName.trim();
+            return 'views/' + typeName;
+        },
+        /**
+         * Takes a view id and translates it into a particular area. By default, no translation occurs.
+         * @method translateViewIdToArea
+         * @param {string} viewId The view id.
+         * @param {string} area The area to translate the view to.
+         * @return {string} The translated view id.
+         */
+        translateViewIdToArea: function (viewId, area) {
+            return viewId;
+        },
+        /**
+         * Locates the specified view.
+         * @method locateView
+         * @param {string|DOMElement} viewOrUrlOrId A view, view url or view id to locate.
+         * @param {string} [area] The area to translate the view to.
+         * @param {DOMElement[]} [elementsToSearch] An existing set of elements to search first.
+         * @return {Promise} A promise of the view.
+         */
+        locateView: function(viewOrUrlOrId, area, elementsToSearch) {
+            if (typeof viewOrUrlOrId === 'string') {
+                var viewId;
+
+                if (viewEngine.isViewUrl(viewOrUrlOrId)) {
+                    viewId = viewEngine.convertViewUrlToViewId(viewOrUrlOrId);
+                } else {
+                    viewId = viewOrUrlOrId;
+                }
+
+                if (area) {
+                    viewId = this.translateViewIdToArea(viewId, area);
+                }
+
+                if (elementsToSearch) {
+                    var existing = findInElements(elementsToSearch, viewId);
+                    if (existing) {
+                        return system.defer(function(dfd) {
+                            dfd.resolve(existing);
+                        }).promise();
+                    }
+                }
+
+                return viewEngine.createView(viewId);
+            }
+
+            return system.defer(function(dfd) {
+                dfd.resolve(viewOrUrlOrId);
+            }).promise();
+        }
+    };
+});
+
+/**
+ * Durandal 2.1.0 Copyright (c) 2012 Blue Spire Consulting, Inc. All Rights Reserved.
+ * Available via the MIT license.
+ * see: http://durandaljs.com or https://github.com/BlueSpire/Durandal for details.
+ */
+/**
+ * The binder joins an object instance and a DOM element tree by applying databinding and/or invoking binding lifecycle callbacks (binding and bindingComplete).
+ * @module binder
+ * @requires system
+ * @requires knockout
+ */
+define('durandal/binder',['durandal/system', 'knockout'], function (system, ko) {
+    var binder,
+        insufficientInfoMessage = 'Insufficient Information to Bind',
+        unexpectedViewMessage = 'Unexpected View Type',
+        bindingInstructionKey = 'durandal-binding-instruction',
+        koBindingContextKey = '__ko_bindingContext__';
+
+    function normalizeBindingInstruction(result){
+        if(result === undefined){
+            return { applyBindings: true };
+        }
+
+        if(system.isBoolean(result)){
+            return { applyBindings:result };
+        }
+
+        if(result.applyBindings === undefined){
+            result.applyBindings = true;
+        }
+
+        return result;
+    }
+
+    function doBind(obj, view, bindingTarget, data){
+        if (!view || !bindingTarget) {
+            if (binder.throwOnErrors) {
+                system.error(insufficientInfoMessage);
+            } else {
+                system.log(insufficientInfoMessage, view, data);
+            }
+            return;
+        }
+
+        if (!view.getAttribute) {
+            if (binder.throwOnErrors) {
+                system.error(unexpectedViewMessage);
+            } else {
+                system.log(unexpectedViewMessage, view, data);
+            }
+            return;
+        }
+
+        var viewName = view.getAttribute('data-view');
+
+        try {
+            var instruction;
+
+            if (obj && obj.binding) {
+                instruction = obj.binding(view);
+            }
+
+            instruction = normalizeBindingInstruction(instruction);
+            binder.binding(data, view, instruction);
+
+            if(instruction.applyBindings){
+                system.log('Binding', viewName, data);
+                ko.applyBindings(bindingTarget, view);
+            }else if(obj){
+                ko.utils.domData.set(view, koBindingContextKey, { $data:obj });
+            }
+
+            binder.bindingComplete(data, view, instruction);
+
+            if (obj && obj.bindingComplete) {
+                obj.bindingComplete(view);
+            }
+
+            ko.utils.domData.set(view, bindingInstructionKey, instruction);
+            return instruction;
+        } catch (e) {
+            e.message = e.message + ';\nView: ' + viewName + ";\nModuleId: " + system.getModuleId(data);
+            if (binder.throwOnErrors) {
+                system.error(e);
+            } else {
+                system.log(e.message);
+            }
+        }
+    }
+
+    /**
+     * @class BinderModule
+     * @static
+     */
+    return binder = {
+        /**
+         * Called before every binding operation. Does nothing by default.
+         * @method binding
+         * @param {object} data The data that is about to be bound.
+         * @param {DOMElement} view The view that is about to be bound.
+         * @param {object} instruction The object that carries the binding instructions.
+         */
+        binding: system.noop,
+        /**
+         * Called after every binding operation. Does nothing by default.
+         * @method bindingComplete
+         * @param {object} data The data that has just been bound.
+         * @param {DOMElement} view The view that has just been bound.
+         * @param {object} instruction The object that carries the binding instructions.
+         */
+        bindingComplete: system.noop,
+        /**
+         * Indicates whether or not the binding system should throw errors or not.
+         * @property {boolean} throwOnErrors
+         * @default false The binding system will not throw errors by default. Instead it will log them.
+         */
+        throwOnErrors: false,
+        /**
+         * Gets the binding instruction that was associated with a view when it was bound.
+         * @method getBindingInstruction
+         * @param {DOMElement} view The view that was previously bound.
+         * @return {object} The object that carries the binding instructions.
+         */
+        getBindingInstruction:function(view){
+            return ko.utils.domData.get(view, bindingInstructionKey);
+        },
+        /**
+         * Binds the view, preserving the existing binding context. Optionally, a new context can be created, parented to the previous context.
+         * @method bindContext
+         * @param {KnockoutBindingContext} bindingContext The current binding context.
+         * @param {DOMElement} view The view to bind.
+         * @param {object} [obj] The data to bind to, causing the creation of a child binding context if present.
+         * @param {string} [dataAlias] An alias for $data if present.
+         */
+        bindContext: function(bindingContext, view, obj, dataAlias) {
+            if (obj && bindingContext) {
+                bindingContext = bindingContext.createChildContext(obj, typeof(dataAlias) === 'string' ? dataAlias : null);
+            }
+
+            return doBind(obj, view, bindingContext, obj || (bindingContext ? bindingContext.$data : null));
+        },
+        /**
+         * Binds the view, preserving the existing binding context. Optionally, a new context can be created, parented to the previous context.
+         * @method bind
+         * @param {object} obj The data to bind to.
+         * @param {DOMElement} view The view to bind.
+         */
+        bind: function(obj, view) {
+            return doBind(obj, view, obj, obj);
+        }
+    };
+});
+
+/**
+ * Durandal 2.1.0 Copyright (c) 2012 Blue Spire Consulting, Inc. All Rights Reserved.
+ * Available via the MIT license.
+ * see: http://durandaljs.com or https://github.com/BlueSpire/Durandal for details.
+ */
+/**
+ * The activator module encapsulates all logic related to screen/component activation.
+ * An activator is essentially an asynchronous state machine that understands a particular state transition protocol.
+ * The protocol ensures that the following series of events always occur: `canDeactivate` (previous state), `canActivate` (new state), `deactivate` (previous state), `activate` (new state).
+ * Each of the _can_ callbacks may return a boolean, affirmative value or promise for one of those. If either of the _can_ functions yields a false result, then activation halts.
+ * @module activator
+ * @requires system
+ * @requires knockout
+ */
+define('durandal/activator',['durandal/system', 'knockout'], function (system, ko) {
+    var activator;
+    var defaultOptions = {
+        canDeactivate:true
+    };
+
+    function ensureSettings(settings) {
+        if (settings == undefined) {
+            settings = {};
+        }
+
+        if (!system.isBoolean(settings.closeOnDeactivate)) {
+            settings.closeOnDeactivate = activator.defaults.closeOnDeactivate;
+        }
+
+        if (!settings.beforeActivate) {
+            settings.beforeActivate = activator.defaults.beforeActivate;
+        }
+
+        if (!settings.afterDeactivate) {
+            settings.afterDeactivate = activator.defaults.afterDeactivate;
+        }
+
+        if(!settings.affirmations){
+            settings.affirmations = activator.defaults.affirmations;
+        }
+
+        if (!settings.interpretResponse) {
+            settings.interpretResponse = activator.defaults.interpretResponse;
+        }
+
+        if (!settings.areSameItem) {
+            settings.areSameItem = activator.defaults.areSameItem;
+        }
+
+        if (!settings.findChildActivator) {
+            settings.findChildActivator = activator.defaults.findChildActivator;
+        }
+
+        return settings;
+    }
+
+    function invoke(target, method, data) {
+        if (system.isArray(data)) {
+            return target[method].apply(target, data);
+        }
+
+        return target[method](data);
+    }
+
+    function deactivate(item, close, settings, dfd, setter) {
+        if (item && item.deactivate) {
+            system.log('Deactivating', item);
+
+            var result;
+            try {
+                result = item.deactivate(close);
+            } catch(error) {
+                system.log('ERROR: ' + error.message, error);
+                dfd.resolve(false);
+                return;
+            }
+
+            if (result && result.then) {
+                result.then(function() {
+                    settings.afterDeactivate(item, close, setter);
+                    dfd.resolve(true);
+                }, function(reason) {
+                    system.log(reason);
+                    dfd.resolve(false);
+                });
+            } else {
+                settings.afterDeactivate(item, close, setter);
+                dfd.resolve(true);
+            }
+        } else {
+            if (item) {
+                settings.afterDeactivate(item, close, setter);
+            }
+
+            dfd.resolve(true);
+        }
+    }
+
+    function activate(newItem, activeItem, callback, activationData) {
+        var result;
+
+        if(newItem && newItem.activate) {
+            system.log('Activating', newItem);
+
+            try {
+                result = invoke(newItem, 'activate', activationData);
+            } catch(error) {
+                system.log('ERROR: ' + error.message, error);
+                callback(false);
+                return;
+            }
+        }
+
+        if(result && result.then) {
+            result.then(function() {
+                activeItem(newItem);
+                callback(true);
+            }, function(reason) {
+                system.log('ERROR: ' + reason.message, reason);
+                callback(false);
+            });
+        } else {
+            activeItem(newItem);
+            callback(true);
+        }
+    }
+
+    function canDeactivateItem(item, close, settings, options) {
+        options = system.extend({}, defaultOptions, options);
+        settings.lifecycleData = null;
+
+        return system.defer(function (dfd) {
+            function continueCanDeactivate() {
+                if (item && item.canDeactivate && options.canDeactivate) {
+                    var resultOrPromise;
+                    try {
+                        resultOrPromise = item.canDeactivate(close);
+                    } catch (error) {
+                        system.log('ERROR: ' + error.message, error);
+                        dfd.resolve(false);
+                        return;
+                    }
+
+                    if (resultOrPromise.then) {
+                        resultOrPromise.then(function (result) {
+                            settings.lifecycleData = result;
+                            dfd.resolve(settings.interpretResponse(result));
+                        }, function (reason) {
+                            system.log('ERROR: ' + reason.message, reason);
+                            dfd.resolve(false);
+                        });
+                    } else {
+                        settings.lifecycleData = resultOrPromise;
+                        dfd.resolve(settings.interpretResponse(resultOrPromise));
+                    }
+                } else {
+                    dfd.resolve(true);
+                }
+            }
+
+            var childActivator = settings.findChildActivator(item);
+            if (childActivator) {
+                childActivator.canDeactivate().then(function(result) {
+                    if (result) {
+                        continueCanDeactivate();
+                    } else {
+                        dfd.resolve(false);
+                    }
+                });
+            } else {
+                continueCanDeactivate();
+            }
+        }).promise();
+    };
+
+    function canActivateItem(newItem, activeItem, settings, activeData, newActivationData) {
+        settings.lifecycleData = null;
+
+        return system.defer(function (dfd) {
+            if (settings.areSameItem(activeItem(), newItem, activeData, newActivationData)) {
+                dfd.resolve(true);
+                return;
+            }
+
+            if (newItem && newItem.canActivate) {
+                var resultOrPromise;
+                try {
+                    resultOrPromise = invoke(newItem, 'canActivate', newActivationData);
+                } catch (error) {
+                    system.log('ERROR: ' + error.message, error);
+                    dfd.resolve(false);
+                    return;
+                }
+
+                if (resultOrPromise.then) {
+                    resultOrPromise.then(function(result) {
+                        settings.lifecycleData = result;
+                        dfd.resolve(settings.interpretResponse(result));
+                    }, function(reason) {
+                        system.log('ERROR: ' + reason.message, reason);
+                        dfd.resolve(false);
+                    });
+                } else {
+                    settings.lifecycleData = resultOrPromise;
+                    dfd.resolve(settings.interpretResponse(resultOrPromise));
+                }
+            } else {
+                dfd.resolve(true);
+            }
+        }).promise();
+    };
+
+    /**
+     * An activator is a read/write computed observable that enforces the activation lifecycle whenever changing values.
+     * @class Activator
+     */
+    function createActivator(initialActiveItem, settings) {
+        var activeItem = ko.observable(null);
+        var activeData;
+
+        settings = ensureSettings(settings);
+
+        var computed = ko.computed({
+            read: function () {
+                return activeItem();
+            },
+            write: function (newValue) {
+                computed.viaSetter = true;
+                computed.activateItem(newValue);
+            }
+        });
+
+        computed.__activator__ = true;
+
+        /**
+         * The settings for this activator.
+         * @property {ActivatorSettings} settings
+         */
+        computed.settings = settings;
+        settings.activator = computed;
+
+        /**
+         * An observable which indicates whether or not the activator is currently in the process of activating an instance.
+         * @method isActivating
+         * @return {boolean}
+         */
+        computed.isActivating = ko.observable(false);
+
+        computed.forceActiveItem = function (item) {
+            activeItem(item);
+        };
+
+        /**
+         * Determines whether or not the specified item can be deactivated.
+         * @method canDeactivateItem
+         * @param {object} item The item to check.
+         * @param {boolean} close Whether or not to check if close is possible.
+         * @param {object} options Options for controlling the activation process.
+         * @return {promise}
+         */
+        computed.canDeactivateItem = function (item, close, options) {
+            return canDeactivateItem(item, close, settings, options);
+        };
+
+        /**
+         * Deactivates the specified item.
+         * @method deactivateItem
+         * @param {object} item The item to deactivate.
+         * @param {boolean} close Whether or not to close the item.
+         * @return {promise}
+         */
+        computed.deactivateItem = function (item, close) {
+            return system.defer(function(dfd) {
+                computed.canDeactivateItem(item, close).then(function(canDeactivate) {
+                    if (canDeactivate) {
+                        deactivate(item, close, settings, dfd, activeItem);
+                    } else {
+                        computed.notifySubscribers();
+                        dfd.resolve(false);
+                    }
+                });
+            }).promise();
+        };
+
+        /**
+         * Determines whether or not the specified item can be activated.
+         * @method canActivateItem
+         * @param {object} item The item to check.
+         * @param {object} activationData Data associated with the activation.
+         * @return {promise}
+         */
+        computed.canActivateItem = function (newItem, activationData) {
+            return canActivateItem(newItem, activeItem, settings, activeData, activationData);
+        };
+
+        /**
+         * Activates the specified item.
+         * @method activateItem
+         * @param {object} newItem The item to activate.
+         * @param {object} newActivationData Data associated with the activation.
+         * @param {object} options Options for controlling the activation process.
+         * @return {promise}
+         */
+        computed.activateItem = function (newItem, newActivationData, options) {
+            var viaSetter = computed.viaSetter;
+            computed.viaSetter = false;
+
+            return system.defer(function (dfd) {
+                if (computed.isActivating()) {
+                    dfd.resolve(false);
+                    return;
+                }
+
+                computed.isActivating(true);
+
+                var currentItem = activeItem();
+                if (settings.areSameItem(currentItem, newItem, activeData, newActivationData)) {
+                    computed.isActivating(false);
+                    dfd.resolve(true);
+                    return;
+                }
+
+                computed.canDeactivateItem(currentItem, settings.closeOnDeactivate, options).then(function (canDeactivate) {
+                    if (canDeactivate) {
+                        computed.canActivateItem(newItem, newActivationData).then(function (canActivate) {
+                            if (canActivate) {
+                                system.defer(function (dfd2) {
+                                    deactivate(currentItem, settings.closeOnDeactivate, settings, dfd2);
+                                }).promise().then(function () {
+                                        newItem = settings.beforeActivate(newItem, newActivationData);
+                                        activate(newItem, activeItem, function (result) {
+                                            activeData = newActivationData;
+                                            computed.isActivating(false);
+                                            dfd.resolve(result);
+                                        }, newActivationData);
+                                    });
+                            } else {
+                                if (viaSetter) {
+                                    computed.notifySubscribers();
+                                }
+
+                                computed.isActivating(false);
+                                dfd.resolve(false);
+                            }
+                        });
+                    } else {
+                        if (viaSetter) {
+                            computed.notifySubscribers();
+                        }
+
+                        computed.isActivating(false);
+                        dfd.resolve(false);
+                    }
+                });
+            }).promise();
+        };
+
+        /**
+         * Determines whether or not the activator, in its current state, can be activated.
+         * @method canActivate
+         * @return {promise}
+         */
+        computed.canActivate = function () {
+            var toCheck;
+
+            if (initialActiveItem) {
+                toCheck = initialActiveItem;
+                initialActiveItem = false;
+            } else {
+                toCheck = computed();
+            }
+
+            return computed.canActivateItem(toCheck);
+        };
+
+        /**
+         * Activates the activator, in its current state.
+         * @method activate
+         * @return {promise}
+         */
+        computed.activate = function () {
+            var toActivate;
+
+            if (initialActiveItem) {
+                toActivate = initialActiveItem;
+                initialActiveItem = false;
+            } else {
+                toActivate = computed();
+            }
+
+            return computed.activateItem(toActivate);
+        };
+
+        /**
+         * Determines whether or not the activator, in its current state, can be deactivated.
+         * @method canDeactivate
+         * @return {promise}
+         */
+        computed.canDeactivate = function (close) {
+            return computed.canDeactivateItem(computed(), close);
+        };
+
+        /**
+         * Deactivates the activator, in its current state.
+         * @method deactivate
+         * @return {promise}
+         */
+        computed.deactivate = function (close) {
+            return computed.deactivateItem(computed(), close);
+        };
+
+        computed.includeIn = function (includeIn) {
+            includeIn.canActivate = function () {
+                return computed.canActivate();
+            };
+
+            includeIn.activate = function () {
+                return computed.activate();
+            };
+
+            includeIn.canDeactivate = function (close) {
+                return computed.canDeactivate(close);
+            };
+
+            includeIn.deactivate = function (close) {
+                return computed.deactivate(close);
+            };
+        };
+
+        if (settings.includeIn) {
+            computed.includeIn(settings.includeIn);
+        } else if (initialActiveItem) {
+            computed.activate();
+        }
+
+        computed.forItems = function (items) {
+            settings.closeOnDeactivate = false;
+
+            settings.determineNextItemToActivate = function (list, lastIndex) {
+                var toRemoveAt = lastIndex - 1;
+
+                if (toRemoveAt == -1 && list.length > 1) {
+                    return list[1];
+                }
+
+                if (toRemoveAt > -1 && toRemoveAt < list.length - 1) {
+                    return list[toRemoveAt];
+                }
+
+                return null;
+            };
+
+            settings.beforeActivate = function (newItem) {
+                var currentItem = computed();
+
+                if (!newItem) {
+                    newItem = settings.determineNextItemToActivate(items, currentItem ? items.indexOf(currentItem) : 0);
+                } else {
+                    var index = items.indexOf(newItem);
+
+                    if (index == -1) {
+                        items.push(newItem);
+                    } else {
+                        newItem = items()[index];
+                    }
+                }
+
+                return newItem;
+            };
+
+            settings.afterDeactivate = function (oldItem, close) {
+                if (close) {
+                    items.remove(oldItem);
+                }
+            };
+
+            var originalCanDeactivate = computed.canDeactivate;
+            computed.canDeactivate = function (close) {
+                if (close) {
+                    return system.defer(function (dfd) {
+                        var list = items();
+                        var results = [];
+
+                        function finish() {
+                            for (var j = 0; j < results.length; j++) {
+                                if (!results[j]) {
+                                    dfd.resolve(false);
+                                    return;
+                                }
+                            }
+
+                            dfd.resolve(true);
+                        }
+
+                        for (var i = 0; i < list.length; i++) {
+                            computed.canDeactivateItem(list[i], close).then(function (result) {
+                                results.push(result);
+                                if (results.length == list.length) {
+                                    finish();
+                                }
+                            });
+                        }
+                    }).promise();
+                } else {
+                    return originalCanDeactivate();
+                }
+            };
+
+            var originalDeactivate = computed.deactivate;
+            computed.deactivate = function (close) {
+                if (close) {
+                    return system.defer(function (dfd) {
+                        var list = items();
+                        var results = 0;
+                        var listLength = list.length;
+
+                        function doDeactivate(item) {
+                            setTimeout(function () {
+                                computed.deactivateItem(item, close).then(function () {
+                                    results++;
+                                    items.remove(item);
+                                    if (results == listLength) {
+                                        dfd.resolve();
+                                    }
+                                });
+                            }, 1);
+                        }
+
+                        for (var i = 0; i < listLength; i++) {
+                            doDeactivate(list[i]);
+                        }
+                    }).promise();
+                } else {
+                    return originalDeactivate();
+                }
+            };
+
+            return computed;
+        };
+
+        return computed;
+    }
+
+    /**
+     * @class ActivatorSettings
+     * @static
+     */
+    var activatorSettings = {
+        /**
+         * The default value passed to an object's deactivate function as its close parameter.
+         * @property {boolean} closeOnDeactivate
+         * @default true
+         */
+        closeOnDeactivate: true,
+        /**
+         * Lower-cased words which represent a truthy value.
+         * @property {string[]} affirmations
+         * @default ['yes', 'ok', 'true']
+         */
+        affirmations: ['yes', 'ok', 'true'],
+        /**
+         * Interprets the response of a `canActivate` or `canDeactivate` call using the known affirmative values in the `affirmations` array.
+         * @method interpretResponse
+         * @param {object} value
+         * @return {boolean}
+         */
+        interpretResponse: function(value) {
+            if(system.isObject(value)) {
+                value = value.can || false;
+            }
+
+            if(system.isString(value)) {
+                return ko.utils.arrayIndexOf(this.affirmations, value.toLowerCase()) !== -1;
+            }
+
+            return value;
+        },
+        /**
+         * Determines whether or not the current item and the new item are the same.
+         * @method areSameItem
+         * @param {object} currentItem
+         * @param {object} newItem
+         * @param {object} currentActivationData
+         * @param {object} newActivationData
+         * @return {boolean}
+         */
+        areSameItem: function(currentItem, newItem, currentActivationData, newActivationData) {
+            return currentItem == newItem;
+        },
+        /**
+         * Called immediately before the new item is activated.
+         * @method beforeActivate
+         * @param {object} newItem
+         */
+        beforeActivate: function(newItem) {
+            return newItem;
+        },
+        /**
+         * Called immediately after the old item is deactivated.
+         * @method afterDeactivate
+         * @param {object} oldItem The previous item.
+         * @param {boolean} close Whether or not the previous item was closed.
+         * @param {function} setter The activate item setter function.
+         */
+        afterDeactivate: function(oldItem, close, setter) {
+            if(close && setter) {
+                setter(null);
+            }
+        },
+        findChildActivator: function(item){
+            return null;
+        }
+    };
+
+    /**
+     * @class ActivatorModule
+     * @static
+     */
+    activator = {
+        /**
+         * The default settings used by activators.
+         * @property {ActivatorSettings} defaults
+         */
+        defaults: activatorSettings,
+        /**
+         * Creates a new activator.
+         * @method create
+         * @param {object} [initialActiveItem] The item which should be immediately activated upon creation of the ativator.
+         * @param {ActivatorSettings} [settings] Per activator overrides of the default activator settings.
+         * @return {Activator} The created activator.
+         */
+        create: createActivator,
+        /**
+         * Determines whether or not the provided object is an activator or not.
+         * @method isActivator
+         * @param {object} object Any object you wish to verify as an activator or not.
+         * @return {boolean} True if the object is an activator; false otherwise.
+         */
+        isActivator:function(object){
+            return object && object.__activator__;
+        }
+    };
+
+    return activator;
+});
+
+/**
+ * Durandal 2.1.0 Copyright (c) 2012 Blue Spire Consulting, Inc. All Rights Reserved.
+ * Available via the MIT license.
+ * see: http://durandaljs.com or https://github.com/BlueSpire/Durandal for details.
+ */
+/**
+ * The composition module encapsulates all functionality related to visual composition.
+ * @module composition
+ * @requires system
+ * @requires viewLocator
+ * @requires binder
+ * @requires viewEngine
+ * @requires activator
+ * @requires jquery
+ * @requires knockout
+ */
+define('durandal/composition',['durandal/system', 'durandal/viewLocator', 'durandal/binder', 'durandal/viewEngine', 'durandal/activator', 'jquery', 'knockout'], function (system, viewLocator, binder, viewEngine, activator, $, ko) {
+    var dummyModel = {},
+        activeViewAttributeName = 'data-active-view',
+        composition,
+        compositionCompleteCallbacks = [],
+        compositionCount = 0,
+        compositionDataKey = 'durandal-composition-data',
+        partAttributeName = 'data-part',
+        bindableSettings = ['model', 'view', 'transition', 'area', 'strategy', 'activationData', 'onError'],
+        visibilityKey = "durandal-visibility-data",
+        composeBindings = ['compose:'];
+    
+    function onError(context, error, element) {
+        try {
+            if (context.onError) {
+                try {
+                    context.onError(error, element);
+                } catch (e) {
+                    system.error(e);
+                }
+            } else {
+                system.error(error);
+            }
+        } finally {
+            endComposition(context, element, true);
+        }
+    }
+
+    function getHostState(parent) {
+        var elements = [];
+        var state = {
+            childElements: elements,
+            activeView: null
+        };
+
+        var child = ko.virtualElements.firstChild(parent);
+
+        while (child) {
+            if (child.nodeType == 1) {
+                elements.push(child);
+                if (child.getAttribute(activeViewAttributeName)) {
+                    state.activeView = child;
+                }
+            }
+
+            child = ko.virtualElements.nextSibling(child);
+        }
+
+        if(!state.activeView){
+            state.activeView = elements[0];
+        }
+
+        return state;
+    }
+
+    function endComposition(context, element, error) {
+        compositionCount--;
+
+        if(compositionCount === 0) {
+            var callBacks = compositionCompleteCallbacks;
+            compositionCompleteCallbacks = [];
+            
+            if (!error) {
+                setTimeout(function () {
+                    var i = callBacks.length;
+
+                    while (i--) {
+                        try {
+                            callBacks[i]();
+                        } catch (e) {
+                            onError(context, e, element);
+                        }
+                    }
+                }, 1);
+            }
+        }
+
+        cleanUp(context);
+    }
+
+    function cleanUp(context){
+        delete context.activeView;
+        delete context.viewElements;
+    }
+
+    function tryActivate(context, successCallback, skipActivation, element) {
+        if(skipActivation){
+            successCallback();
+        } else if (context.activate && context.model && context.model.activate) {
+            var result;
+
+            try{
+                if(system.isArray(context.activationData)) {
+                    result = context.model.activate.apply(context.model, context.activationData);
+                } else {
+                    result = context.model.activate(context.activationData);
+                }
+
+                if(result && result.then) {
+                    result.then(successCallback, function(reason) {
+                        onError(context, reason, element);
+                        successCallback();
+                    });
+                } else if(result || result === undefined) {
+                    successCallback();
+                } else {
+                    endComposition(context, element);
+                }
+            }
+            catch(e){
+                onError(context, e, element);
+            }
+        } else {
+            successCallback();
+        }
+    }
+
+    function triggerAttach(context, element) {
+        var context = this;
+
+        if (context.activeView) {
+            context.activeView.removeAttribute(activeViewAttributeName);
+        }
+
+        if (context.child) {
+            try{
+                if (context.model && context.model.attached) {
+                    if (context.composingNewView || context.alwaysTriggerAttach) {
+                        context.model.attached(context.child, context.parent, context);
+                    }
+                }
+
+                if (context.attached) {
+                    context.attached(context.child, context.parent, context);
+                }
+
+                context.child.setAttribute(activeViewAttributeName, true);
+
+                if (context.composingNewView && context.model && context.model.detached) {
+                    ko.utils.domNodeDisposal.addDisposeCallback(context.child, function () {
+                        try{
+                            context.model.detached(context.child, context.parent, context);
+                        }catch(e2){
+                            onError(context, e2, element);
+                        }
+                    });
+                }
+            }catch(e){
+                onError(context, e, element);
+            }
+        }
+
+        context.triggerAttach = system.noop;
+    }
+
+    function shouldTransition(context) {
+        if (system.isString(context.transition)) {
+            if (context.activeView) {
+                if (context.activeView == context.child) {
+                    return false;
+                }
+
+                if (!context.child) {
+                    return true;
+                }
+
+                if (context.skipTransitionOnSameViewId) {
+                    var currentViewId = context.activeView.getAttribute('data-view');
+                    var newViewId = context.child.getAttribute('data-view');
+                    return currentViewId != newViewId;
+                }
+            }
+
+            return true;
+        }
+
+        return false;
+    }
+
+    function cloneNodes(nodesArray) {
+        for (var i = 0, j = nodesArray.length, newNodesArray = []; i < j; i++) {
+            var clonedNode = nodesArray[i].cloneNode(true);
+            newNodesArray.push(clonedNode);
+        }
+        return newNodesArray;
+    }
+
+    function replaceParts(context){
+        var parts = cloneNodes(context.parts);
+        var replacementParts = composition.getParts(parts);
+        var standardParts = composition.getParts(context.child);
+
+        for (var partId in replacementParts) {
+            var toReplace = standardParts[partId];
+            if (!toReplace) {
+                toReplace = $('[data-part="' + partId + '"]', context.child).get(0);
+                if (!toReplace) {
+                    system.log('Could not find part to override: ' + partId);
+                    continue;
+                }
+            }
+
+            toReplace.parentNode.replaceChild(replacementParts[partId], toReplace);
+        }
+    }
+
+    function removePreviousView(context){
+        var children = ko.virtualElements.childNodes(context.parent), i, len;
+
+        if(!system.isArray(children)){
+            var arrayChildren = [];
+            for(i = 0, len = children.length; i < len; i++){
+                arrayChildren[i] = children[i];
+            }
+            children = arrayChildren;
+        }
+
+        for(i = 1,len = children.length; i < len; i++){
+            ko.removeNode(children[i]);
+        }
+    }
+
+    function hide(view) {
+        ko.utils.domData.set(view, visibilityKey, view.style.display);
+        view.style.display = 'none';
+    }
+
+    function show(view) {
+        var displayStyle = ko.utils.domData.get(view, visibilityKey);
+        view.style.display = displayStyle === 'none' ? 'block' : displayStyle;
+    }
+
+    function hasComposition(element){
+        var dataBind = element.getAttribute('data-bind');
+        if(!dataBind){
+            return false;
+        }
+
+        for(var i = 0, length = composeBindings.length; i < length; i++){
+            if(dataBind.indexOf(composeBindings[i]) > -1){
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * @class CompositionTransaction
+     * @static
+     */
+    var compositionTransaction = {
+        /**
+         * Registers a callback which will be invoked when the current composition transaction has completed. The transaction includes all parent and children compositions.
+         * @method complete
+         * @param {function} callback The callback to be invoked when composition is complete.
+         */
+        complete: function (callback) {
+            compositionCompleteCallbacks.push(callback);
+        }
+    };
+
+    /**
+     * @class CompositionModule
+     * @static
+     */
+    composition = {
+        /**
+         * An array of all the binding handler names (includeing :) that trigger a composition.
+         * @property {string} composeBindings
+         * @default ['compose:']
+         */
+        composeBindings:composeBindings,
+        /**
+         * Converts a transition name to its moduleId.
+         * @method convertTransitionToModuleId
+         * @param {string} name The name of the transtion.
+         * @return {string} The moduleId.
+         */
+        convertTransitionToModuleId: function (name) {
+            return 'transitions/' + name;
+        },
+        /**
+         * The name of the transition to use in all compositions.
+         * @property {string} defaultTransitionName
+         * @default null
+         */
+        defaultTransitionName: null,
+        /**
+         * Represents the currently executing composition transaction.
+         * @property {CompositionTransaction} current
+         */
+        current: compositionTransaction,
+        /**
+         * Registers a binding handler that will be invoked when the current composition transaction is complete.
+         * @method addBindingHandler
+         * @param {string} name The name of the binding handler.
+         * @param {object} [config] The binding handler instance. If none is provided, the name will be used to look up an existing handler which will then be converted to a composition handler.
+         * @param {function} [initOptionsFactory] If the registered binding needs to return options from its init call back to knockout, this function will server as a factory for those options. It will receive the same parameters that the init function does.
+         */
+        addBindingHandler:function(name, config, initOptionsFactory){
+            var key,
+                dataKey = 'composition-handler-' + name,
+                handler;
+
+            config = config || ko.bindingHandlers[name];
+            initOptionsFactory = initOptionsFactory || function(){ return undefined;  };
+
+            handler = ko.bindingHandlers[name] = {
+                init: function(element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
+                    if(compositionCount > 0){
+                        var data = {
+                            trigger:ko.observable(null)
+                        };
+
+                        composition.current.complete(function(){
+                            if(config.init){
+                                config.init(element, valueAccessor, allBindingsAccessor, viewModel, bindingContext);
+                            }
+
+                            if(config.update){
+                                ko.utils.domData.set(element, dataKey, config);
+                                data.trigger('trigger');
+                            }
+                        });
+
+                        ko.utils.domData.set(element, dataKey, data);
+                    }else{
+                        ko.utils.domData.set(element, dataKey, config);
+
+                        if(config.init){
+                            config.init(element, valueAccessor, allBindingsAccessor, viewModel, bindingContext);
+                        }
+                    }
+
+                    return initOptionsFactory(element, valueAccessor, allBindingsAccessor, viewModel, bindingContext);
+                },
+                update: function (element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
+                    var data = ko.utils.domData.get(element, dataKey);
+
+                    if(data.update){
+                        return data.update(element, valueAccessor, allBindingsAccessor, viewModel, bindingContext);
+                    }
+
+                    if(data.trigger){
+                        data.trigger();
+                    }
+                }
+            };
+
+            for (key in config) {
+                if (key !== "init" && key !== "update") {
+                    handler[key] = config[key];
+                }
+            }
+        },
+        /**
+         * Gets an object keyed with all the elements that are replacable parts, found within the supplied elements. The key will be the part name and the value will be the element itself.
+         * @method getParts
+         * @param {DOMElement\DOMElement[]} elements The element(s) to search for parts.
+         * @return {object} An object keyed by part.
+         */
+        getParts: function(elements, parts) {
+            parts = parts || {};
+
+            if (!elements) {
+                return parts;
+            }
+
+            if (elements.length === undefined) {
+                elements = [elements];
+            }
+
+            for (var i = 0, length = elements.length; i < length; i++) {
+                var element = elements[i],
+                    id;
+
+                if (element.getAttribute) {
+                    id = element.getAttribute(partAttributeName);
+                    if (id) {
+                        parts[id] = element;
+                    }
+
+                    if (element.hasChildNodes() && !hasComposition(element)) {
+                        composition.getParts(element.childNodes, parts);
+                    }
+                }
+            }
+
+            return parts;
+        },
+        cloneNodes:cloneNodes,
+        finalize: function (context, element) {
+            if(context.transition === undefined) {
+                context.transition = this.defaultTransitionName;
+            }
+
+            if(!context.child && !context.activeView){
+                if (!context.cacheViews) {
+                    ko.virtualElements.emptyNode(context.parent);
+                }
+
+                context.triggerAttach(context, element);
+                endComposition(context, element);
+            } else if (shouldTransition(context)) {
+                var transitionModuleId = this.convertTransitionToModuleId(context.transition);
+
+                system.acquire(transitionModuleId).then(function (transition) {
+                    context.transition = transition;
+
+                    transition(context).then(function () {
+                        if (!context.cacheViews) {
+                            if(!context.child){
+                                ko.virtualElements.emptyNode(context.parent);
+                            }else{
+                                removePreviousView(context);
+                            }
+                        }else if(context.activeView){
+                            var instruction = binder.getBindingInstruction(context.activeView);
+                            if(instruction && instruction.cacheViews != undefined && !instruction.cacheViews){
+                                ko.removeNode(context.activeView);
+                            }else{
+                                hide(context.activeView);
+                            }
+                        }
+
+                        if (context.child) {
+                            show(context.child);
+                        }
+
+                        context.triggerAttach(context, element);
+                        endComposition(context, element);
+                    });
+                }).fail(function(err){
+                    onError(context, 'Failed to load transition (' + transitionModuleId + '). Details: ' + err.message, element);
+                });
+            } else {
+                if (context.child != context.activeView) {
+                    if (context.cacheViews && context.activeView) {
+                        var instruction = binder.getBindingInstruction(context.activeView);
+                        if(!instruction || (instruction.cacheViews != undefined && !instruction.cacheViews)){
+                            ko.removeNode(context.activeView);
+                        }else{
+                            hide(context.activeView);
+                        }
+                    }
+
+                    if (!context.child) {
+                        if (!context.cacheViews) {
+                            ko.virtualElements.emptyNode(context.parent);
+                        }
+                    } else {
+                        if (!context.cacheViews) {
+                            removePreviousView(context);
+                        }
+
+                        show(context.child);
+                    }
+                }
+
+                context.triggerAttach(context, element);
+                endComposition(context, element);
+            }
+        },
+        bindAndShow: function (child, element, context, skipActivation) {
+            context.child = child;
+            context.parent.__composition_context = context;
+
+            if (context.cacheViews) {
+                context.composingNewView = (ko.utils.arrayIndexOf(context.viewElements, child) == -1);
+            } else {
+                context.composingNewView = true;
+            }
+
+            tryActivate(context, function () {
+                if (context.parent.__composition_context == context) {
+                    delete context.parent.__composition_context;
+
+                    if (context.binding) {
+                        context.binding(context.child, context.parent, context);
+                    }
+
+                    if (context.preserveContext && context.bindingContext) {
+                        if (context.composingNewView) {
+                            if(context.parts){
+                                replaceParts(context);
+                            }
+
+                            hide(child);
+                            ko.virtualElements.prepend(context.parent, child);
+
+                        binder.bindContext(context.bindingContext, child, context.model, context.as);
+                        }
+                    } else if (child) {
+                        var modelToBind = context.model || dummyModel;
+                        var currentModel = ko.dataFor(child);
+
+                        if (currentModel != modelToBind) {
+                            if (!context.composingNewView) {
+                                ko.removeNode(child);
+                                viewEngine.createView(child.getAttribute('data-view')).then(function(recreatedView) {
+                                    composition.bindAndShow(recreatedView, element, context, true);
+                                });
+                                return;
+                            }
+
+                            if(context.parts){
+                                replaceParts(context);
+                            }
+
+                            hide(child);
+                            ko.virtualElements.prepend(context.parent, child);
+
+                            binder.bind(modelToBind, child);
+                        }
+                    }
+
+                    composition.finalize(context, element);
+                } else {
+                    endComposition(context, element);
+                }
+            }, skipActivation, element);
+        },
+        /**
+         * Eecutes the default view location strategy.
+         * @method defaultStrategy
+         * @param {object} context The composition context containing the model and possibly existing viewElements.
+         * @return {promise} A promise for the view.
+         */
+        defaultStrategy: function (context) {
+            return viewLocator.locateViewForObject(context.model, context.area, context.viewElements);
+        },
+        getSettings: function (valueAccessor, element) {
+            var value = valueAccessor(),
+                settings = ko.utils.unwrapObservable(value) || {},
+                activatorPresent = activator.isActivator(value),
+                moduleId;
+
+            if (system.isString(settings)) {
+                if (viewEngine.isViewUrl(settings)) {
+                    settings = {
+                        view: settings
+                    };
+                } else {
+                    settings = {
+                        model: settings,
+                        activate: !activatorPresent
+                    };
+                }
+
+                return settings;
+            }
+
+            moduleId = system.getModuleId(settings);
+            if (moduleId) {
+                settings = {
+                    model: settings,
+                    activate: !activatorPresent
+                };
+
+                return settings;
+            }
+
+            if(!activatorPresent && settings.model) {
+                activatorPresent = activator.isActivator(settings.model);
+            }
+
+            for (var attrName in settings) {
+                if (ko.utils.arrayIndexOf(bindableSettings, attrName) != -1) {
+                    settings[attrName] = ko.utils.unwrapObservable(settings[attrName]);
+                } else {
+                    settings[attrName] = settings[attrName];
+                }
+            }
+
+            if (activatorPresent) {
+                settings.activate = false;
+            } else if (settings.activate === undefined) {
+                settings.activate = true;
+            }
+
+            return settings;
+        },
+        executeStrategy: function (context, element) {
+            context.strategy(context).then(function (child) {
+                composition.bindAndShow(child, element, context);
+            });
+        },
+        inject: function (context, element) {
+            if (!context.model) {
+                this.bindAndShow(null, element, context);
+                return;
+            }
+
+            if (context.view) {
+                viewLocator.locateView(context.view, context.area, context.viewElements).then(function (child) {
+                    composition.bindAndShow(child, element, context);
+                });
+                return;
+            }
+
+            if (!context.strategy) {
+                context.strategy = this.defaultStrategy;
+            }
+
+            if (system.isString(context.strategy)) {
+                system.acquire(context.strategy).then(function (strategy) {
+                    context.strategy = strategy;
+                    composition.executeStrategy(context, element);
+                }).fail(function (err) {
+                    onError(context, 'Failed to load view strategy (' + context.strategy + '). Details: ' + err.message, element);
+                });
+            } else {
+                this.executeStrategy(context, element);
+            }
+        },
+        /**
+         * Initiates a composition.
+         * @method compose
+         * @param {DOMElement} element The DOMElement or knockout virtual element that serves as the parent for the composition.
+         * @param {object} settings The composition settings.
+         * @param {object} [bindingContext] The current binding context.
+         */
+        compose: function (element, settings, bindingContext, fromBinding) {
+            compositionCount++;
+
+            if(!fromBinding){
+                settings = composition.getSettings(function() { return settings; }, element);
+            }
+
+            if (settings.compositionComplete) {
+                compositionCompleteCallbacks.push(function () {
+                    settings.compositionComplete(settings.child, settings.parent, settings);
+                });
+            }
+
+            compositionCompleteCallbacks.push(function () {
+                if(settings.composingNewView && settings.model && settings.model.compositionComplete){
+                    settings.model.compositionComplete(settings.child, settings.parent, settings);
+                }
+            });
+
+            var hostState = getHostState(element);
+
+            settings.activeView = hostState.activeView;
+            settings.parent = element;
+            settings.triggerAttach = triggerAttach;
+            settings.bindingContext = bindingContext;
+
+            if (settings.cacheViews && !settings.viewElements) {
+                settings.viewElements = hostState.childElements;
+            }
+
+            if (!settings.model) {
+                if (!settings.view) {
+                    this.bindAndShow(null, element, settings);
+                } else {
+                    settings.area = settings.area || 'partial';
+                    settings.preserveContext = true;
+
+                    viewLocator.locateView(settings.view, settings.area, settings.viewElements).then(function (child) {
+                        composition.bindAndShow(child, element, settings);
+                    });
+                }
+            } else if (system.isString(settings.model)) {
+                system.acquire(settings.model).then(function (module) {
+                    settings.model = system.resolveObject(module);
+                    composition.inject(settings, element);
+                }).fail(function (err) {
+                    onError(settings, 'Failed to load composed module (' + settings.model + '). Details: ' + err.message, element);
+                });
+            } else {
+                composition.inject(settings, element);
+            }
+        }
+    };
+
+    ko.bindingHandlers.compose = {
+        init: function() {
+            return { controlsDescendantBindings: true };
+        },
+        update: function (element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
+            var settings = composition.getSettings(valueAccessor, element);
+            if(settings.mode){
+                var data = ko.utils.domData.get(element, compositionDataKey);
+                if(!data){
+                    var childNodes = ko.virtualElements.childNodes(element);
+                    data = {};
+
+                    if(settings.mode === 'inline'){
+                        data.view = viewEngine.ensureSingleElement(childNodes);
+                    }else if(settings.mode === 'templated'){
+                        data.parts = cloneNodes(childNodes);
+                    }
+
+                    ko.virtualElements.emptyNode(element);
+                    ko.utils.domData.set(element, compositionDataKey, data);
+                }
+
+                if(settings.mode === 'inline'){
+                    settings.view = data.view.cloneNode(true);
+                }else if(settings.mode === 'templated'){
+                    settings.parts = data.parts;
+                }
+
+                settings.preserveContext = true;
+            }
+
+            composition.compose(element, settings, bindingContext, true);
+        }
+    };
+
+    ko.virtualElements.allowedBindings.compose = true;
+
+    return composition;
+});
+
+/**
+ * Durandal 2.1.0 Copyright (c) 2012 Blue Spire Consulting, Inc. All Rights Reserved.
+ * Available via the MIT license.
+ * see: http://durandaljs.com or https://github.com/BlueSpire/Durandal for details.
+ */
+/**
+ * Durandal events originate from backbone.js but also combine some ideas from signals.js as well as some additional improvements.
+ * Events can be installed into any object and are installed into the `app` module by default for convenient app-wide eventing.
+ * @module events
+ * @requires system
+ */
+define('durandal/events',['durandal/system'], function (system) {
+    var eventSplitter = /\s+/;
+    var Events = function() { };
+
+    /**
+     * Represents an event subscription.
+     * @class Subscription
+     */
+    var Subscription = function(owner, events) {
+        this.owner = owner;
+        this.events = events;
+    };
+
+    /**
+     * Attaches a callback to the event subscription.
+     * @method then
+     * @param {function} callback The callback function to invoke when the event is triggered.
+     * @param {object} [context] An object to use as `this` when invoking the `callback`.
+     * @chainable
+     */
+    Subscription.prototype.then = function (callback, context) {
+        this.callback = callback || this.callback;
+        this.context = context || this.context;
+        
+        if (!this.callback) {
+            return this;
+        }
+
+        this.owner.on(this.events, this.callback, this.context);
+        return this;
+    };
+
+    /**
+     * Attaches a callback to the event subscription.
+     * @method on
+     * @param {function} [callback] The callback function to invoke when the event is triggered. If `callback` is not provided, the previous callback will be re-activated.
+     * @param {object} [context] An object to use as `this` when invoking the `callback`.
+     * @chainable
+     */
+    Subscription.prototype.on = Subscription.prototype.then;
+
+    /**
+     * Cancels the subscription.
+     * @method off
+     * @chainable
+     */
+    Subscription.prototype.off = function () {
+        this.owner.off(this.events, this.callback, this.context);
+        return this;
+    };
+
+    /**
+     * Creates an object with eventing capabilities.
+     * @class Events
+     */
+
+    /**
+     * Creates a subscription or registers a callback for the specified event.
+     * @method on
+     * @param {string} events One or more events, separated by white space.
+     * @param {function} [callback] The callback function to invoke when the event is triggered. If `callback` is not provided, a subscription instance is returned.
+     * @param {object} [context] An object to use as `this` when invoking the `callback`.
+     * @return {Subscription|Events} A subscription is returned if no callback is supplied, otherwise the events object is returned for chaining.
+     */
+    Events.prototype.on = function(events, callback, context) {
+        var calls, event, list;
+
+        if (!callback) {
+            return new Subscription(this, events);
+        } else {
+            calls = this.callbacks || (this.callbacks = {});
+            events = events.split(eventSplitter);
+
+            while (event = events.shift()) {
+                list = calls[event] || (calls[event] = []);
+                list.push(callback, context);
+            }
+
+            return this;
+        }
+    };
+
+    /**
+     * Removes the callbacks for the specified events.
+     * @method off
+     * @param {string} [events] One or more events, separated by white space to turn off. If no events are specified, then the callbacks will be removed.
+     * @param {function} [callback] The callback function to remove. If `callback` is not provided, all callbacks for the specified events will be removed.
+     * @param {object} [context] The object that was used as `this`. Callbacks with this context will be removed.
+     * @chainable
+     */
+    Events.prototype.off = function(events, callback, context) {
+        var event, calls, list, i;
+
+        // No events
+        if (!(calls = this.callbacks)) {
+            return this;
+        }
+
+        //removing all
+        if (!(events || callback || context)) {
+            delete this.callbacks;
+            return this;
+        }
+
+        events = events ? events.split(eventSplitter) : system.keys(calls);
+
+        // Loop through the callback list, splicing where appropriate.
+        while (event = events.shift()) {
+            if (!(list = calls[event]) || !(callback || context)) {
+                delete calls[event];
+                continue;
+            }
+
+            for (i = list.length - 2; i >= 0; i -= 2) {
+                if (!(callback && list[i] !== callback || context && list[i + 1] !== context)) {
+                    list.splice(i, 2);
+                }
+            }
+        }
+
+        return this;
+    };
+
+    /**
+     * Triggers the specified events.
+     * @method trigger
+     * @param {string} [events] One or more events, separated by white space to trigger.
+     * @chainable
+     */
+    Events.prototype.trigger = function(events) {
+        var event, calls, list, i, length, args, all, rest;
+        if (!(calls = this.callbacks)) {
+            return this;
+        }
+
+        rest = [];
+        events = events.split(eventSplitter);
+        for (i = 1, length = arguments.length; i < length; i++) {
+            rest[i - 1] = arguments[i];
+        }
+
+        // For each event, walk through the list of callbacks twice, first to
+        // trigger the event, then to trigger any `"all"` callbacks.
+        while (event = events.shift()) {
+            // Copy callback lists to prevent modification.
+            if (all = calls.all) {
+                all = all.slice();
+            }
+
+            if (list = calls[event]) {
+                list = list.slice();
+            }
+
+            // Execute event callbacks.
+            if (list) {
+                for (i = 0, length = list.length; i < length; i += 2) {
+                    list[i].apply(list[i + 1] || this, rest);
+                }
+            }
+
+            // Execute "all" callbacks.
+            if (all) {
+                args = [event].concat(rest);
+                for (i = 0, length = all.length; i < length; i += 2) {
+                    all[i].apply(all[i + 1] || this, args);
+                }
+            }
+        }
+
+        return this;
+    };
+
+    /**
+     * Creates a function that will trigger the specified events when called. Simplifies proxying jQuery (or other) events through to the events object.
+     * @method proxy
+     * @param {string} events One or more events, separated by white space to trigger by invoking the returned function.
+     * @return {function} Calling the function will invoke the previously specified events on the events object.
+     */
+    Events.prototype.proxy = function(events) {
+        var that = this;
+        return (function(arg) {
+            that.trigger(events, arg);
+        });
+    };
+
+    /**
+     * Creates an object with eventing capabilities.
+     * @class EventsModule
+     * @static
+     */
+
+    /**
+     * Adds eventing capabilities to the specified object.
+     * @method includeIn
+     * @param {object} targetObject The object to add eventing capabilities to.
+     */
+    Events.includeIn = function(targetObject) {
+        targetObject.on = Events.prototype.on;
+        targetObject.off = Events.prototype.off;
+        targetObject.trigger = Events.prototype.trigger;
+        targetObject.proxy = Events.prototype.proxy;
+    };
+
+    return Events;
+});
+
+/**
+ * Durandal 2.1.0 Copyright (c) 2012 Blue Spire Consulting, Inc. All Rights Reserved.
+ * Available via the MIT license.
+ * see: http://durandaljs.com or https://github.com/BlueSpire/Durandal for details.
+ */
+/**
+ * The app module controls app startup, plugin loading/configuration and root visual display.
+ * @module app
+ * @requires system
+ * @requires viewEngine
+ * @requires composition
+ * @requires events
+ * @requires jquery
+ */
+define('durandal/app',['durandal/system', 'durandal/viewEngine', 'durandal/composition', 'durandal/events', 'jquery'], function(system, viewEngine, composition, Events, $) {
+    var app,
+        allPluginIds = [],
+        allPluginConfigs = [];
+
+    function loadPlugins(){
+        return system.defer(function(dfd){
+            if(allPluginIds.length == 0){
+                dfd.resolve();
+                return;
+            }
+
+            system.acquire(allPluginIds).then(function(loaded){
+                for(var i = 0; i < loaded.length; i++){
+                    var currentModule = loaded[i];
+
+                    if(currentModule.install){
+                        var config = allPluginConfigs[i];
+                        if(!system.isObject(config)){
+                            config = {};
+                        }
+
+                        currentModule.install(config);
+                        system.log('Plugin:Installed ' + allPluginIds[i]);
+                    }else{
+                        system.log('Plugin:Loaded ' + allPluginIds[i]);
+                    }
+                }
+
+                dfd.resolve();
+            }).fail(function(err){
+                system.error('Failed to load plugin(s). Details: ' + err.message);
+            });
+        }).promise();
+    }
+
+    /**
+     * @class AppModule
+     * @static
+     * @uses Events
+     */
+    app = {
+        /**
+         * The title of your application.
+         * @property {string} title
+         */
+        title: 'Application',
+        /**
+         * Configures one or more plugins to be loaded and installed into the application.
+         * @method configurePlugins
+         * @param {object} config Keys are plugin names. Values can be truthy, to simply install the plugin, or a configuration object to pass to the plugin.
+         * @param {string} [baseUrl] The base url to load the plugins from.
+         */
+        configurePlugins:function(config, baseUrl){
+            var pluginIds = system.keys(config);
+            baseUrl = baseUrl || 'plugins/';
+
+            if(baseUrl.indexOf('/', baseUrl.length - 1) === -1){
+                baseUrl += '/';
+            }
+
+            for(var i = 0; i < pluginIds.length; i++){
+                var key = pluginIds[i];
+                allPluginIds.push(baseUrl + key);
+                allPluginConfigs.push(config[key]);
+            }
+        },
+        /**
+         * Starts the application.
+         * @method start
+         * @return {promise}
+         */
+        start: function() {
+            system.log('Application:Starting');
+
+            if (this.title) {
+                document.title = this.title;
+            }
+
+            return system.defer(function (dfd) {
+                $(function() {
+                    loadPlugins().then(function(){
+                        dfd.resolve();
+                        system.log('Application:Started');
+                    });
+                });
+            }).promise();
+        },
+        /**
+         * Sets the root module/view for the application.
+         * @method setRoot
+         * @param {string} root The root view or module.
+         * @param {string} [transition] The transition to use from the previous root (or splash screen) into the new root.
+         * @param {string} [applicationHost] The application host element or id. By default the id 'applicationHost' will be used.
+         */
+        setRoot: function(root, transition, applicationHost) {
+            var hostElement, settings = { activate:true, transition: transition };
+
+            if (!applicationHost || system.isString(applicationHost)) {
+                hostElement = document.getElementById(applicationHost || 'applicationHost');
+            } else {
+                hostElement = applicationHost;
+            }
+
+            if (system.isString(root)) {
+                if (viewEngine.isViewUrl(root)) {
+                    settings.view = root;
+                } else {
+                    settings.model = root;
+                }
+            } else {
+                settings.model = root;
+            }
+
+            function finishComposition() {
+                if(settings.model) {
+                    if (settings.model.canActivate) {
+                        try {
+                            var result = settings.model.canActivate();
+                            if (result && result.then) {
+                                result.then(function (actualResult) {
+                                    if (actualResult) {
+                                        composition.compose(hostElement, settings);
+                                    }
+                                }).fail(function (err) {
+                                    system.error(err);
+                                });
+                            } else if (result) {
+                                composition.compose(hostElement, settings);
+                            }
+                        } catch (er) {
+                            system.error(er);
+                        }
+                    } else {
+                        composition.compose(hostElement, settings);
+                    }
+                } else {
+                    composition.compose(hostElement, settings);
+                }
+            }
+
+            if(system.isString(settings.model)) {
+                system.acquire(settings.model).then(function(module) {
+                    settings.model = system.resolveObject(module);
+                    finishComposition();
+                }).fail(function(err) {
+                    system.error('Failed to load root module (' + settings.model + '). Details: ' + err.message);
+                });
+            } else {
+                finishComposition();
+            }
+        }
+    };
+
+    Events.includeIn(app);
+
+    return app;
+});
+
+/**
+ * Durandal 2.1.0 Copyright (c) 2012 Blue Spire Consulting, Inc. All Rights Reserved.
+ * Available via the MIT license.
+ * see: http://durandaljs.com or https://github.com/BlueSpire/Durandal for details.
+ */
+/**
+ * This module is based on Backbone's core history support. It abstracts away the low level details of working with browser history and url changes in order to provide a solid foundation for a router.
+ * @module history
+ * @requires system
+ * @requires jquery
+ */
+define('plugins/history',['durandal/system', 'jquery'], function (system, $) {
+    // Cached regex for stripping a leading hash/slash and trailing space.
+    var routeStripper = /^[#\/]|\s+$/g;
+
+    // Cached regex for stripping leading and trailing slashes.
+    var rootStripper = /^\/+|\/+$/g;
+
+    // Cached regex for detecting MSIE.
+    var isExplorer = /msie [\w.]+/;
+
+    // Cached regex for removing a trailing slash.
+    var trailingSlash = /\/$/;
+
+    // Update the hash location, either replacing the current entry, or adding
+    // a new one to the browser history.
+    function updateHash(location, fragment, replace) {
+        if (replace) {
+            var href = location.href.replace(/(javascript:|#).*$/, '');
+
+            if (history.history.replaceState) {
+                history.history.replaceState({}, document.title, href + '#' + fragment); // using history.replaceState instead of location.replace to work around chrom bug
+            } else {
+                location.replace(href + '#' + fragment);
+            }
+        } else {
+            // Some browsers require that `hash` contains a leading #.
+            location.hash = '#' + fragment;
+        }
+    };
+
+    /**
+     * @class HistoryModule
+     * @static
+     */
+    var history = {
+        /**
+         * The setTimeout interval used when the browser does not support hash change events.
+         * @property {string} interval
+         * @default 50
+         */
+        interval: 50,
+        /**
+         * Indicates whether or not the history module is actively tracking history.
+         * @property {string} active
+         */
+        active: false
+    };
+    
+    // Ensure that `History` can be used outside of the browser.
+    if (typeof window !== 'undefined') {
+        history.location = window.location;
+        history.history = window.history;
+    }
+
+    /**
+     * Gets the true hash value. Cannot use location.hash directly due to a bug in Firefox where location.hash will always be decoded.
+     * @method getHash
+     * @param {string} [window] The optional window instance
+     * @return {string} The hash.
+     */
+    history.getHash = function(window) {
+        var match = (window || history).location.href.match(/#(.*)$/);
+        return match ? match[1] : '';
+    };
+    
+    /**
+     * Get the cross-browser normalized URL fragment, either from the URL, the hash, or the override.
+     * @method getFragment
+     * @param {string} fragment The fragment.
+     * @param {boolean} forcePushState Should we force push state?
+     * @return {string} he fragment.
+     */
+    history.getFragment = function(fragment, forcePushState) {
+        if (fragment == null) {
+            if (history._hasPushState || !history._wantsHashChange || forcePushState) {
+                fragment = history.location.pathname + history.location.search;
+                var root = history.root.replace(trailingSlash, '');
+                if (!fragment.indexOf(root)) {
+                    fragment = fragment.substr(root.length);
+                }
+            } else {
+                fragment = history.getHash();
+            }
+        }
+        
+        return fragment.replace(routeStripper, '');
+    };
+
+    /**
+     * Activate the hash change handling, returning `true` if the current URL matches an existing route, and `false` otherwise.
+     * @method activate
+     * @param {HistoryOptions} options.
+     * @return {boolean|undefined} Returns true/false from loading the url unless the silent option was selected.
+     */
+    history.activate = function(options) {
+        if (history.active) {
+            system.error("History has already been activated.");
+        }
+
+        history.active = true;
+
+        // Figure out the initial configuration. Do we need an iframe?
+        // Is pushState desired ... is it available?
+        history.options = system.extend({}, { root: '/' }, history.options, options);
+        history.root = history.options.root;
+        history._wantsHashChange = history.options.hashChange !== false;
+        history._wantsPushState = !!history.options.pushState;
+        history._hasPushState = !!(history.options.pushState && history.history && history.history.pushState);
+
+        var fragment = history.getFragment();
+        var docMode = document.documentMode;
+        var oldIE = (isExplorer.exec(navigator.userAgent.toLowerCase()) && (!docMode || docMode <= 7));
+
+        // Normalize root to always include a leading and trailing slash.
+        history.root = ('/' + history.root + '/').replace(rootStripper, '/');
+
+        if (oldIE && history._wantsHashChange) {
+            history.iframe = $('<iframe src="javascript:0" tabindex="-1" />').hide().appendTo('body')[0].contentWindow;
+            history.navigate(fragment, false);
+        }
+
+        // Depending on whether we're using pushState or hashes, and whether
+        // 'onhashchange' is supported, determine how we check the URL state.
+        if (history._hasPushState) {
+            $(window).on('popstate', history.checkUrl);
+        } else if (history._wantsHashChange && ('onhashchange' in window) && !oldIE) {
+            $(window).on('hashchange', history.checkUrl);
+        } else if (history._wantsHashChange) {
+            history._checkUrlInterval = setInterval(history.checkUrl, history.interval);
+        }
+
+        // Determine if we need to change the base url, for a pushState link
+        // opened by a non-pushState browser.
+        history.fragment = fragment;
+        var loc = history.location;
+        var atRoot = loc.pathname.replace(/[^\/]$/, '$&/') === history.root;
+
+        // Transition from hashChange to pushState or vice versa if both are requested.
+        if (history._wantsHashChange && history._wantsPushState) {
+            // If we've started off with a route from a `pushState`-enabled
+            // browser, but we're currently in a browser that doesn't support it...
+            if (!history._hasPushState && !atRoot) {
+                history.fragment = history.getFragment(null, true);
+                history.location.replace(history.root + history.location.search + '#' + history.fragment);
+                // Return immediately as browser will do redirect to new url
+                return true;
+
+            // Or if we've started out with a hash-based route, but we're currently
+            // in a browser where it could be `pushState`-based instead...
+            } else if (history._hasPushState && atRoot && loc.hash) {
+                this.fragment = history.getHash().replace(routeStripper, '');
+                this.history.replaceState({}, document.title, history.root + history.fragment + loc.search);
+            }
+        }
+
+        if (!history.options.silent) {
+            return history.loadUrl(options.startRoute);
+        }
+    };
+
+    /**
+     * Disable history, perhaps temporarily. Not useful in a real app, but possibly useful for unit testing Routers.
+     * @method deactivate
+     */
+    history.deactivate = function() {
+        $(window).off('popstate', history.checkUrl).off('hashchange', history.checkUrl);
+        clearInterval(history._checkUrlInterval);
+        history.active = false;
+    };
+
+    /**
+     * Checks the current URL to see if it has changed, and if it has, calls `loadUrl`, normalizing across the hidden iframe.
+     * @method checkUrl
+     * @return {boolean} Returns true/false from loading the url.
+     */
+    history.checkUrl = function() {
+        var current = history.getFragment();
+        if (current === history.fragment && history.iframe) {
+            current = history.getFragment(history.getHash(history.iframe));
+        }
+
+        if (current === history.fragment) {
+            return false;
+        }
+
+        if (history.iframe) {
+            history.navigate(current, false);
+        }
+        
+        history.loadUrl();
+    };
+    
+    /**
+     * Attempts to load the current URL fragment. A pass-through to options.routeHandler.
+     * @method loadUrl
+     * @return {boolean} Returns true/false from the route handler.
+     */
+    history.loadUrl = function(fragmentOverride) {
+        var fragment = history.fragment = history.getFragment(fragmentOverride);
+
+        return history.options.routeHandler ?
+            history.options.routeHandler(fragment) :
+            false;
+    };
+
+    /**
+     * Save a fragment into the hash history, or replace the URL state if the
+     * 'replace' option is passed. You are responsible for properly URL-encoding
+     * the fragment in advance.
+     * The options object can contain `trigger: false` if you wish to not have the
+     * route callback be fired, or `replace: true`, if
+     * you wish to modify the current URL without adding an entry to the history.
+     * @method navigate
+     * @param {string} fragment The url fragment to navigate to.
+     * @param {object|boolean} options An options object with optional trigger and replace flags. You can also pass a boolean directly to set the trigger option. Trigger is `true` by default.
+     * @return {boolean} Returns true/false from loading the url.
+     */
+    history.navigate = function(fragment, options) {
+        if (!history.active) {
+            return false;
+        }
+
+        if(options === undefined) {
+            options = {
+                trigger: true
+            };
+        }else if(system.isBoolean(options)) {
+            options = {
+                trigger: options
+            };
+        }
+
+        fragment = history.getFragment(fragment || '');
+
+        if (history.fragment === fragment) {
+            return;
+        }
+
+        history.fragment = fragment;
+
+        var url = history.root + fragment;
+
+        // Don't include a trailing slash on the root.
+        if(fragment === '' && url !== '/') {
+            url = url.slice(0, -1);
+        }
+
+        // If pushState is available, we use it to set the fragment as a real URL.
+        if (history._hasPushState) {
+            history.history[options.replace ? 'replaceState' : 'pushState']({}, document.title, url);
+
+            // If hash changes haven't been explicitly disabled, update the hash
+            // fragment to store history.
+        } else if (history._wantsHashChange) {
+            updateHash(history.location, fragment, options.replace);
+            
+            if (history.iframe && (fragment !== history.getFragment(history.getHash(history.iframe)))) {
+                // Opening and closing the iframe tricks IE7 and earlier to push a
+                // history entry on hash-tag change.  When replace is true, we don't
+                // want history.
+                if (!options.replace) {
+                    history.iframe.document.open().close();
+                }
+                
+                updateHash(history.iframe.location, fragment, options.replace);
+            }
+
+            // If you've told us that you explicitly don't want fallback hashchange-
+            // based history, then `navigate` becomes a page refresh.
+        } else {
+            return history.location.assign(url);
+        }
+
+        if (options.trigger) {
+            return history.loadUrl(fragment);
+        }
+    };
+
+    /**
+     * Navigates back in the browser history.
+     * @method navigateBack
+     */
+    history.navigateBack = function() {
+        history.history.back();
+    };
+
+    /**
+     * @class HistoryOptions
+     * @static
+     */
+
+    /**
+     * The function that will be called back when the fragment changes.
+     * @property {function} routeHandler
+     */
+
+    /**
+     * The url root used to extract the fragment when using push state.
+     * @property {string} root
+     */
+
+    /**
+     * Use hash change when present.
+     * @property {boolean} hashChange
+     * @default true
+     */
+
+    /**
+     * Use push state when present.
+     * @property {boolean} pushState
+     * @default false
+     */
+
+    /**
+     * Prevents loading of the current url when activating history.
+     * @property {boolean} silent
+     * @default false
+     */
+
+    return history;
+});
+
+/**
+ * Durandal 2.1.0 Copyright (c) 2012 Blue Spire Consulting, Inc. All Rights Reserved.
+ * Available via the MIT license.
+ * see: http://durandaljs.com or https://github.com/BlueSpire/Durandal for details.
+ */
+/**
+ * Connects the history module's url and history tracking support to Durandal's activation and composition engine allowing you to easily build navigation-style applications.
+ * @module router
+ * @requires system
+ * @requires app
+ * @requires activator
+ * @requires events
+ * @requires composition
+ * @requires history
+ * @requires knockout
+ * @requires jquery
+ */
+define('plugins/router',['durandal/system', 'durandal/app', 'durandal/activator', 'durandal/events', 'durandal/composition', 'plugins/history', 'knockout', 'jquery'], function(system, app, activator, events, composition, history, ko, $) {
+    var optionalParam = /\((.*?)\)/g;
+    var namedParam = /(\(\?)?:\w+/g;
+    var splatParam = /\*\w+/g;
+    var escapeRegExp = /[\-{}\[\]+?.,\\\^$|#\s]/g;
+    var startDeferred, rootRouter;
+    var trailingSlash = /\/$/;
+    var routesAreCaseSensitive = false;
+    var lastUrl = '/', lastTryUrl = '/';
+
+    function routeStringToRegExp(routeString) {
+        routeString = routeString.replace(escapeRegExp, '\\$&')
+            .replace(optionalParam, '(?:$1)?')
+            .replace(namedParam, function(match, optional) {
+                return optional ? match : '([^\/]+)';
+            })
+            .replace(splatParam, '(.*?)');
+
+        return new RegExp('^' + routeString + '$', routesAreCaseSensitive ? undefined : 'i');
+    }
+
+    function stripParametersFromRoute(route) {
+        var colonIndex = route.indexOf(':');
+        var length = colonIndex > 0 ? colonIndex - 1 : route.length;
+        return route.substring(0, length);
+    }
+
+    function endsWith(str, suffix) {
+        return str.indexOf(suffix, str.length - suffix.length) !== -1;
+    }
+
+    function compareArrays(first, second) {
+        if (!first || !second){
+            return false;
+        }
+
+        if (first.length != second.length) {
+            return false;
+        }
+
+        for (var i = 0, len = first.length; i < len; i++) {
+            if (first[i] != second[i]) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    function reconstructUrl(instruction){
+        if(!instruction.queryString){
+            return instruction.fragment;
+        }
+
+        return instruction.fragment + '?' + instruction.queryString;
+    }
+
+    /**
+     * @class Router
+     * @uses Events
+     */
+
+    /**
+     * Triggered when the navigation logic has completed.
+     * @event router:navigation:complete
+     * @param {object} instance The activated instance.
+     * @param {object} instruction The routing instruction.
+     * @param {Router} router The router.
+     */
+
+    /**
+     * Triggered when the navigation has been cancelled.
+     * @event router:navigation:cancelled
+     * @param {object} instance The activated instance.
+     * @param {object} instruction The routing instruction.
+     * @param {Router} router The router.
+     */
+
+    /**
+     * Triggered when navigation begins.
+     * @event router:navigation:processing
+     * @param {object} instruction The routing instruction.
+     * @param {Router} router The router.
+     */
+
+    /**
+     * Triggered right before a route is activated.
+     * @event router:route:activating
+     * @param {object} instance The activated instance.
+     * @param {object} instruction The routing instruction.
+     * @param {Router} router The router.
+     */
+
+    /**
+     * Triggered right before a route is configured.
+     * @event router:route:before-config
+     * @param {object} config The route config.
+     * @param {Router} router The router.
+     */
+
+    /**
+     * Triggered just after a route is configured.
+     * @event router:route:after-config
+     * @param {object} config The route config.
+     * @param {Router} router The router.
+     */
+
+    /**
+     * Triggered when the view for the activated instance is attached.
+     * @event router:navigation:attached
+     * @param {object} instance The activated instance.
+     * @param {object} instruction The routing instruction.
+     * @param {Router} router The router.
+     */
+
+    /**
+     * Triggered when the composition that the activated instance participates in is complete.
+     * @event router:navigation:composition-complete
+     * @param {object} instance The activated instance.
+     * @param {object} instruction The routing instruction.
+     * @param {Router} router The router.
+     */
+
+    /**
+     * Triggered when the router does not find a matching route.
+     * @event router:route:not-found
+     * @param {string} fragment The url fragment.
+     * @param {Router} router The router.
+     */
+
+    var createRouter = function() {
+        var queue = [],
+            isProcessing = ko.observable(false),
+            currentActivation,
+            currentInstruction,
+            activeItem = activator.create();
+
+        var router = {
+            /**
+             * The route handlers that are registered. Each handler consists of a `routePattern` and a `callback`.
+             * @property {object[]} handlers
+             */
+            handlers: [],
+            /**
+             * The route configs that are registered.
+             * @property {object[]} routes
+             */
+            routes: [],
+            /**
+             * The route configurations that have been designated as displayable in a nav ui (nav:true).
+             * @property {KnockoutObservableArray} navigationModel
+             */
+            navigationModel: ko.observableArray([]),
+            /**
+             * The active item/screen based on the current navigation state.
+             * @property {Activator} activeItem
+             */
+            activeItem: activeItem,
+            /**
+             * Indicates that the router (or a child router) is currently in the process of navigating.
+             * @property {KnockoutComputed} isNavigating
+             */
+            isNavigating: ko.computed(function() {
+                var current = activeItem();
+                var processing = isProcessing();
+                var currentRouterIsProcesing = current
+                    && current.router
+                    && current.router != router
+                    && current.router.isNavigating() ? true : false;
+                return  processing || currentRouterIsProcesing;
+            }),
+            /**
+             * An observable surfacing the active routing instruction that is currently being processed or has recently finished processing.
+             * The instruction object has `config`, `fragment`, `queryString`, `params` and `queryParams` properties.
+             * @property {KnockoutObservable} activeInstruction
+             */
+            activeInstruction:ko.observable(null),
+            __router__:true
+        };
+
+        events.includeIn(router);
+
+        activeItem.settings.areSameItem = function (currentItem, newItem, currentActivationData, newActivationData) {
+            if (currentItem == newItem) {
+                return compareArrays(currentActivationData, newActivationData);
+            }
+
+            return false;
+        };
+
+        activeItem.settings.findChildActivator = function(item) {
+            if (item && item.router && item.router.parent == router) {
+                return item.router.activeItem;
+            }
+
+            return null;
+        };
+
+        function hasChildRouter(instance, parentRouter) {
+            return instance.router && instance.router.parent == parentRouter;
+        }
+
+        function setCurrentInstructionRouteIsActive(flag) {
+            if (currentInstruction && currentInstruction.config.isActive) {
+                currentInstruction.config.isActive(flag);
+            }
+        }
+
+        function completeNavigation(instance, instruction, mode) {
+            system.log('Navigation Complete', instance, instruction);
+
+            var fromModuleId = system.getModuleId(currentActivation);
+            if (fromModuleId) {
+                router.trigger('router:navigation:from:' + fromModuleId);
+            }
+
+            currentActivation = instance;
+
+            setCurrentInstructionRouteIsActive(false);
+            currentInstruction = instruction;
+            setCurrentInstructionRouteIsActive(true);
+
+            var toModuleId = system.getModuleId(currentActivation);
+            if (toModuleId) {
+                router.trigger('router:navigation:to:' + toModuleId);
+            }
+
+            if (!hasChildRouter(instance, router)) {
+                router.updateDocumentTitle(instance, instruction);
+            }
+
+            switch (mode) {
+                case 'rootRouter':
+                    lastUrl = reconstructUrl(currentInstruction);
+                    break;
+                case 'rootRouterWithChild':
+                    lastTryUrl = reconstructUrl(currentInstruction);
+                    break;
+                case 'lastChildRouter':
+                    lastUrl = lastTryUrl;
+                    break;
+            }
+
+            rootRouter.explicitNavigation = false;
+            rootRouter.navigatingBack = false;
+
+            router.trigger('router:navigation:complete', instance, instruction, router);
+        }
+
+        function cancelNavigation(instance, instruction) {
+            system.log('Navigation Cancelled');
+
+            router.activeInstruction(currentInstruction);
+
+            router.navigate(lastUrl, false);
+
+            isProcessing(false);
+            rootRouter.explicitNavigation = false;
+            rootRouter.navigatingBack = false;
+            router.trigger('router:navigation:cancelled', instance, instruction, router);
+        }
+
+        function redirect(url) {
+            system.log('Navigation Redirecting');
+
+            isProcessing(false);
+            rootRouter.explicitNavigation = false;
+            rootRouter.navigatingBack = false;
+            router.navigate(url, { trigger: true, replace: true });
+        }
+
+        function activateRoute(activator, instance, instruction) {
+            rootRouter.navigatingBack = !rootRouter.explicitNavigation && currentActivation != instruction.fragment;
+            router.trigger('router:route:activating', instance, instruction, router);
+
+            var options = {
+                canDeactivate: !router.parent
+            };
+
+            activator.activateItem(instance, instruction.params, options).then(function(succeeded) {
+                if (succeeded) {
+                    var previousActivation = currentActivation;
+                    var withChild = hasChildRouter(instance, router);
+                    var mode = '';
+
+                    if (router.parent) {
+                        if(!withChild) {
+                            mode = 'lastChildRouter';
+                        }
+                    } else {
+                        if (withChild) {
+                            mode = 'rootRouterWithChild';
+                        } else {
+                            mode = 'rootRouter';
+                        }
+                    }
+
+                    completeNavigation(instance, instruction, mode);
+
+                    if (withChild) {
+                        instance.router.trigger('router:route:before-child-routes', instance, instruction, router);
+
+                        var fullFragment = instruction.fragment;
+                        if (instruction.queryString) {
+                            fullFragment += "?" + instruction.queryString;
+                        }
+
+                        instance.router.loadUrl(fullFragment);
+                    }
+
+                    if (previousActivation == instance) {
+                        router.attached();
+                        router.compositionComplete();
+                    }
+                } else if(activator.settings.lifecycleData && activator.settings.lifecycleData.redirect){
+                    redirect(activator.settings.lifecycleData.redirect);
+                }else{
+                    cancelNavigation(instance, instruction);
+                }
+
+                if (startDeferred) {
+                    startDeferred.resolve();
+                    startDeferred = null;
+                }
+            }).fail(function(err){
+                system.error(err);
+            });
+        }
+
+        /**
+         * Inspects routes and modules before activation. Can be used to protect access by cancelling navigation or redirecting.
+         * @method guardRoute
+         * @param {object} instance The module instance that is about to be activated by the router.
+         * @param {object} instruction The route instruction. The instruction object has config, fragment, queryString, params and queryParams properties.
+         * @return {Promise|Boolean|String} If a boolean, determines whether or not the route should activate or be cancelled. If a string, causes a redirect to the specified route. Can also be a promise for either of these value types.
+         */
+        function handleGuardedRoute(activator, instance, instruction) {
+            var resultOrPromise = router.guardRoute(instance, instruction);
+            if (resultOrPromise || resultOrPromise === '') {
+                if (resultOrPromise.then) {
+                    resultOrPromise.then(function(result) {
+                        if (result) {
+                            if (system.isString(result)) {
+                                redirect(result);
+                            } else {
+                                activateRoute(activator, instance, instruction);
+                            }
+                        } else {
+                            cancelNavigation(instance, instruction);
+                        }
+                    });
+                } else {
+                    if (system.isString(resultOrPromise)) {
+                        redirect(resultOrPromise);
+                    } else {
+                        activateRoute(activator, instance, instruction);
+                    }
+                }
+            } else {
+                cancelNavigation(instance, instruction);
+            }
+        }
+
+        function ensureActivation(activator, instance, instruction) {
+            if (router.guardRoute) {
+                handleGuardedRoute(activator, instance, instruction);
+            } else {
+                activateRoute(activator, instance, instruction);
+            }
+        }
+
+        function canReuseCurrentActivation(instruction) {
+            return currentInstruction
+                && currentInstruction.config.moduleId == instruction.config.moduleId
+                && currentActivation
+                && ((currentActivation.canReuseForRoute && currentActivation.canReuseForRoute.apply(currentActivation, instruction.params))
+                || (!currentActivation.canReuseForRoute && currentActivation.router && currentActivation.router.loadUrl));
+        }
+
+        function dequeueInstruction() {
+            if (isProcessing()) {
+                return;
+            }
+
+            var instruction = queue.shift();
+            queue = [];
+
+            if (!instruction) {
+                return;
+            }
+
+            isProcessing(true);
+            router.activeInstruction(instruction);
+            router.trigger('router:navigation:processing', instruction, router);
+
+            if (canReuseCurrentActivation(instruction)) {
+                var tempActivator = activator.create();
+                tempActivator.forceActiveItem(currentActivation); //enforce lifecycle without re-compose
+                tempActivator.settings.areSameItem = activeItem.settings.areSameItem;
+                tempActivator.settings.findChildActivator = activeItem.settings.findChildActivator;
+                ensureActivation(tempActivator, currentActivation, instruction);
+            } else if(!instruction.config.moduleId) {
+                ensureActivation(activeItem, {
+                    viewUrl:instruction.config.viewUrl,
+                    canReuseForRoute:function() {
+                        return true;
+                    }
+                }, instruction);
+            } else {
+                system.acquire(instruction.config.moduleId).then(function(m) {
+                    var instance = system.resolveObject(m);
+
+                    if(instruction.config.viewUrl) {
+                        instance.viewUrl = instruction.config.viewUrl;
+                    }
+
+                    ensureActivation(activeItem, instance, instruction);
+                }).fail(function(err) {
+                    system.error('Failed to load routed module (' + instruction.config.moduleId + '). Details: ' + err.message, err);
+                });
+            }
+        }
+
+        function queueInstruction(instruction) {
+            queue.unshift(instruction);
+            dequeueInstruction();
+        }
+
+        // Given a route, and a URL fragment that it matches, return the array of
+        // extracted decoded parameters. Empty or unmatched parameters will be
+        // treated as `null` to normalize cross-browser behavior.
+        function createParams(routePattern, fragment, queryString) {
+            var params = routePattern.exec(fragment).slice(1);
+
+            for (var i = 0; i < params.length; i++) {
+                var current = params[i];
+                params[i] = current ? decodeURIComponent(current) : null;
+            }
+
+            var queryParams = router.parseQueryString(queryString);
+            if (queryParams) {
+                params.push(queryParams);
+            }
+
+            return {
+                params:params,
+                queryParams:queryParams
+            };
+        }
+
+        function configureRoute(config){
+            router.trigger('router:route:before-config', config, router);
+
+            if (!system.isRegExp(config.route)) {
+                config.title = config.title || router.convertRouteToTitle(config.route);
+
+                if (!config.viewUrl) {
+                    config.moduleId = config.moduleId || router.convertRouteToModuleId(config.route);
+                }
+                
+                config.hash = config.hash || router.convertRouteToHash(config.route);
+
+                if (config.hasChildRoutes) {
+                    config.route = config.route + '*childRoutes';
+                }
+
+                config.routePattern = routeStringToRegExp(config.route);
+            }else{
+                config.routePattern = config.route;
+            }
+
+            config.isActive = config.isActive || ko.observable(false);
+            router.trigger('router:route:after-config', config, router);
+            router.routes.push(config);
+
+            router.route(config.routePattern, function(fragment, queryString) {
+                var paramInfo = createParams(config.routePattern, fragment, queryString);
+                queueInstruction({
+                    fragment: fragment,
+                    queryString:queryString,
+                    config: config,
+                    params: paramInfo.params,
+                    queryParams:paramInfo.queryParams
+                });
+            });
+        };
+
+        function mapRoute(config) {
+            if(system.isArray(config.route)){
+                var isActive = config.isActive || ko.observable(false);
+
+                for(var i = 0, length = config.route.length; i < length; i++){
+                    var current = system.extend({}, config);
+
+                    current.route = config.route[i];
+                    current.isActive = isActive;
+
+                    if(i > 0){
+                        delete current.nav;
+                    }
+
+                    configureRoute(current);
+                }
+            }else{
+                configureRoute(config);
+            }
+
+            return router;
+        }
+
+        /**
+         * Parses a query string into an object.
+         * @method parseQueryString
+         * @param {string} queryString The query string to parse.
+         * @return {object} An object keyed according to the query string parameters.
+         */
+        router.parseQueryString = function (queryString) {
+            var queryObject, pairs;
+
+            if (!queryString) {
+                return null;
+            }
+
+            pairs = queryString.split('&');
+
+            if (pairs.length == 0) {
+                return null;
+            }
+
+            queryObject = {};
+
+            for (var i = 0; i < pairs.length; i++) {
+                var pair = pairs[i];
+                if (pair === '') {
+                    continue;
+                }
+
+                var parts = pair.split(/=(.+)?/),
+                    key = parts[0],
+                    value = parts[1] && decodeURIComponent(parts[1].replace(/\+/g, ' '));
+
+                var existing = queryObject[key];
+
+                if (existing) {
+                    if (system.isArray(existing)) {
+                        existing.push(value);
+                    } else {
+                        queryObject[key] = [existing, value];
+                    }
+                }
+                else {
+                    queryObject[key] = value;
+                }
+            }
+
+            return queryObject;
+        };
+
+        /**
+         * Add a route to be tested when the url fragment changes.
+         * @method route
+         * @param {RegEx} routePattern The route pattern to test against.
+         * @param {function} callback The callback to execute when the route pattern is matched.
+         */
+        router.route = function(routePattern, callback) {
+            router.handlers.push({ routePattern: routePattern, callback: callback });
+        };
+
+        /**
+         * Attempt to load the specified URL fragment. If a route succeeds with a match, returns `true`. If no defined routes matches the fragment, returns `false`.
+         * @method loadUrl
+         * @param {string} fragment The URL fragment to find a match for.
+         * @return {boolean} True if a match was found, false otherwise.
+         */
+        router.loadUrl = function(fragment) {
+            var handlers = router.handlers,
+                queryString = null,
+                coreFragment = fragment,
+                queryIndex = fragment.indexOf('?');
+
+            if (queryIndex != -1) {
+                coreFragment = fragment.substring(0, queryIndex);
+                queryString = fragment.substr(queryIndex + 1);
+            }
+
+            if(router.relativeToParentRouter){
+                var instruction = this.parent.activeInstruction();
+				coreFragment = queryIndex == -1 ? instruction.params.join('/') : instruction.params.slice(0, -1).join('/');
+
+                if(coreFragment && coreFragment.charAt(0) == '/'){
+                    coreFragment = coreFragment.substr(1);
+                }
+
+                if(!coreFragment){
+                    coreFragment = '';
+                }
+
+                coreFragment = coreFragment.replace('//', '/').replace('//', '/');
+            }
+
+            coreFragment = coreFragment.replace(trailingSlash, '');
+
+            for (var i = 0; i < handlers.length; i++) {
+                var current = handlers[i];
+                if (current.routePattern.test(coreFragment)) {
+                    current.callback(coreFragment, queryString);
+                    return true;
+                }
+            }
+
+            system.log('Route Not Found', fragment, currentInstruction);
+            router.trigger('router:route:not-found', fragment, router);
+
+            if (router.parent) {
+                lastUrl = lastTryUrl;
+            }
+
+            history.navigate(lastUrl, { trigger:false, replace:true });
+
+            rootRouter.explicitNavigation = false;
+            rootRouter.navigatingBack = false;
+
+            return false;
+        };
+
+        var titleSubscription;
+        function setTitle(value) {
+            var appTitle = ko.unwrap(app.title);
+
+            if (appTitle) {
+                document.title = value + " | " + appTitle;
+            } else {
+                document.title = value;
+            }
+        }  
+        
+        // Allow observable to be used for app.title
+        if(ko.isObservable(app.title)) {
+            app.title.subscribe(function () {
+                var instruction = router.activeInstruction();
+                var title = instruction != null ? ko.unwrap(instruction.config.title) : '';
+                setTitle(title);
+            });
+        }
+        
+        /**
+         * Updates the document title based on the activated module instance, the routing instruction and the app.title.
+         * @method updateDocumentTitle
+         * @param {object} instance The activated module.
+         * @param {object} instruction The routing instruction associated with the action. It has a `config` property that references the original route mapping config.
+         */
+        router.updateDocumentTitle = function (instance, instruction) {
+            var appTitle = ko.unwrap(app.title),
+                title = instruction.config.title;
+                
+            if (titleSubscription) {
+                titleSubscription.dispose();
+            }
+
+            if (title) {
+                if (ko.isObservable(title)) {
+                    titleSubscription = title.subscribe(setTitle);
+                    setTitle(title());
+                } else {
+                    setTitle(title);
+                }
+            } else if (appTitle) {
+                document.title = appTitle;
+            }
+        };
+
+        /**
+         * Save a fragment into the hash history, or replace the URL state if the
+         * 'replace' option is passed. You are responsible for properly URL-encoding
+         * the fragment in advance.
+         * The options object can contain `trigger: false` if you wish to not have the
+         * route callback be fired, or `replace: true`, if
+         * you wish to modify the current URL without adding an entry to the history.
+         * @method navigate
+         * @param {string} fragment The url fragment to navigate to.
+         * @param {object|boolean} options An options object with optional trigger and replace flags. You can also pass a boolean directly to set the trigger option. Trigger is `true` by default.
+         * @return {boolean} Returns true/false from loading the url.
+         */
+        router.navigate = function(fragment, options) {
+            if(fragment && fragment.indexOf('://') != -1) {
+                window.location.href = fragment;
+                return true;
+            }
+
+            if(options === undefined || (system.isBoolean(options) && options) || (system.isObject(options) && options.trigger)) {
+                rootRouter.explicitNavigation = true;
+            }
+
+            if ((system.isBoolean(options) && !options) || (options && options.trigger != undefined && !options.trigger)) {
+                lastUrl = fragment;
+            }
+
+            return history.navigate(fragment, options);
+        };
+
+        /**
+         * Navigates back in the browser history.
+         * @method navigateBack
+         */
+        router.navigateBack = function() {
+            history.navigateBack();
+        };
+
+        router.attached = function() {
+            router.trigger('router:navigation:attached', currentActivation, currentInstruction, router);
+        };
+
+        router.compositionComplete = function(){
+            isProcessing(false);
+            router.trigger('router:navigation:composition-complete', currentActivation, currentInstruction, router);
+            dequeueInstruction();
+        };
+
+        /**
+         * Converts a route to a hash suitable for binding to a link's href.
+         * @method convertRouteToHash
+         * @param {string} route
+         * @return {string} The hash.
+         */
+        router.convertRouteToHash = function(route) {
+            route = route.replace(/\*.*$/, '');
+
+            if(router.relativeToParentRouter){
+                var instruction = router.parent.activeInstruction(),
+                    hash = route ? instruction.config.hash + '/' + route : instruction.config.hash;
+
+                if(history._hasPushState){
+                    hash = '/' + hash;
+                }
+
+                hash = hash.replace('//', '/').replace('//', '/');
+                return hash;
+            }
+
+            if(history._hasPushState){
+                return route;
+            }
+
+            return "#" + route;
+        };
+
+        /**
+         * Converts a route to a module id. This is only called if no module id is supplied as part of the route mapping.
+         * @method convertRouteToModuleId
+         * @param {string} route
+         * @return {string} The module id.
+         */
+        router.convertRouteToModuleId = function(route) {
+            return stripParametersFromRoute(route);
+        };
+
+        /**
+         * Converts a route to a displayable title. This is only called if no title is specified as part of the route mapping.
+         * @method convertRouteToTitle
+         * @param {string} route
+         * @return {string} The title.
+         */
+        router.convertRouteToTitle = function(route) {
+            var value = stripParametersFromRoute(route);
+            return value.substring(0, 1).toUpperCase() + value.substring(1);
+        };
+
+        /**
+         * Maps route patterns to modules.
+         * @method map
+         * @param {string|object|object[]} route A route, config or array of configs.
+         * @param {object} [config] The config for the specified route.
+         * @chainable
+         * @example
+         router.map([
+         { route: '', title:'Home', moduleId: 'homeScreen', nav: true },
+         { route: 'customer/:id', moduleId: 'customerDetails'}
+         ]);
+         */
+        router.map = function(route, config) {
+            if (system.isArray(route)) {
+                for (var i = 0; i < route.length; i++) {
+                    router.map(route[i]);
+                }
+
+                return router;
+            }
+
+            if (system.isString(route) || system.isRegExp(route)) {
+                if (!config) {
+                    config = {};
+                } else if (system.isString(config)) {
+                    config = { moduleId: config };
+                }
+
+                config.route = route;
+            } else {
+                config = route;
+            }
+
+            return mapRoute(config);
+        };
+
+        /**
+         * Builds an observable array designed to bind a navigation UI to. The model will exist in the `navigationModel` property.
+         * @method buildNavigationModel
+         * @param {number} defaultOrder The default order to use for navigation visible routes that don't specify an order. The default is 100 and each successive route will be one more than that.
+         * @chainable
+         */
+        router.buildNavigationModel = function(defaultOrder) {
+            var nav = [], routes = router.routes;
+            var fallbackOrder = defaultOrder || 100;
+
+            for (var i = 0; i < routes.length; i++) {
+                var current = routes[i];
+
+                if (current.nav) {
+                    if (!system.isNumber(current.nav)) {
+                        current.nav = ++fallbackOrder;
+                    }
+
+                    nav.push(current);
+                }
+            }
+
+            nav.sort(function(a, b) { return a.nav - b.nav; });
+            router.navigationModel(nav);
+
+            return router;
+        };
+
+        /**
+         * Configures how the router will handle unknown routes.
+         * @method mapUnknownRoutes
+         * @param {string|function} [config] If not supplied, then the router will map routes to modules with the same name.
+         * If a string is supplied, it represents the module id to route all unknown routes to.
+         * Finally, if config is a function, it will be called back with the route instruction containing the route info. The function can then modify the instruction by adding a moduleId and the router will take over from there.
+         * @param {string} [replaceRoute] If config is a module id, then you can optionally provide a route to replace the url with.
+         * @chainable
+         */
+        router.mapUnknownRoutes = function(config, replaceRoute) {
+            var catchAllRoute = "*catchall";
+            var catchAllPattern = routeStringToRegExp(catchAllRoute);
+
+            router.route(catchAllPattern, function (fragment, queryString) {
+                var paramInfo = createParams(catchAllPattern, fragment, queryString);
+                var instruction = {
+                    fragment: fragment,
+                    queryString: queryString,
+                    config: {
+                        route: catchAllRoute,
+                        routePattern: catchAllPattern
+                    },
+                    params: paramInfo.params,
+                    queryParams: paramInfo.queryParams
+                };
+
+                if (!config) {
+                    instruction.config.moduleId = fragment;
+                } else if (system.isString(config)) {
+                    instruction.config.moduleId = config;
+                    if(replaceRoute){
+                        history.navigate(replaceRoute, { trigger:false, replace:true });
+                    }
+                } else if (system.isFunction(config)) {
+                    var result = config(instruction);
+                    if (result && result.then) {
+                        result.then(function() {
+                            router.trigger('router:route:before-config', instruction.config, router);
+                            router.trigger('router:route:after-config', instruction.config, router);
+                            queueInstruction(instruction);
+                        });
+                        return;
+                    }
+                } else {
+                    instruction.config = config;
+                    instruction.config.route = catchAllRoute;
+                    instruction.config.routePattern = catchAllPattern;
+                }
+
+                router.trigger('router:route:before-config', instruction.config, router);
+                router.trigger('router:route:after-config', instruction.config, router);
+                queueInstruction(instruction);
+            });
+
+            return router;
+        };
+
+        /**
+         * Resets the router by removing handlers, routes, event handlers and previously configured options.
+         * @method reset
+         * @chainable
+         */
+        router.reset = function() {
+            currentInstruction = currentActivation = undefined;
+            router.handlers = [];
+            router.routes = [];
+            router.off();
+            delete router.options;
+            return router;
+        };
+
+        /**
+         * Makes all configured routes and/or module ids relative to a certain base url.
+         * @method makeRelative
+         * @param {string|object} settings If string, the value is used as the base for routes and module ids. If an object, you can specify `route` and `moduleId` separately. In place of specifying route, you can set `fromParent:true` to make routes automatically relative to the parent router's active route.
+         * @chainable
+         */
+        router.makeRelative = function(settings){
+            if(system.isString(settings)){
+                settings = {
+                    moduleId:settings,
+                    route:settings
+                };
+            }
+
+            if(settings.moduleId && !endsWith(settings.moduleId, '/')){
+                settings.moduleId += '/';
+            }
+
+            if(settings.route && !endsWith(settings.route, '/')){
+                settings.route += '/';
+            }
+
+            if(settings.fromParent){
+                router.relativeToParentRouter = true;
+            }
+
+            router.on('router:route:before-config').then(function(config){
+                if(settings.moduleId){
+                    config.moduleId = settings.moduleId + config.moduleId;
+                }
+
+                if(settings.route){
+                    if(config.route === ''){
+                        config.route = settings.route.substring(0, settings.route.length - 1);
+                    }else{
+                        config.route = settings.route + config.route;
+                    }
+                }
+            });
+
+            if (settings.dynamicHash) {
+                router.on('router:route:after-config').then(function (config) {
+                    config.routePattern = routeStringToRegExp(config.route ? settings.dynamicHash + '/' + config.route : settings.dynamicHash);
+                    config.dynamicHash = config.dynamicHash || ko.observable(config.hash);
+                });
+
+                router.on('router:route:before-child-routes').then(function(instance, instruction, parentRouter) {
+                    var childRouter = instance.router;
+
+                    for(var i = 0; i < childRouter.routes.length; i++) {
+                        var route = childRouter.routes[i];
+                        var params = instruction.params.slice(0);
+
+                        route.hash = childRouter.convertRouteToHash(route.route)
+                            .replace(namedParam, function(match) {
+                                return params.length > 0 ? params.shift() : match;
+                            });
+
+                        route.dynamicHash(route.hash);
+                    }
+                });
+            }
+
+            return router;
+        };
+
+        /**
+         * Creates a child router.
+         * @method createChildRouter
+         * @return {Router} The child router.
+         */
+        router.createChildRouter = function() {
+            var childRouter = createRouter();
+            childRouter.parent = router;
+            return childRouter;
+        };
+
+        return router;
+    };
+
+    /**
+     * @class RouterModule
+     * @extends Router
+     * @static
+     */
+    rootRouter = createRouter();
+    rootRouter.explicitNavigation = false;
+    rootRouter.navigatingBack = false;
+
+    /**
+     * Makes the RegExp generated for routes case sensitive, rather than the default of case insensitive.
+     * @method makeRoutesCaseSensitive
+     */
+    rootRouter.makeRoutesCaseSensitive = function(){
+        routesAreCaseSensitive = true;
+    };
+
+    /**
+     * Verify that the target is the current window
+     * @method targetIsThisWindow
+     * @return {boolean} True if the event's target is the current window, false otherwise.
+     */
+    rootRouter.targetIsThisWindow = function(event) {
+        var targetWindow = $(event.target).attr('target');
+
+        if (!targetWindow ||
+            targetWindow === window.name ||
+            targetWindow === '_self' ||
+            (targetWindow === 'top' && window === window.top)) { return true; }
+
+        return false;
+    };
+
+    /**
+     * Activates the router and the underlying history tracking mechanism.
+     * @method activate
+     * @return {Promise} A promise that resolves when the router is ready.
+     */
+    rootRouter.activate = function(options) {
+        return system.defer(function(dfd) {
+            startDeferred = dfd;
+            rootRouter.options = system.extend({ routeHandler: rootRouter.loadUrl }, rootRouter.options, options);
+
+            history.activate(rootRouter.options);
+
+            if(history._hasPushState){
+                var routes = rootRouter.routes,
+                    i = routes.length;
+
+                while(i--){
+                    var current = routes[i];
+                    current.hash = current.hash.replace('#', '/');
+                }
+            }
+
+            var rootStripper = rootRouter.options.root && new RegExp("^" + rootRouter.options.root + "/");
+
+            $(document).delegate("a", 'click', function(evt){
+                if(history._hasPushState){
+                    if(!evt.altKey && !evt.ctrlKey && !evt.metaKey && !evt.shiftKey && rootRouter.targetIsThisWindow(evt)){
+                        var href = $(this).attr("href");
+
+                        // Ensure the protocol is not part of URL, meaning its relative.
+                        // Stop the event bubbling to ensure the link will not cause a page refresh.
+                        if (href != null && !(href.charAt(0) === "#" || /^[a-z]+:/i.test(href))) {
+                            rootRouter.explicitNavigation = true;
+                            evt.preventDefault();
+
+                            if (rootStripper) {
+                                href = href.replace(rootStripper, "");
+                            }
+
+                            history.navigate(href);
+                        }
+                    }
+                }else{
+                    rootRouter.explicitNavigation = true;
+                }
+            });
+
+            if(history.options.silent && startDeferred){
+                startDeferred.resolve();
+                startDeferred = null;
+            }
+        }).promise();
+    };
+
+    /**
+     * Disable history, perhaps temporarily. Not useful in a real app, but possibly useful for unit testing Routers.
+     * @method deactivate
+     */
+    rootRouter.deactivate = function() {
+        history.deactivate();
+    };
+
+    /**
+     * Installs the router's custom ko binding handler.
+     * @method install
+     */
+    rootRouter.install = function(){
+        ko.bindingHandlers.router = {
+            init: function() {
+                return { controlsDescendantBindings: true };
+            },
+            update: function(element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
+                var settings = ko.utils.unwrapObservable(valueAccessor()) || {};
+
+                if (settings.__router__) {
+                    settings = {
+                        model:settings.activeItem(),
+                        attached:settings.attached,
+                        compositionComplete:settings.compositionComplete,
+                        activate: false
+                    };
+                } else {
+                    var theRouter = ko.utils.unwrapObservable(settings.router || viewModel.router) || rootRouter;
+                    settings.model = theRouter.activeItem();
+                    settings.attached = theRouter.attached;
+                    settings.compositionComplete = theRouter.compositionComplete;
+                    settings.activate = false;
+                }
+
+                composition.compose(element, settings, bindingContext);
+            }
+        };
+
+        ko.virtualElements.allowedBindings.router = true;
+    };
+
+    return rootRouter;
+});
+
+// Maps the files so Durandal knows where to find these.
+require.config({
+    baseUrl: '/App',
+    paths: {
+        'text': '../Scripts/text',
+        'durandal': '../Scripts/durandal',
+        'plugins': '../Scripts/durandal/plugins',
+        'transitions': '../Scripts/durandal/transitions'
+        //,'viewmodels': '../App/viewmodels',
+        //'views': '../App/views',
+        //'models': '../App/models'
+    }
+});
+
+// Durandal 2.x assumes no global libraries. It will ship expecting 
+// Knockout and jQuery to be defined with requirejs. .NET 
+// templates by default will set them up as standard script
+// libs and then register them with require as follows: 
+define("jquery", function () { return jQuery; });
+define("knockout", function () { return ko; });
+
+
+define('main',["durandal/app", "durandal/viewLocator", "durandal/system", "plugins/router", "durandal/viewEngine"], boot);
+function boot(app, viewLocator, system, router, viewEngine) {
+
+    // Enable debug message to show in the console 
+    system.debug(true);
+
+    app.title = "FAS Dummy";
+
+    //specify which plugins to install and their configuration
+    app.configurePlugins({
+        router: true,
+        dialog: true,
+        widget: {
+            kinds: ['expander']
+        }
+    });
+    
+    app.start().then(function () {
+        ////Look for partial views in a 'views' folder in the root.
+        viewLocator.useConvention("viewmodels", "views", "views");
+
+        //Show the app by setting the root view model for our application.
+        app.setRoot("viewmodels/shell", "entrance");
+    });
+};
+
+define('services/routeconfig',[],function() {
+    
+    function buildpath(ext) {
+        return (($siteroot.match("^/")) ? $siteroot : $siteroot + "/") + ext;
+    }
+
+    var controllers = {
+        transactionroute: buildpath("TransactionReversal/GetPrimeDetails")
+    };
+    return controllers;
+});
+define('services/transactionroutes',["services/routeconfig"],
+    function (routerconfig) {
+        var route = {};
+
+        route.getinformation = function (data) {
+            return $.ajax({
+                url: routerconfig.transactionroute,
+                contentType: "application/json",
+                type: "POST",
+                data: JSON.stringify(data)
+            });
+        }
+
+        return route;
+    });
+define('viewmodels/Dashboard/default',["plugins/router", "durandal/system"],
+    function(router, system) {
+        
+        function activate() {
+            system.log("Dashboard has been activated.");
+        };
+
+        var title = "Dashboard To";
+        var vmValue = {
+            convertRouteToHash: router.convertRouteToHash,
+            activate: activate,
+            title: title
+        };
+        return vmValue;
+    });
+define('viewmodels/Transaction/default',["plugins/router", "durandal/system", "services/transactionroutes"],
+    function (router, system, transactionroutes) {
+        var messages = ko.observableArray();
+        var localcardnumber = ko.observable("");
+        var connectionId = "";
+
+        $.connection.TransactionHub.logging = true;
+        var hubclient = $.connection.TransactionHub;
+        hubclient.client.addActivity = function (message) {
+            messages.push(message);
+        }
+
+        $.connection.hub.start().done(function() {
+            connectionId = $.connection.hub.id;
+        });
+
+
+        function activate() {
+            system.log("Transaction has been activated.");
+        };
+
+        function ondeactivate() {
+            hubclient.server.disconnectMe(connectionId);
+        }
+
+        function getinformation() {
+            var payload = { "cardNumber": localcardnumber(), "connectionId": connectionId };
+            transactionroutes.getinformation(payload)
+            .done(function (result) {
+                if (!result.IsSuccess) alert(result.ErrorMessage);
+                    //alert("done");
+                })
+            .fail(function () {
+                //alert("fail");
+            })
+            .complete(function () {
+                //alert("complete");
+            });
+        }
+        
+        var title = "Transaction To";
+        var vmValue = {
+            convertRouteToHash: router.convertRouteToHash,
+            activate: activate,
+            deactivate: ondeactivate,
+            title: title,
+            cardnumber: localcardnumber,
+            getinfo: getinformation,
+            logmessages: messages
+        };
+        return vmValue;
+    });
+define('viewmodels/shell',["durandal/system", "plugins/router"],
+    function(system, router) {
+
+        function activate() {
+
+            router.on("router:route:not-found", function (fragment) {
+                system.log("No routes found");
+            });
+
+            var routes = [
+            { route: ["", "Dashboard/default"], moduleId: "Dashboard/default", title: "Dashboard", nav: true, hash: "#Dashboard/default" },
+            { route: "Transaction/default", moduleId: "Transaction/default", title: "Transaction", nav: true, hash: "#Transaction/default" },
+            ];
+
+            if ($siteroot == null || $siteroot === "/")
+                return router.makeRelative({ moduleId: "viewmodels" }).map(routes).buildNavigationModel().activate({ pushState: true });
+            else
+                return router.makeRelative({ moduleId: "viewmodels" }).map(routes).buildNavigationModel().activate({ pushState: true, root: "/" + $siteroot });
+        };
+
+
+        var shell = {
+            activate: activate,
+            router: router
+        };
+
+        return shell;
+    });
+/**
+ * Durandal 2.1.0 Copyright (c) 2012 Blue Spire Consulting, Inc. All Rights Reserved.
+ * Available via the MIT license.
+ * see: http://durandaljs.com or https://github.com/BlueSpire/Durandal for details.
+ */
+/**
+ * The dialog module enables the display of message boxes, custom modal dialogs and other overlays or slide-out UI abstractions. Dialogs are constructed by the composition system which interacts with a user defined dialog context. The dialog module enforced the activator lifecycle.
+ * @module dialog
+ * @requires system
+ * @requires app
+ * @requires composition
+ * @requires activator
+ * @requires viewEngine
+ * @requires jquery
+ * @requires knockout
+ */
+define('plugins/dialog',['durandal/system', 'durandal/app', 'durandal/composition', 'durandal/activator', 'durandal/viewEngine', 'jquery', 'knockout'], function (system, app, composition, activator, viewEngine, $, ko) {
+    var contexts = {},
+        dialogCount = ko.observable(0),
+        dialog;
+
+    /**
+     * Models a message box's message, title and options.
+     * @class MessageBox
+     */
+    var MessageBox = function (message, title, options, autoclose, settings) {
+        this.message = message;
+        this.title = title || MessageBox.defaultTitle;
+        this.options = options || MessageBox.defaultOptions;
+        this.autoclose = autoclose || false;
+        this.settings = $.extend({}, MessageBox.defaultSettings, settings);
+    };
+
+    /**
+     * Selects an option and closes the message box, returning the selected option through the dialog system's promise.
+     * @method selectOption
+     * @param {string} dialogResult The result to select.
+     */
+    MessageBox.prototype.selectOption = function (dialogResult) {
+        dialog.close(this, dialogResult);
+    };
+
+    /**
+     * Provides the view to the composition system.
+     * @method getView
+     * @return {DOMElement} The view of the message box.
+     */
+    MessageBox.prototype.getView = function () {
+        return viewEngine.processMarkup(MessageBox.defaultViewMarkup);
+    };
+
+    /**
+     * Configures a custom view to use when displaying message boxes.
+     * @method setViewUrl
+     * @param {string} viewUrl The view url relative to the base url which the view locator will use to find the message box's view.
+     * @static
+     */
+    MessageBox.setViewUrl = function (viewUrl) {
+        delete MessageBox.prototype.getView;
+        MessageBox.prototype.viewUrl = viewUrl;
+    };
+
+    /**
+     * The title to be used for the message box if one is not provided.
+     * @property {string} defaultTitle
+     * @default Application
+     * @static
+     */
+    MessageBox.defaultTitle = app.title || 'Application';
+
+    /**
+     * The options to display in the message box if none are specified.
+     * @property {string[]} defaultOptions
+     * @default ['Ok']
+     * @static
+     */
+    MessageBox.defaultOptions = ['Ok'];
+
+    
+    MessageBox.defaultSettings = { buttonClass: "btn btn-default", primaryButtonClass: "btn-primary autofocus", secondaryButtonClass: "", "class": "modal-content messageBox", style: null };
+
+    /**
+    * Sets the classes and styles used throughout the message box markup.
+    * @method setDefaults
+    * @param {object} settings A settings object containing the following optional properties: buttonClass, primaryButtonClass, secondaryButtonClass, class, style.
+    */
+    MessageBox.setDefaults = function (settings) {
+        $.extend(MessageBox.defaultSettings, settings);
+    };
+
+    MessageBox.prototype.getButtonClass = function ($index) {
+        var c = "";
+        if (this.settings) {
+            if (this.settings.buttonClass) {
+                c = this.settings.buttonClass;
+            }
+            if ($index() === 0 && this.settings.primaryButtonClass) {
+                if (c.length > 0) {
+                    c += " ";
+                }
+                c += this.settings.primaryButtonClass;
+            }
+            if ($index() > 0 && this.settings.secondaryButtonClass) {
+                if (c.length > 0) {
+                    c += " ";
+                }
+                c += this.settings.secondaryButtonClass;
+            }
+        }
+        return c;
+    };
+
+    MessageBox.prototype.getClass = function () {
+        if (this.settings) {
+            return this.settings["class"];
+        }
+        return "messageBox";
+    };
+
+    MessageBox.prototype.getStyle = function () {
+        if (this.settings) {
+            return this.settings.style;
+        }
+        return null;
+    };
+
+    MessageBox.prototype.getButtonText = function (stringOrObject) {
+        var t = $.type(stringOrObject);
+        if (t === "string") {
+            return stringOrObject;
+        }
+        else if (t === "object") {
+            if ($.type(stringOrObject.text) === "string") {
+                return stringOrObject.text;
+            } else {
+                system.error('The object for a MessageBox button does not have a text property that is a string.');
+                return null;
+            }
+        }
+        system.error('Object for a MessageBox button is not a string or object but ' + t + '.');
+        return null;
+    };
+
+    MessageBox.prototype.getButtonValue = function (stringOrObject) {
+        var t = $.type(stringOrObject);
+        if (t === "string") {
+            return stringOrObject;
+        }
+        else if (t === "object") {
+            if ($.type(stringOrObject.text) === "undefined") {
+                system.error('The object for a MessageBox button does not have a value property defined.');
+                return null;
+            } else {
+                return stringOrObject.value;
+            }
+        }
+        system.error('Object for a MessageBox button is not a string or object but ' + t + '.');
+        return null;
+    };
+
+    /**
+     * The markup for the message box's view.
+     * @property {string} defaultViewMarkup
+     * @static
+     */
+    MessageBox.defaultViewMarkup = [
+        '<div data-view="plugins/messageBox" data-bind="css: getClass(), style: getStyle()">',
+            '<div class="modal-header">',
+                '<h3 data-bind="html: title"></h3>',
+            '</div>',
+            '<div class="modal-body">',
+                '<p class="message" data-bind="html: message"></p>',
+            '</div>',
+            '<div class="modal-footer">',
+                '<!-- ko foreach: options -->',
+                '<button data-bind="click: function () { $parent.selectOption($parent.getButtonValue($data)); }, text: $parent.getButtonText($data), css: $parent.getButtonClass($index)"></button>',
+                '<!-- /ko -->',
+                '<div style="clear:both;"></div>',
+            '</div>',
+        '</div>'
+    ].join('\n');
+
+    function ensureDialogInstance(objOrModuleId) {
+        return system.defer(function (dfd) {
+            if (system.isString(objOrModuleId)) {
+                system.acquire(objOrModuleId).then(function (module) {
+                    dfd.resolve(system.resolveObject(module));
+                }).fail(function (err) {
+                    system.error('Failed to load dialog module (' + objOrModuleId + '). Details: ' + err.message);
+                });
+            } else {
+                dfd.resolve(objOrModuleId);
+            }
+        }).promise();
+    }
+
+    /**
+     * @class DialogModule
+     * @static
+     */
+    dialog = {
+        /**
+         * The constructor function used to create message boxes.
+         * @property {MessageBox} MessageBox
+         */
+        MessageBox: MessageBox,
+        /**
+         * The css zIndex that the last dialog was displayed at.
+         * @property {number} currentZIndex
+         */
+        currentZIndex: 1050,
+        /**
+         * Gets the next css zIndex at which a dialog should be displayed.
+         * @method getNextZIndex
+         * @return {number} The next usable zIndex.
+         */
+        getNextZIndex: function () {
+            return ++this.currentZIndex;
+        },
+        /**
+         * Determines whether or not there are any dialogs open.
+         * @method isOpen
+         * @return {boolean} True if a dialog is open. false otherwise.
+         */
+        isOpen: ko.computed(function() {
+            return dialogCount() > 0;
+        }),
+        /**
+         * Gets the dialog context by name or returns the default context if no name is specified.
+         * @method getContext
+         * @param {string} [name] The name of the context to retrieve.
+         * @return {DialogContext} True context.
+         */
+        getContext: function (name) {
+            return contexts[name || 'default'];
+        },
+        /**
+         * Adds (or replaces) a dialog context.
+         * @method addContext
+         * @param {string} name The name of the context to add.
+         * @param {DialogContext} dialogContext The context to add.
+         */
+        addContext: function (name, dialogContext) {
+            dialogContext.name = name;
+            contexts[name] = dialogContext;
+
+            var helperName = 'show' + name.substr(0, 1).toUpperCase() + name.substr(1);
+            this[helperName] = function (obj, activationData) {
+                return this.show(obj, activationData, name);
+            };
+        },
+        createCompositionSettings: function (obj, dialogContext) {
+            var settings = {
+                model: obj,
+                activate: false,
+                transition: false
+            };
+
+            if (dialogContext.binding) {
+                settings.binding = dialogContext.binding;
+            }
+
+            if (dialogContext.attached) {
+                settings.attached = dialogContext.attached;
+            }
+
+            if (dialogContext.compositionComplete) {
+                settings.compositionComplete = dialogContext.compositionComplete;
+            }
+
+            return settings;
+        },
+        /**
+         * Gets the dialog model that is associated with the specified object.
+         * @method getDialog
+         * @param {object} obj The object for whom to retrieve the dialog.
+         * @return {Dialog} The dialog model.
+         */
+        getDialog: function (obj) {
+            if (obj) {
+                return obj.__dialog__;
+            }
+
+            return undefined;
+        },
+        /**
+         * Closes the dialog associated with the specified object.
+         * @method close
+         * @param {object} obj The object whose dialog should be closed.
+         * @param {object} results* The results to return back to the dialog caller after closing.
+         */
+        close: function (obj) {
+            var theDialog = this.getDialog(obj);
+            if (theDialog) {
+                var rest = Array.prototype.slice.call(arguments, 1);
+                theDialog.close.apply(theDialog, rest);
+            }
+        },
+        /**
+         * Shows a dialog.
+         * @method show
+         * @param {object|string} obj The object (or moduleId) to display as a dialog.
+         * @param {object} [activationData] The data that should be passed to the object upon activation.
+         * @param {string} [context] The name of the dialog context to use. Uses the default context if none is specified.
+         * @return {Promise} A promise that resolves when the dialog is closed and returns any data passed at the time of closing.
+         */
+        show: function (obj, activationData, context) {
+            var that = this;
+            var dialogContext = contexts[context || 'default'];
+
+            return system.defer(function (dfd) {
+                ensureDialogInstance(obj).then(function (instance) {
+                    var dialogActivator = activator.create();
+
+                    dialogActivator.activateItem(instance, activationData).then(function (success) {
+                        if (success) {
+                            var theDialog = instance.__dialog__ = {
+                                owner: instance,
+                                context: dialogContext,
+                                activator: dialogActivator,
+                                close: function () {
+                                    var args = arguments;
+                                    dialogActivator.deactivateItem(instance, true).then(function (closeSuccess) {
+                                        if (closeSuccess) {
+                                            dialogCount(dialogCount() - 1);
+                                            dialogContext.removeHost(theDialog);
+                                            delete instance.__dialog__;
+
+                                            if (args.length === 0) {
+                                                dfd.resolve();
+                                            } else if (args.length === 1) {
+                                                dfd.resolve(args[0]);
+                                            } else {
+                                                dfd.resolve.apply(dfd, args);
+                                            }
+                                        }
+                                    });
+                                }
+                            };
+
+                            theDialog.settings = that.createCompositionSettings(instance, dialogContext);
+                            dialogContext.addHost(theDialog);
+
+                            dialogCount(dialogCount() + 1);
+                            composition.compose(theDialog.host, theDialog.settings);
+                        } else {
+                            dfd.resolve(false);
+                        }
+                    });
+                });
+            }).promise();
+        },
+        /**
+         * Shows a message box.
+         * @method showMessage
+         * @param {string} message The message to display in the dialog.
+         * @param {string} [title] The title message.
+         * @param {string[]} [options] The options to provide to the user.
+         * @param {boolean} [autoclose] Automatically close the the message box when clicking outside?
+         * @param {Object} [settings] Custom settings for this instance of the messsage box, used to change classes and styles.
+         * @return {Promise} A promise that resolves when the message box is closed and returns the selected option.
+         */
+        showMessage: function (message, title, options, autoclose, settings) {
+            if (system.isString(this.MessageBox)) {
+                return dialog.show(this.MessageBox, [
+                    message,
+                    title || MessageBox.defaultTitle,
+                    options || MessageBox.defaultOptions,
+                    autoclose || false,
+                    settings || {}
+                ]);
+            }
+
+            return dialog.show(new this.MessageBox(message, title, options, autoclose, settings));
+        },
+        /**
+         * Installs this module into Durandal; called by the framework. Adds `app.showDialog` and `app.showMessage` convenience methods.
+         * @method install
+         * @param {object} [config] Add a `messageBox` property to supply a custom message box constructor. Add a `messageBoxView` property to supply custom view markup for the built-in message box. You can also use messageBoxViewUrl to specify the view url.
+         */
+        install: function (config) {
+            app.showDialog = function (obj, activationData, context) {
+                return dialog.show(obj, activationData, context);
+            };
+
+            app.closeDialog = function () {
+                return dialog.close.apply(dialog, arguments);
+            };
+
+            app.showMessage = function (message, title, options, autoclose, settings) {
+                return dialog.showMessage(message, title, options, autoclose, settings);
+            };
+
+            if (config.messageBox) {
+                dialog.MessageBox = config.messageBox;
+            }
+
+            if (config.messageBoxView) {
+                dialog.MessageBox.prototype.getView = function () {
+                    return viewEngine.processMarkup(config.messageBoxView);
+                };
+            }
+
+            if (config.messageBoxViewUrl) {
+                dialog.MessageBox.setViewUrl(config.messageBoxViewUrl);
+            }
+        }
+    };
+
+    /**
+     * @class DialogContext
+     */
+    dialog.addContext('default', {
+        blockoutOpacity: 0.2,
+        removeDelay: 200,
+        /**
+         * In this function, you are expected to add a DOM element to the tree which will serve as the "host" for the modal's composed view. You must add a property called host to the modalWindow object which references the dom element. It is this host which is passed to the composition module.
+         * @method addHost
+         * @param {Dialog} theDialog The dialog model.
+         */
+        addHost: function (theDialog) {
+            var body = $('body');
+            var blockout = $('<div class="modalBlockout"></div>')
+                .css({ 'z-index': dialog.getNextZIndex(), 'opacity': this.blockoutOpacity })
+                .appendTo(body);
+
+            var host = $('<div class="modalHost"></div>')
+                .css({ 'z-index': dialog.getNextZIndex() })
+                .appendTo(body);
+
+            theDialog.host = host.get(0);
+            theDialog.blockout = blockout.get(0);
+
+            if (!dialog.isOpen()) {
+                theDialog.oldBodyMarginRight = body.css("margin-right");
+                theDialog.oldInlineMarginRight = body.get(0).style.marginRight;
+
+                var html = $("html");
+                var oldBodyOuterWidth = body.outerWidth(true);
+                var oldScrollTop = html.scrollTop();
+                $("html").css("overflow-y", "hidden");
+                var newBodyOuterWidth = $("body").outerWidth(true);
+                body.css("margin-right", (newBodyOuterWidth - oldBodyOuterWidth + parseInt(theDialog.oldBodyMarginRight, 10)) + "px");
+                html.scrollTop(oldScrollTop); // necessary for Firefox
+            }
+        },
+        /**
+         * This function is expected to remove any DOM machinery associated with the specified dialog and do any other necessary cleanup.
+         * @method removeHost
+         * @param {Dialog} theDialog The dialog model.
+         */
+        removeHost: function (theDialog) {
+            $(theDialog.host).css('opacity', 0);
+            $(theDialog.blockout).css('opacity', 0);
+
+            setTimeout(function () {
+                ko.removeNode(theDialog.host);
+                ko.removeNode(theDialog.blockout);
+            }, this.removeDelay);
+
+            if (!dialog.isOpen()) {
+                var html = $("html");
+                var oldScrollTop = html.scrollTop(); // necessary for Firefox.
+                html.css("overflow-y", "").scrollTop(oldScrollTop);
+
+                if (theDialog.oldInlineMarginRight) {
+                    $("body").css("margin-right", theDialog.oldBodyMarginRight);
+                } else {
+                    $("body").css("margin-right", '');
+                }
+            }
+        },
+        attached: function (view) {
+            //To prevent flickering in IE8, we set visibility to hidden first, and later restore it
+            $(view).css("visibility", "hidden");
+        },
+        /**
+         * This function is called after the modal is fully composed into the DOM, allowing your implementation to do any final modifications, such as positioning or animation. You can obtain the original dialog object by using `getDialog` on context.model.
+         * @method compositionComplete
+         * @param {DOMElement} child The dialog view.
+         * @param {DOMElement} parent The parent view.
+         * @param {object} context The composition context.
+         */
+        compositionComplete: function (child, parent, context) {
+            var theDialog = dialog.getDialog(context.model);
+            var $child = $(child);
+            var loadables = $child.find("img").filter(function () {
+                //Remove images with known width and height
+                var $this = $(this);
+                return !(this.style.width && this.style.height) && !($this.attr("width") && $this.attr("height"));
+            });
+
+            $child.data("predefinedWidth", $child.get(0).style.width);
+
+            var setDialogPosition = function (childView, objDialog) {
+                //Setting a short timeout is need in IE8, otherwise we could do this straight away
+                setTimeout(function () {
+                    var $childView = $(childView);
+
+                    objDialog.context.reposition(childView);
+
+                    $(objDialog.host).css('opacity', 1);
+                    $childView.css("visibility", "visible");
+
+                    $childView.find('.autofocus').first().focus();
+                }, 1);
+            };
+
+            setDialogPosition(child, theDialog);
+            loadables.load(function () {
+                setDialogPosition(child, theDialog);
+            });
+
+            if ($child.hasClass('autoclose') || context.model.autoclose) {
+                $(theDialog.blockout).click(function () {
+                    theDialog.close();
+                });
+            }
+        },
+        /**
+         * This function is called to reposition the model view.
+         * @method reposition
+         * @param {DOMElement} view The dialog view.
+         */
+        reposition: function (view) {
+            var $view = $(view),
+                $window = $(window);
+
+            //We will clear and then set width for dialogs without width set 
+            if (!$view.data("predefinedWidth")) {
+                $view.css({ width: '' }); //Reset width
+            }
+            var width = $view.outerWidth(false),
+                height = $view.outerHeight(false),
+                windowHeight = $window.height() - 10, //leave at least 10 pixels free
+                windowWidth = $window.width() - 10, //leave at least 10 pixels free
+                constrainedHeight = Math.min(height, windowHeight),
+                constrainedWidth = Math.min(width, windowWidth);
+
+            $view.css({
+                'margin-top': (-constrainedHeight / 2).toString() + 'px',
+                'margin-left': (-constrainedWidth / 2).toString() + 'px'
+            });
+
+            if (height > windowHeight) {
+                $view.css("overflow-y", "auto").outerHeight(windowHeight);
+            } else {
+                $view.css({
+                    "overflow-y": "",
+                    "height": ""
+                });
+            }
+
+            if (width > windowWidth) {
+                $view.css("overflow-x", "auto").outerWidth(windowWidth);
+            } else {
+                $view.css("overflow-x", "");
+
+                if (!$view.data("predefinedWidth")) {
+                    //Ensure the correct width after margin-left has been set
+                    $view.outerWidth(constrainedWidth);
+                } else {
+                    $view.css("width", $view.data("predefinedWidth"));
+                }
+            }
+        }
+    });
+
+    return dialog;
+});
+
+/**
+ * Durandal 2.1.0 Copyright (c) 2012 Blue Spire Consulting, Inc. All Rights Reserved.
+ * Available via the MIT license.
+ * see: http://durandaljs.com or https://github.com/BlueSpire/Durandal for details.
+ */
+/**
+ * Enables common http request scenarios.
+ * @module http
+ * @requires jquery
+ * @requires knockout
+ */
+define('plugins/http',['jquery', 'knockout'], function ($, ko) {
+    /**
+     * @class HTTPModule
+     * @static
+     */
+    return {
+        /**
+         * The name of the callback parameter to inject into jsonp requests by default.
+         * @property {string} callbackParam
+         * @default callback
+         */
+        callbackParam: 'callback',
+        /**
+         * Converts the data to JSON.
+         * @method toJSON
+         * @param {object} data The data to convert to JSON.
+         * @return {string} JSON.
+         */
+        toJSON: function(data) {
+            return ko.toJSON(data);
+        },
+        /**
+         * Makes an HTTP GET request.
+         * @method get
+         * @param {string} url The url to send the get request to.
+         * @param {object} [query] An optional key/value object to transform into query string parameters.
+         * @param {object} [headers] The data to add to the request header.  It will be converted to JSON. If the data contains Knockout observables, they will be converted into normal properties before serialization.
+         * @return {Promise} A promise of the get response data.
+         */
+        get: function (url, query, headers) {
+            return $.ajax(url, { data: query, headers: ko.toJS(headers) });
+        },
+        /**
+         * Makes an JSONP request.
+         * @method jsonp
+         * @param {string} url The url to send the get request to.
+         * @param {object} [query] An optional key/value object to transform into query string parameters.
+         * @param {string} [callbackParam] The name of the callback parameter the api expects (overrides the default callbackParam).
+         * @param {object} [headers] The data to add to the request header.  It will be converted to JSON. If the data contains Knockout observables, they will be converted into normal properties before serialization.
+         * @return {Promise} A promise of the response data.
+         */
+        jsonp: function (url, query, callbackParam, headers) {
+            if (url.indexOf('=?') == -1) {
+                callbackParam = callbackParam || this.callbackParam;
+
+                if (url.indexOf('?') == -1) {
+                    url += '?';
+                } else {
+                    url += '&';
+                }
+
+                url += callbackParam + '=?';
+            }
+
+            return $.ajax({
+                url: url,
+                dataType: 'jsonp',
+                data: query,
+                headers: ko.toJS(headers)
+            });
+        },
+        /**
+         * Makes an HTTP PUT request.
+         * @method put
+         * @param {string} url The url to send the put request to.
+         * @param {object} data The data to put. It will be converted to JSON. If the data contains Knockout observables, they will be converted into normal properties before serialization.
+         * @param {object} [headers] The data to add to the request header.  It will be converted to JSON. If the data contains Knockout observables, they will be converted into normal properties before serialization.
+         * @return {Promise} A promise of the response data.
+         */
+        put:function(url, data, headers) {
+            return $.ajax({
+                url: url,
+                data: this.toJSON(data),
+                type: 'PUT',
+                contentType: 'application/json',
+                dataType: 'json',
+                headers: ko.toJS(headers)
+            });
+        },
+        /**
+         * Makes an HTTP POST request.
+         * @method post
+         * @param {string} url The url to send the post request to.
+         * @param {object} data The data to post. It will be converted to JSON. If the data contains Knockout observables, they will be converted into normal properties before serialization.
+         * @param {object} [headers] The data to add to the request header.  It will be converted to JSON. If the data contains Knockout observables, they will be converted into normal properties before serialization.
+         * @return {Promise} A promise of the response data.
+         */
+        post: function (url, data, headers) {
+            return $.ajax({
+                url: url,
+                data: this.toJSON(data),
+                type: 'POST',
+                contentType: 'application/json',
+                dataType: 'json',
+                headers: ko.toJS(headers)
+            });
+        },
+        /**
+         * Makes an HTTP DELETE request.
+         * @method remove
+         * @param {string} url The url to send the delete request to.
+         * @param {object} [query] An optional key/value object to transform into query string parameters.
+         * @param {object} [headers] The data to add to the request header.  It will be converted to JSON. If the data contains Knockout observables, they will be converted into normal properties before serialization.
+         * @return {Promise} A promise of the get response data.
+         */
+        remove:function(url, query, headers) {
+            return $.ajax({
+                url: url,
+                data: query,
+                type: 'DELETE',
+                headers: ko.toJS(headers)
+            });
+        }
+    };
+});
+
+/**
+ * Durandal 2.1.0 Copyright (c) 2012 Blue Spire Consulting, Inc. All Rights Reserved.
+ * Available via the MIT license.
+ * see: http://durandaljs.com or https://github.com/BlueSpire/Durandal for details.
+ */
+/**
+ * Enables automatic observability of plain javascript object for ES5 compatible browsers. Also, converts promise properties into observables that are updated when the promise resolves.
+ * @module observable
+ * @requires system
+ * @requires binder
+ * @requires knockout
+ */
+define('plugins/observable',['durandal/system', 'durandal/binder', 'knockout'], function(system, binder, ko) {
+    var observableModule,
+        toString = Object.prototype.toString,
+        nonObservableTypes = ['[object Function]', '[object String]', '[object Boolean]', '[object Number]', '[object Date]', '[object RegExp]'],
+        observableArrayMethods = ['remove', 'removeAll', 'destroy', 'destroyAll', 'replace'],
+        arrayMethods = ['pop', 'reverse', 'sort', 'shift', 'slice'],
+        additiveArrayFunctions = ['push', 'unshift'],
+        es5Functions = ['filter', 'map', 'reduce', 'reduceRight', 'forEach', 'every', 'some'],
+        arrayProto = Array.prototype,
+        observableArrayFunctions = ko.observableArray.fn,
+        logConversion = false,
+        changeDetectionMethod = undefined,
+        skipPromises = false,
+        shouldIgnorePropertyName;
+
+    /**
+     * You can call observable(obj, propertyName) to get the observable function for the specified property on the object.
+     * @class ObservableModule
+     */
+
+    if (!('getPropertyDescriptor' in Object)) {
+        var getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
+        var getPrototypeOf = Object.getPrototypeOf;
+
+        Object['getPropertyDescriptor'] = function(o, name) {
+            var proto = o, descriptor;
+
+            while(proto && !(descriptor = getOwnPropertyDescriptor(proto, name))) {
+                proto = getPrototypeOf(proto);
+            }
+
+            return descriptor;
+        };
+    }
+
+    function defaultShouldIgnorePropertyName(propertyName){
+        var first = propertyName[0];
+        return first === '_' || first === '$' || (changeDetectionMethod && propertyName === changeDetectionMethod);
+    }
+
+    function isNode(obj) {
+        return !!(obj && obj.nodeType !== undefined && system.isNumber(obj.nodeType));
+    }
+
+    function canConvertType(value) {
+        if (!value || isNode(value) || value.ko === ko || value.jquery) {
+            return false;
+        }
+
+        var type = toString.call(value);
+
+        return nonObservableTypes.indexOf(type) == -1 && !(value === true || value === false);
+    }
+
+    function createLookup(obj) {
+        var value = {};
+
+        Object.defineProperty(obj, "__observable__", {
+            enumerable: false,
+            configurable: false,
+            writable: false,
+            value: value
+        });
+
+        return value;
+    }
+
+    function makeObservableArray(original, observable, hasChanged) {
+        var lookup = original.__observable__, notify = true;
+
+        if(lookup && lookup.__full__){
+            return;
+        }
+
+        lookup = lookup || createLookup(original);
+        lookup.__full__ = true;
+
+        es5Functions.forEach(function (methodName) {
+            observable[methodName] = function () {
+                return arrayProto[methodName].apply(original, arguments);
+            };
+        });
+
+        observableArrayMethods.forEach(function(methodName) {
+            original[methodName] = function() {
+                notify = false;
+                var methodCallResult = observableArrayFunctions[methodName].apply(observable, arguments);
+                notify = true;
+                return methodCallResult;
+            };
+        });
+
+        arrayMethods.forEach(function(methodName) {
+            original[methodName] = function() {
+                if(notify){
+                    observable.valueWillMutate();
+                }
+
+                var methodCallResult = arrayProto[methodName].apply(original, arguments);
+
+                if(notify){
+                    observable.valueHasMutated();
+                }
+
+                return methodCallResult;
+            };
+        });
+
+        additiveArrayFunctions.forEach(function(methodName){
+            original[methodName] = function() {
+                for (var i = 0, len = arguments.length; i < len; i++) {
+                    convertObject(arguments[i], hasChanged);
+                }
+
+                if(notify){
+                    observable.valueWillMutate();
+                }
+
+                var methodCallResult = arrayProto[methodName].apply(original, arguments);
+
+                if(notify){
+                    observable.valueHasMutated();
+                }
+
+                return methodCallResult;
+            };
+        });
+
+        original['splice'] = function() {
+            for (var i = 2, len = arguments.length; i < len; i++) {
+                convertObject(arguments[i], hasChanged);
+            }
+
+            if(notify){
+                observable.valueWillMutate();
+            }
+
+            var methodCallResult = arrayProto['splice'].apply(original, arguments);
+
+            if(notify){
+                observable.valueHasMutated();
+            }
+
+            return methodCallResult;
+        };
+
+        for (var i = 0, len = original.length; i < len; i++) {
+            convertObject(original[i], hasChanged);
+        }
+    }
+
+    /**
+     * Converts an entire object into an observable object by re-writing its attributes using ES5 getters and setters. Attributes beginning with '_' or '$' are ignored.
+     * @method convertObject
+     * @param {object} obj The target object to convert.
+     */
+    function convertObject(obj, hasChanged) {
+        var lookup, value;
+
+        if (changeDetectionMethod) {
+            if(obj && obj[changeDetectionMethod]) {
+                if (hasChanged) {
+                    hasChanged = hasChanged.slice(0);
+                } else {
+                    hasChanged = [];
+                }
+                hasChanged.push(obj[changeDetectionMethod]);
+            }
+        }
+
+        if(!canConvertType(obj)){
+            return;
+        }
+
+        lookup = obj.__observable__;
+
+        if(lookup && lookup.__full__){
+            return;
+        }
+
+        lookup = lookup || createLookup(obj);
+        lookup.__full__ = true;
+
+        if (system.isArray(obj)) {
+            var observable = ko.observableArray(obj);
+            makeObservableArray(obj, observable, hasChanged);
+        } else {
+            for (var propertyName in obj) {
+                if(shouldIgnorePropertyName(propertyName)){
+                    continue;
+                }
+
+                if (!lookup[propertyName]) {
+                    var descriptor = Object.getPropertyDescriptor(obj, propertyName);
+                    if (descriptor && (descriptor.get || descriptor.set)) {
+                        defineProperty(obj, propertyName, {
+                            get:descriptor.get,
+                            set:descriptor.set
+                        });
+                    } else {
+                        value = obj[propertyName];
+
+                        if(!system.isFunction(value)) {
+                            convertProperty(obj, propertyName, value, hasChanged);
+                        }
+                    }
+                }
+            }
+        }
+
+        if(logConversion) {
+            system.log('Converted', obj);
+        }
+    }
+
+    function innerSetter(observable, newValue, isArray) {
+        //if this was originally an observableArray, then always check to see if we need to add/replace the array methods (if newValue was an entirely new array)
+        if (isArray) {
+            if (!newValue) {
+                //don't allow null, force to an empty array
+                newValue = [];
+                makeObservableArray(newValue, observable);
+            }
+            else if (!newValue.destroyAll) {
+                makeObservableArray(newValue, observable);
+            }
+        } else {
+            convertObject(newValue);
+        }
+
+        //call the update to the observable after the array as been updated.
+        observable(newValue);
+    }
+
+    /**
+     * Converts a normal property into an observable property using ES5 getters and setters.
+     * @method convertProperty
+     * @param {object} obj The target object on which the property to convert lives.
+     * @param {string} propertyName The name of the property to convert.
+     * @param {object} [original] The original value of the property. If not specified, it will be retrieved from the object.
+     * @return {KnockoutObservable} The underlying observable.
+     */
+    function convertProperty(obj, propertyName, original, hasChanged) {
+        var observable,
+            isArray,
+            lookup = obj.__observable__ || createLookup(obj);
+
+        if(original === undefined){
+            original = obj[propertyName];
+        }
+
+        if (system.isArray(original)) {
+            observable = ko.observableArray(original);
+            makeObservableArray(original, observable, hasChanged);
+            isArray = true;
+        } else if (typeof original == "function") {
+            if(ko.isObservable(original)){
+                observable = original;
+            }else{
+                return null;
+            }
+        } else if(!skipPromises && system.isPromise(original)) {
+            observable = ko.observable();
+
+            original.then(function (result) {
+                if(system.isArray(result)) {
+                    var oa = ko.observableArray(result);
+                    makeObservableArray(result, oa, hasChanged);
+                    result = oa;
+                }
+
+                observable(result);
+            });
+        } else {
+            observable = ko.observable(original);
+            convertObject(original, hasChanged);
+        }
+
+        if (hasChanged && hasChanged.length > 0) {
+            hasChanged.forEach(function (func) {
+                if (system.isArray(original)) {
+                    observable.subscribe(function (arrayChanges) {
+                        func(obj, propertyName, null, arrayChanges);
+                    }, null, "arrayChange");
+                } else {
+                    observable.subscribe(function (newValue) {
+                        func(obj, propertyName, newValue, null);
+                    });
+                }
+            });
+        }
+
+        Object.defineProperty(obj, propertyName, {
+            configurable: true,
+            enumerable: true,
+            get: observable,
+            set: ko.isWriteableObservable(observable) ? (function (newValue) {
+                if (newValue && system.isPromise(newValue) && !skipPromises) {
+                    newValue.then(function (result) {
+                        innerSetter(observable, result, system.isArray(result));
+                    });
+                } else {
+                    innerSetter(observable, newValue, isArray);
+                }
+            }) : undefined
+        });
+
+        lookup[propertyName] = observable;
+        return observable;
+    }
+
+    /**
+     * Defines a computed property using ES5 getters and setters.
+     * @method defineProperty
+     * @param {object} obj The target object on which to create the property.
+     * @param {string} propertyName The name of the property to define.
+     * @param {function|object} evaluatorOrOptions The Knockout computed function or computed options object.
+     * @return {KnockoutObservable} The underlying computed observable.
+     */
+    function defineProperty(obj, propertyName, evaluatorOrOptions) {
+        var computedOptions = { owner: obj, deferEvaluation: true },
+            computed;
+
+        if (typeof evaluatorOrOptions === 'function') {
+            computedOptions.read = evaluatorOrOptions;
+        } else {
+            if ('value' in evaluatorOrOptions) {
+                system.error('For defineProperty, you must not specify a "value" for the property. You must provide a "get" function.');
+            }
+
+            if (typeof evaluatorOrOptions.get !== 'function' && typeof evaluatorOrOptions.read !== 'function') {
+                system.error('For defineProperty, the third parameter must be either an evaluator function, or an options object containing a function called "get".');
+            }
+
+            computedOptions.read = evaluatorOrOptions.get || evaluatorOrOptions.read;
+            computedOptions.write = evaluatorOrOptions.set || evaluatorOrOptions.write;
+        }
+
+        computed = ko.computed(computedOptions);
+        obj[propertyName] = computed;
+
+        return convertProperty(obj, propertyName, computed);
+    }
+
+    observableModule = function(obj, propertyName){
+        var lookup, observable, value;
+
+        if (!obj) {
+            return null;
+        }
+
+        lookup = obj.__observable__;
+        if(lookup){
+            observable = lookup[propertyName];
+            if(observable){
+                return observable;
+            }
+        }
+
+        value = obj[propertyName];
+
+        if(ko.isObservable(value)){
+            return value;
+        }
+
+        return convertProperty(obj, propertyName, value);
+    };
+
+    observableModule.defineProperty = defineProperty;
+    observableModule.convertProperty = convertProperty;
+    observableModule.convertObject = convertObject;
+
+    /**
+     * Installs the plugin into the view model binder's `beforeBind` hook so that objects are automatically converted before being bound.
+     * @method install
+     */
+    observableModule.install = function(options) {
+        var original = binder.binding;
+
+        binder.binding = function(obj, view, instruction) {
+            if(instruction.applyBindings && !instruction.skipConversion){
+                convertObject(obj);
+            }
+
+            original(obj, view);
+        };
+
+        logConversion = options.logConversion;
+        if (options.changeDetection) {
+            changeDetectionMethod = options.changeDetection;
+        }
+
+        skipPromises = options.skipPromises;
+        shouldIgnorePropertyName = options.shouldIgnorePropertyName || defaultShouldIgnorePropertyName;
+    };
+
+    return observableModule;
+});
+
+/**
+ * Durandal 2.1.0 Copyright (c) 2012 Blue Spire Consulting, Inc. All Rights Reserved.
+ * Available via the MIT license.
+ * see: http://durandaljs.com or https://github.com/BlueSpire/Durandal for details.
+ */
+/**
+ * Serializes and deserializes data to/from JSON.
+ * @module serializer
+ * @requires system
+ */
+define('plugins/serializer',['durandal/system'], function(system) {
+    /**
+     * @class SerializerModule
+     * @static
+     */
+    return {
+        /**
+         * The name of the attribute that the serializer should use to identify an object's type.
+         * @property {string} typeAttribute
+         * @default type
+         */
+        typeAttribute: 'type',
+        /**
+         * The amount of space to use for indentation when writing out JSON.
+         * @property {string|number} space
+         * @default undefined
+         */
+        space:undefined,
+        /**
+         * The default replacer function used during serialization. By default properties starting with '_' or '$' are removed from the serialized object.
+         * @method replacer
+         * @param {string} key The object key to check.
+         * @param {object} value The object value to check.
+         * @return {object} The value to serialize.
+         */
+        replacer: function(key, value) {
+            if(key){
+                var first = key[0];
+                if(first === '_' || first === '$'){
+                    return undefined;
+                }
+            }
+
+            return value;
+        },
+        /**
+         * Serializes the object.
+         * @method serialize
+         * @param {object} object The object to serialize.
+         * @param {object} [settings] Settings can specify a replacer or space to override the serializer defaults.
+         * @return {string} The JSON string.
+         */
+        serialize: function(object, settings) {
+            settings = (settings === undefined) ? {} : settings;
+
+            if(system.isString(settings) || system.isNumber(settings)) {
+                settings = { space: settings };
+            }
+
+            return JSON.stringify(object, settings.replacer || this.replacer, settings.space || this.space);
+        },
+        /**
+         * Gets the type id for an object instance, using the configured `typeAttribute`.
+         * @method getTypeId
+         * @param {object} object The object to serialize.
+         * @return {string} The type.
+         */
+        getTypeId: function(object) {
+            if (object) {
+                return object[this.typeAttribute];
+            }
+
+            return undefined;
+        },
+        /**
+         * Maps type ids to object constructor functions. Keys are type ids and values are functions.
+         * @property {object} typeMap.
+         */
+        typeMap: {},
+        /**
+         * Adds a type id/constructor function mampping to the `typeMap`.
+         * @method registerType
+         * @param {string} typeId The type id.
+         * @param {function} constructor The constructor.
+         */
+        registerType: function() {
+            var first = arguments[0];
+
+            if (arguments.length == 1) {
+                var id = first[this.typeAttribute] || system.getModuleId(first);
+                this.typeMap[id] = first;
+            } else {
+                this.typeMap[first] = arguments[1];
+            }
+        },
+        /**
+         * The default reviver function used during deserialization. By default is detects type properties on objects and uses them to re-construct the correct object using the provided constructor mapping.
+         * @method reviver
+         * @param {string} key The attribute key.
+         * @param {object} value The object value associated with the key.
+         * @param {function} getTypeId A custom function used to get the type id from a value.
+         * @param {object} getConstructor A custom function used to get the constructor function associated with a type id.
+         * @return {object} The value.
+         */
+        reviver: function(key, value, getTypeId, getConstructor) {
+            var typeId = getTypeId(value);
+            if (typeId) {
+                var ctor = getConstructor(typeId);
+                if (ctor) {
+                    if (ctor.fromJSON) {
+                        return ctor.fromJSON(value);
+                    }
+
+                    return new ctor(value);
+                }
+            }
+
+            return value;
+        },
+        /**
+         * Deserialize the JSON.
+         * @method deserialize
+         * @param {string} text The JSON string.
+         * @param {object} [settings] Settings can specify a reviver, getTypeId function or getConstructor function.
+         * @return {object} The deserialized object.
+         */
+        deserialize: function(text, settings) {
+            var that = this;
+            settings = settings || {};
+
+            var getTypeId = settings.getTypeId || function(object) { return that.getTypeId(object); };
+            var getConstructor = settings.getConstructor || function(id) { return that.typeMap[id]; };
+            var reviver = settings.reviver || function(key, value) { return that.reviver(key, value, getTypeId, getConstructor); };
+
+            return JSON.parse(text, reviver);
+        },
+        /**
+         * Clone the object.
+         * @method clone
+         * @param {object} obj The object to clone.
+         * @param {object} [settings] Settings can specify any of the options allowed by the serialize or deserialize methods.
+         * @return {object} The new clone.
+         */
+        clone:function(obj, settings) {
+            return this.deserialize(this.serialize(obj, settings), settings);
+        }
+    };
+});
+
+/**
+ * Durandal 2.1.0 Copyright (c) 2012 Blue Spire Consulting, Inc. All Rights Reserved.
+ * Available via the MIT license.
+ * see: http://durandaljs.com or https://github.com/BlueSpire/Durandal for details.
+ */
+/**
+ * Layers the widget sugar on top of the composition system.
+ * @module widget
+ * @requires system
+ * @requires composition
+ * @requires jquery
+ * @requires knockout
+ */
+define('plugins/widget',['durandal/system', 'durandal/composition', 'jquery', 'knockout'], function(system, composition, $, ko) {
+    var kindModuleMaps = {},
+        kindViewMaps = {},
+        bindableSettings = ['model', 'view', 'kind'],
+        widgetDataKey = 'durandal-widget-data';
+
+    function extractParts(element, settings){
+        var data = ko.utils.domData.get(element, widgetDataKey);
+
+        if(!data){
+            data = {
+                parts:composition.cloneNodes(ko.virtualElements.childNodes(element))
+            };
+
+            ko.virtualElements.emptyNode(element);
+            ko.utils.domData.set(element, widgetDataKey, data);
+        }
+
+        settings.parts = data.parts;
+    }
+
+    /**
+     * @class WidgetModule
+     * @static
+     */
+    var widget = {
+        getSettings: function(valueAccessor) {
+            var settings = ko.utils.unwrapObservable(valueAccessor()) || {};
+
+            if (system.isString(settings)) {
+                return { kind: settings };
+            }
+
+            for (var attrName in settings) {
+                if (ko.utils.arrayIndexOf(bindableSettings, attrName) != -1) {
+                    settings[attrName] = ko.utils.unwrapObservable(settings[attrName]);
+                } else {
+                    settings[attrName] = settings[attrName];
+                }
+            }
+
+            return settings;
+        },
+        /**
+         * Creates a ko binding handler for the specified kind.
+         * @method registerKind
+         * @param {string} kind The kind to create a custom binding handler for.
+         */
+        registerKind: function(kind) {
+            ko.bindingHandlers[kind] = {
+                init: function() {
+                    return { controlsDescendantBindings: true };
+                },
+                update: function(element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
+                    var settings = widget.getSettings(valueAccessor);
+                    settings.kind = kind;
+                    extractParts(element, settings);
+                    widget.create(element, settings, bindingContext, true);
+                }
+            };
+
+            ko.virtualElements.allowedBindings[kind] = true;
+            composition.composeBindings.push(kind + ':');
+        },
+        /**
+         * Maps views and module to the kind identifier if a non-standard pattern is desired.
+         * @method mapKind
+         * @param {string} kind The kind name.
+         * @param {string} [viewId] The unconventional view id to map the kind to.
+         * @param {string} [moduleId] The unconventional module id to map the kind to.
+         */
+        mapKind: function(kind, viewId, moduleId) {
+            if (viewId) {
+                kindViewMaps[kind] = viewId;
+            }
+
+            if (moduleId) {
+                kindModuleMaps[kind] = moduleId;
+            }
+        },
+        /**
+         * Maps a kind name to it's module id. First it looks up a custom mapped kind, then falls back to `convertKindToModulePath`.
+         * @method mapKindToModuleId
+         * @param {string} kind The kind name.
+         * @return {string} The module id.
+         */
+        mapKindToModuleId: function(kind) {
+            return kindModuleMaps[kind] || widget.convertKindToModulePath(kind);
+        },
+        /**
+         * Converts a kind name to it's module path. Used to conventionally map kinds who aren't explicitly mapped through `mapKind`.
+         * @method convertKindToModulePath
+         * @param {string} kind The kind name.
+         * @return {string} The module path.
+         */
+        convertKindToModulePath: function(kind) {
+            return 'widgets/' + kind + '/viewmodel';
+        },
+        /**
+         * Maps a kind name to it's view id. First it looks up a custom mapped kind, then falls back to `convertKindToViewPath`.
+         * @method mapKindToViewId
+         * @param {string} kind The kind name.
+         * @return {string} The view id.
+         */
+        mapKindToViewId: function(kind) {
+            return kindViewMaps[kind] || widget.convertKindToViewPath(kind);
+        },
+        /**
+         * Converts a kind name to it's view id. Used to conventionally map kinds who aren't explicitly mapped through `mapKind`.
+         * @method convertKindToViewPath
+         * @param {string} kind The kind name.
+         * @return {string} The view id.
+         */
+        convertKindToViewPath: function(kind) {
+            return 'widgets/' + kind + '/view';
+        },
+        createCompositionSettings: function(element, settings) {
+            if (!settings.model) {
+                settings.model = this.mapKindToModuleId(settings.kind);
+            }
+
+            if (!settings.view) {
+                settings.view = this.mapKindToViewId(settings.kind);
+            }
+
+            settings.preserveContext = true;
+            settings.activate = true;
+            settings.activationData = settings;
+            settings.mode = 'templated';
+
+            return settings;
+        },
+        /**
+         * Creates a widget.
+         * @method create
+         * @param {DOMElement} element The DOMElement or knockout virtual element that serves as the target element for the widget.
+         * @param {object} settings The widget settings.
+         * @param {object} [bindingContext] The current binding context.
+         */
+        create: function(element, settings, bindingContext, fromBinding) {
+            if(!fromBinding){
+                settings = widget.getSettings(function() { return settings; }, element);
+            }
+
+            var compositionSettings = widget.createCompositionSettings(element, settings);
+
+            composition.compose(element, compositionSettings, bindingContext);
+        },
+        /**
+         * Installs the widget module by adding the widget binding handler and optionally registering kinds.
+         * @method install
+         * @param {object} config The module config. Add a `kinds` array with the names of widgets to automatically register. You can also specify a `bindingName` if you wish to use another name for the widget binding, such as "control" for example.
+         */
+        install:function(config){
+            config.bindingName = config.bindingName || 'widget';
+
+            if(config.kinds){
+                var toRegister = config.kinds;
+
+                for(var i = 0; i < toRegister.length; i++){
+                    widget.registerKind(toRegister[i]);
+                }
+            }
+
+            ko.bindingHandlers[config.bindingName] = {
+                init: function() {
+                    return { controlsDescendantBindings: true };
+                },
+                update: function(element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
+                    var settings = widget.getSettings(valueAccessor);
+                    extractParts(element, settings);
+                    widget.create(element, settings, bindingContext, true);
+                }
+            };
+
+            composition.composeBindings.push(config.bindingName + ':');
+            ko.virtualElements.allowedBindings[config.bindingName] = true;
+        }
+    };
+
+    return widget;
+});
+
+/**
+ * Durandal 2.1.0 Copyright (c) 2012 Blue Spire Consulting, Inc. All Rights Reserved.
+ * Available via the MIT license.
+ * see: http://durandaljs.com or https://github.com/BlueSpire/Durandal for details.
+ */
+/**
+ * The entrance transition module.
+ * @module entrance
+ * @requires system
+ * @requires composition
+ * @requires jquery
+ */
+define('transitions/entrance',['durandal/system', 'durandal/composition', 'jquery'], function(system, composition, $) {
+    var fadeOutDuration = 100;
+    var endValues = {
+        left: '0px',
+        opacity: 1
+    };
+    var clearValues = {
+        left: '',
+        top: '',
+        right: '',
+        bottom:'',
+        position:'',
+        opacity: ''
+    };
+
+    var isIE = navigator.userAgent.match(/Trident/) || navigator.userAgent.match(/MSIE/);
+
+    var animation = false,
+        domPrefixes = 'Webkit Moz O ms Khtml'.split(' '),
+        elm = document.createElement('div');
+
+    if(elm.style.animationName !== undefined) {
+        animation = true;
+    }
+
+    if(!animation) {
+        for(var i = 0; i < domPrefixes.length; i++) {
+            if(elm.style[domPrefixes[i] + 'AnimationName'] !== undefined) {
+                animation = true;
+                break;
+            }
+        }
+    }
+
+    if(animation) {
+        if(isIE){
+            system.log('Using CSS3/jQuery mixed animations.');
+        }else{
+            system.log('Using CSS3 animations.');
+        }
+    } else {
+        system.log('Using jQuery animations.');
+    }
+
+    function removeAnimationClasses(ele, fadeOnly){
+        ele.classList.remove(fadeOnly ? 'entrance-in-fade' : 'entrance-in');
+        ele.classList.remove('entrance-out');
+    }
+
+    /**
+     * @class EntranceModule
+     * @constructor
+     */
+    var entrance = function(context) {
+        return system.defer(function(dfd) {
+            function endTransition() {
+                dfd.resolve();
+            }
+
+            function scrollIfNeeded() {
+                if (!context.keepScrollPosition) {
+                    $(document).scrollTop(0);
+                }
+            }
+
+            if (!context.child) {
+                $(context.activeView).fadeOut(fadeOutDuration, endTransition);
+            } else {
+                var duration = context.duration || 500;
+                var $child = $(context.child);
+                var fadeOnly = !!context.fadeOnly;
+                var startValues = {
+                    display: 'block',
+                    opacity: 0,
+                    position: 'absolute',
+                    left: fadeOnly || animation ? '0px' : '20px',
+                    right: 0,
+                    top: 0,
+                    bottom: 0
+                };
+
+                function startTransition() {
+                    scrollIfNeeded();
+                    context.triggerAttach();
+
+                    if (animation) {
+                        removeAnimationClasses(context.child, fadeOnly);
+                        context.child.classList.add(fadeOnly ? 'entrance-in-fade' : 'entrance-in');
+                        setTimeout(function () {
+                            removeAnimationClasses(context.child, fadeOnly);
+                            if(context.activeView){
+                                removeAnimationClasses(context.activeView, fadeOnly);
+                            }
+                            $child.css(clearValues);
+                            endTransition();
+                        }, duration);
+                    } else {
+                        $child.animate(endValues, {
+                            duration: duration,
+                            easing: 'swing',
+                            always: function() {
+                                $child.css(clearValues);
+                                endTransition();
+                            }
+                        });
+                    }
+                }
+
+                $child.css(startValues);
+
+                if(context.activeView) {
+                    if (animation && !isIE) {
+                        removeAnimationClasses(context.activeView, fadeOnly);
+                        context.activeView.classList.add('entrance-out');
+                        setTimeout(startTransition, fadeOutDuration);
+                    } else {
+                        $(context.activeView).fadeOut({ duration: fadeOutDuration, always: startTransition });
+                    }
+                } else {
+                    startTransition();
+                }
+            }
+        }).promise();
+    };
+
+    return entrance;
+});
+
+
+define('text!views/Dashboard/default.html',[],function () { return '<section>\r\n    <h2>Dashboard</h2>\r\n\r\n</section>';});
+
+
+define('text!views/Transaction/default.html',[],function () { return '<section>\r\n    <h2>Transaction</h2>\r\n    <br/><hr/><br/>\r\n\r\n    <input type="text" data-bind="value: cardnumber"/>\r\n    <button data-bind="click:getinfo">Lock This</button>\r\n\r\n    <div  data-bind="foreach: logmessages">\r\n        <span data-bind="text:$data"></span><br/>\r\n    </div>\r\n</section>';});
+
+
+define('text!views/shell.html',[],function () { return '<div id="shellContainer">\r\n    <span>This is shell</span>\r\n    <div class="btn-group" data-bind="foreach: router.navigationModel">\r\n        <a data-bind="css: { active: isActive }, attr: { href: hash }, text: title"\r\n           class="btn btn-default" href="#"></a>\r\n    </div>\r\n\r\n    <section id="parentContent" class="main container-fluid"\r\n             data-bind="router: { transition: \'entrance\', cacheViews: false }"></section>\r\n</div>';});
+
+
+require(["main"]);
+}());
+//# sourceMappingURL=main-built.js.map

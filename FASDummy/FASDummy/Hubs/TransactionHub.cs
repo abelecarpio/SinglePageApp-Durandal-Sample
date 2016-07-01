@@ -10,6 +10,12 @@ namespace FASDummy.Hubs
     [HubName("TransactionHub")]
     public class TransactionHub : Hub
     {
+        public override Task OnConnected()
+        {
+            HubBridge.Instance.CheckForDisconnected();
+            return base.OnConnected();
+        }
+
         public override Task OnDisconnected(bool stopCalled)
         {
             TransactionHubShared.Instance.ReleaseTransaction(Context.ConnectionId);
@@ -38,6 +44,7 @@ namespace FASDummy.Hubs
         public void DisconnectMe(string connectionId)
         {
             var cardNumber = HubBridge.Instance.ReleaseTransaction(connectionId);
+            if (string.IsNullOrEmpty(cardNumber)) return;
             ReleaseThisTransaction(cardNumber, connectionId);
         }
     }

@@ -1,14 +1,14 @@
 ﻿// Maps the files so Durandal knows where to find these.
 require.config({
-    baseUrl: "/App",
+    baseUrl: '/App',
     paths: {
-        'text': "../Scripts/text",
-        'durandal': "../Scripts/durandal",
-        'plugins': "../Scripts/durandal/plugins",
-        'transitions': "../Scripts/durandal/transitions",
-        'viewmodels': "../App/viewmodels",
-        'views': "../App/views",
-        'models': "../App/models"
+        'text': '../Scripts/text',
+        'durandal': '../Scripts/durandal',
+        'plugins': '../Scripts/durandal/plugins',
+        'transitions': '../Scripts/durandal/transitions'
+        //,'viewmodels': '../App/viewmodels',
+        //'views': '../App/views',
+        //'models': '../App/models'
     }
 });
 
@@ -28,42 +28,18 @@ function boot(app, viewLocator, system, router, viewEngine) {
 
     app.title = "FAS Dummy";
 
-    ////specify which plugins to install and their configuration
-    //app.configurePlugins({
-    //    router: true,
-    //    dialog: true,
-    //    widget: {
-    //        kinds: ["expander"]
-    //    }
-    //});
-
-    //app.start().then(function () {
-    //    ////Look for partial views in a 'views' folder in the root.
-    //    viewLocator.useConvention("viewmodels", "views", "views");
-    //    //Show the app by setting the root view model for our application.
-    //    app.setRoot("viewmodels/shell", "entrance");
-    //});
-
-
     //specify which plugins to install and their configuration
     app.configurePlugins({
         router: true,
         dialog: true,
         widget: {
-            kinds: ["expander"]
+            kinds: ['expander']
         }
     });
-
+    
     app.start().then(function () {
-
-        //Show the app by setting the root view model for our application with a transition.
-
-        //toastr.options.positionClass = "toast-bottom-right";
-        //toastr.options.backgroundpositionClass = "toast-bottom-right";
-        //viewLocator.useConvention('viewmodels', '../../');
-        //viewEngine.viewExtension = '/';
-        //Look for partial views in a 'views' folder in the root.
-        viewLocator.useConvention();
+        ////Look for partial views in a 'views' folder in the root.
+        viewLocator.useConvention("viewmodels", "views", "views");
 
         //Show the app by setting the root view model for our application.
         app.setRoot("viewmodels/shell", "entrance");

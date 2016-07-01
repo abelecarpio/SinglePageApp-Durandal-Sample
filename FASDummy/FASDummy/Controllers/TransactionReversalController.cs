@@ -26,7 +26,7 @@ namespace FASDummy.Controllers
                 }
                 
                 if (HubBridge.ActiveTransactions.Any(x => x.Key != connectionId && x.Value == cardNumber))
-                    throw new Exception("Card Number is already lock");
+                    return new ResultObject<ReturnObject<string>>(new ReturnObject<string> { IsSuccess = false, ErrorMessage = "Card Number is already locked" });
 
                 if (!HubBridge.ActiveTransactions.Any(x => x.Key == connectionId && x.Value == cardNumber))
                 {
